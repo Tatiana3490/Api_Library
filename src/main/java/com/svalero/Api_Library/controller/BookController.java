@@ -19,127 +19,99 @@ import java.util.Map;
 public class BookController {
 
     private final Logger logger = LoggerFactory.getLogger(BookController.class);
-    private final BookService bookService;
+    private final BookService service;
 
     @Autowired
-    public BookController(BookService bookService) { this.bookService = bookService; }
+    public BookController(BookService service) {
+        this.service = service;
+    }
 
-    //Obtener todos los libros
+    // GET: Listar todos los libros
     @GetMapping
     public ResponseEntity<List<Book>> getAllBooks() {
-        logger.info("BEGIN getAllBooks");
-        List<Book> books = bookService.getAllBooks();
-        logger.info("END getAllBooks - Total books fetched: " + books.size());
+        logger.info("Fetching all books");
+        List<Book> books = service.getAllBooks();
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
-    //Añadir nuevo libro
+    // GET: Buscar por ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Book> getBookById(@PathVariable long id) throws BookNotFoundException {
+        logger.info("Searching book by ID: {}", id);
+        Book book = service.getBookById(id);
+        return new ResponseEntity<>(book, HttpStatus.OK);
+    }
+
+    // GET: Buscar por título
+    @GetMapping("/title")
+    public ResponseEntity<List<Book>> getBookByTitle(@RequestParam String title) {
+        logger.info("Searching books by title: {}", title);
+        List<Book> books = service.getBookByTitle(title);
+        return new ResponseEntity<>(books, HttpStatus.OK);
+    }
+
+    // GET: Buscar por género
+    @GetMapping("/genre")
+    public ResponseEntity<List<Book>> getBookByGenre(@RequestParam String genre) {
+        logger.info("Searching books by genre: {}", genre);
+        List<Book> books = service.getBookByGenre(genre);
+        return new ResponseEntity<>(books, HttpStatus.OK);
+    }
+
+    // GET: Buscar por número de páginas
+    @GetMapping("/pages")
+    public ResponseEntity<List<Book>> getBookByPages(@RequestParam int pages) {
+        logger.info("Searching books by pages: {}", pages);
+        List<Book> books = service.getBookByPages(pages);
+        return new ResponseEntity<>(books, HttpStatus.OK);
+    }
+
+    // GET: Buscar por precio
+    @GetMapping("/price")
+    public ResponseEntity<List<Book>> getBookByPrice(@RequestParam double price) {
+        logger.info("Searching books by price: {}", price);
+        List<Book> books = service.getBookByPrice(price);
+        return new ResponseEntity<>(books, HttpStatus.OK);
+    }
+
+    // GET: Buscar por disponibilidad
+    @GetMapping("/available")
+    public ResponseEntity<List<Book>> getBookByAvailability(@RequestParam boolean available) {
+        logger.info("Searching books by availability: {}", available);
+        List<Book> books = service.getBookByAvailability(available);
+        return new ResponseEntity<>(books, HttpStatus.OK);
+    }
+
+    // POST: Crear un nuevo libro
     @PostMapping
     public ResponseEntity<Book> addBook(@Valid @RequestBody Book book) {
-        logger.info("BEGIN addBook - Adding new book: {}", book.getTitle());
-        Book newBook = bookService.saveBook(book);
-        logger.info("END addBook - Book added with ID: {}", newBook.getId());
+        logger.info("Adding new book: {}", book.getTitle());
+        Book newBook = service.saveBook(book);
         return new ResponseEntity<>(newBook, HttpStatus.CREATED);
     }
 
-    //Obtener un libro por id
-    @GetMapping("/{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable long id) throws BookNotFoundException {
-        logger.info("BEGIN getBookById - Searching book by id: {}", id);
-        try {
-            Book book = bookService.getBookById(id);
-            logger.info("END getBookById - Book fetched: {}", + book.getId());
-            return new ResponseEntity<>(book, HttpStatus.OK);
-        } catch (Exception e){
-            logger.error("Error in getBookById - Book not found with id: {}", id,e);
-            throw e;
-        }
-    }
-
-    //Buscar un libro por titulo
-    @GetMapping("/title")
-    public ResponseEntity<List<Book>> getBookByTitle(@RequestParam String title) {
-        logger.info("BEGIN getBookByTitle  - Searching book by title: {}", title);
-        List<Book> books = bookService.getBookByTitle(title);
-        logger.info("END getBookByTitle - Books fetched: {}", books.size());
-        return new ResponseEntity<>(books, HttpStatus.OK);
-    }
-
-    //Buscar un libro por genero
-    @GetMapping("/genre")
-    public ResponseEntity<List<Book>> getBookByGenre(@RequestParam String genre) {
-        logger.info("BEGIN getBookByGenre  - Searching book by genre: {}", genre);
-        List<Book> books = bookService.getBookByGenre(genre);
-        logger.info("END getBookByGenre - Books fetched: {}", books.size());
-        return new ResponseEntity<>(books, HttpStatus.OK);
-    }
-
-    //Buscar un libro por paginas
-    @GetMapping("/pages")
-    public ResponseEntity<List<Book>> getBookByPages(@RequestParam int pages) {
-        logger.info("BEGIN getBookByPages  - Searching book by pages: {}", pages);
-        List<Book> books = bookService.getBookByPages(pages);
-        logger.info("END getBookByPages - Books fetched: {}", books.size());
-        return new ResponseEntity<>(books, HttpStatus.OK);
-    }
-
-    //Buscar un libro por precio
-    @GetMapping("/price")
-    public ResponseEntity<List<Book>> getBookByPrice(@RequestParam double price) {
-        logger.info("BEGIN getBookByPrice  - Searching book by price: {}", price);
-        List<Book> books = bookService.getBookByPrice(price);
-        logger.info("END getBookByPrice - Books fetched: {}", books.size());
-        return new ResponseEntity<>(books, HttpStatus.OK);
-    }
-
-    //Buscar un libro por disponiblidad
-    @GetMapping("/available")
-    public ResponseEntity<List<Book>> getBookByAvailability(@RequestParam boolean available) {
-        logger.info("BEGIN getBookByAvailability  - Searching book by availability: {}", available);
-        List<Book> books = bookService.getBookByAvailability(available);
-        logger.info("END getBookByAvailability - Books fetched: {}", books.size());
-        return new ResponseEntity<>(books, HttpStatus.OK);
-    }
-
-    // Actualizar un libro por id
+    // PUT: Actualizar libro por ID
     @PutMapping("/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable long id, @Valid @RequestBody Book bookDetails) throws BookNotFoundException {
-        logger.info("BEGIN updateBook - Updating book with ID: {}", id);
-        try {
-            Book updatedBook = bookService.updateBook(id, bookDetails);
-            logger.info("END updateBook - Book updated with ID: {}", updatedBook.getId());
-            return new ResponseEntity<>(updatedBook, HttpStatus.OK);
-        } catch (Exception e) {
-            logger.error("Error in updateBook - Book not found with ID: {}", id, e);
-            throw e;
-        }
+    public ResponseEntity<Book> updateBook(@PathVariable long id, @Valid @RequestBody Book bookDetails)
+            throws BookNotFoundException {
+        logger.info("Updating book ID: {}", id);
+        Book updatedBook = service.updateBook(id, bookDetails);
+        return new ResponseEntity<>(updatedBook, HttpStatus.OK);
     }
 
-    // Actualizar parcialmente un libro por id
+    // PATCH: Actualizar parcialmente por ID
     @PatchMapping("/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable long id, @Valid @RequestBody Map<String, Object> updates) {
-        logger.info("BEGIN updateBookPartial - Partially updating book with ID: {}", id);
-        try {
-            Book updatedBook = bookService.updateBookPartial(id, updates);
-            logger.info("END updateBookPartial - Book updated with ID: {}", updatedBook.getId());
-            return ResponseEntity.ok(updatedBook);
-        } catch (Exception e) {
-            logger.error("Error in updateBookPartial - Book not found with ID: {}", id, e);
-            throw e;
-        }
+    public ResponseEntity<Book> updateBookPartial(@PathVariable long id, @RequestBody Map<String, Object> updates) {
+        logger.info("Partially updating book ID: {}", id);
+        Book updatedBook = service.updateBookPartial(id, updates);
+        return ResponseEntity.ok(updatedBook);
     }
 
-    // Eliminar un libro por id
+    // DELETE: Eliminar libro por ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable long id) throws BookNotFoundException {
-        logger.info("BEGIN deleteBook - Deleting book with ID: {}", id);
-        try {
-            bookService.deleteBook(id);
-            logger.info("END deleteBook - Book deleted with ID: {}", id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-            logger.error("Error in deleteBook - Book not found with ID: {}", id, e);
-            throw e;
-        }
+        logger.info("Deleting book ID: {}", id);
+        service.deleteBook(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
