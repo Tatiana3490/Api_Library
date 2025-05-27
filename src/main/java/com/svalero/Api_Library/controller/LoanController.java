@@ -20,128 +20,91 @@ import java.util.Map;
 public class LoanController {
 
     private final Logger logger = LoggerFactory.getLogger(LoanController.class);
-    private final LoanService loanService;
+    private final LoanService service;
 
     @Autowired
-    public LoanController(LoanService loanService) {
-        this.loanService = loanService;
+    public LoanController(LoanService service) {
+        this.service = service;
     }
 
-    //Para obtener todos los préstamos
+    // GET: Listar todos los préstamos
     @GetMapping
     public ResponseEntity<List<Loan>> getAllLoans() {
-        logger.info("BEGIN getAllLoans");
-        List<Loan> loans = loanService.getAllLoans();
-        logger.info("END getAllLoans - Total reservations fetched: " + loans.size());
+        logger.info("Fetching all loans");
+        List<Loan> loans = service.getAllLoans();
         return new ResponseEntity<>(loans, HttpStatus.OK);
     }
 
-    //para buscar préstamos por nombre del usuario
-    @GetMapping("/customer-name")
-    public ResponseEntity<List<Loan>> getLoanByCustomerName(@RequestParam String customerName) {
-        logger.info("BEGIN getLoanByCustomerName - Searching loans for customer: " + customerName);
-        List<Loan> loans = loanService.getLoanByCustomerName(customerName);
-        logger.info("END getLoanByCustomerName - Total loans found: ", loans.size());
-        return new ResponseEntity<>(loans, HttpStatus.OK);
-    }
-
-    //Para buscar préstamos por fecha del préstamo
-    @GetMapping("/loan-date")
-    public ResponseEntity<List<Loan>> getLoanByLoanDate(@RequestParam LocalDate loanDate) {
-        logger.info("BEGIN getLoanByLoanDate - Searching loans for date: {} " + loanDate);
-        List<Loan> loans = loanService.getLoanByLoanDate(loanDate);
-        logger.info("END getLoanByLoanDate - Total loans found: {}", loans.size());
-        return new ResponseEntity<>(loans, HttpStatus.OK);
-    }
-
-    //Para buscar préstamos entre 2 fechas
-    @GetMapping("/range")
-    public ResponseEntity<List<Loan>> getLoansBetweenDates(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
-        logger.info("BEGIN getLoansBetweenDates - Searching loans between {} and {}", startDate, endDate);
-        List<Loan> loans = loanService.getLoansBetweenDates(startDate, endDate);
-        logger.info("END getLoansBetweenDates - Total loans found: {}", loans.size());
-        return new ResponseEntity<>(loans, HttpStatus.OK);
-    }
-
-    //para obtener préstamos por cantidad de entradas
-    @GetMapping("/quantity")
-    public ResponseEntity<List<Loan>> getLoanByQuantity(@RequestParam int quantity) {
-        logger.info("BEGIN getLoanByQuantity - Searching loans for quantity: {}", quantity);
-        List<Loan> loans = loanService.getLoanByQuantity(quantity);
-        logger.info("END getLoanByQuantity - Total loans found: {}", loans.size());
-        return new ResponseEntity<>(loans, HttpStatus.OK);
-    }
-
-    //para obtener préstamos por id
+    // GET: Buscar por ID
     @GetMapping("/{id}")
-    public ResponseEntity<Loan> getLoanById(@PathVariable int id) throws LoanNotFoundException {
-        logger.info("BEGIN getLoanById - Searching loans for id: {}", id);
-        try {
-            Loan loan = loanService.getLoanById(id);
-            logger.info("END getLoanById - Loan found: {}", loan.getId());
-            return new ResponseEntity<>(loan, HttpStatus.OK);
-        }catch (Exception e) {
-            logger.info("END getLoanById - Loan not found: {}", id);
-            throw e;
-        }
+    public ResponseEntity<Loan> getLoanById(@PathVariable long id) throws LoanNotFoundException {
+        logger.info("Fetching loan by ID: {}", id);
+        Loan loan = service.getLoanById(id);
+        return new ResponseEntity<>(loan, HttpStatus.OK);
     }
 
-    //Añadir nuevo préstamo
+    // GET: Buscar por nombre de cliente
+    @GetMapping("/customer-name")
+    public ResponseEntity<List<Loan>> getByCustomerName(@RequestParam String customerName) {
+        logger.info("Fetching loans for customer: {}", customerName);
+        List<Loan> loans = service.getLoanByCustomerName(customerName);
+        return new ResponseEntity<>(loans, HttpStatus.OK);
+    }
+
+    // GET: Buscar por fecha de préstamo
+    @GetMapping("/loan-date")
+    public ResponseEntity<List<Loan>> getByLoanDate(@RequestParam LocalDate loanDate) {
+        logger.info("Fetching loans for loan date: {}", loanDate);
+        List<Loan> loans = service.getLoanByLoanDate(loanDate);
+        return new ResponseEntity<>(loans, HttpStatus.OK);
+    }
+
+    // GET: Buscar por rango de fechas
+    @GetMapping("/range")
+    public ResponseEntity<List<Loan>> getByDateRange(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
+        logger.info("Fetching loans between {} and {}", startDate, endDate);
+        List<Loan> loans = service.getLoansBetweenDates(startDate, endDate);
+        return new ResponseEntity<>(loans, HttpStatus.OK);
+    }
+
+    // GET: Buscar por cantidad de libros prestados
+    @GetMapping("/quantity")
+    public ResponseEntity<List<Loan>> getByQuantity(@RequestParam int quantity) {
+        logger.info("Fetching loans by quantity: {}", quantity);
+        List<Loan> loans = service.getLoanByQuantity(quantity);
+        return new ResponseEntity<>(loans, HttpStatus.OK);
+    }
+
+    // POST: Crear nuevo préstamo
     @PostMapping
     public ResponseEntity<Loan> addLoan(@Valid @RequestBody Loan loan) {
-        logger.info("BEGIN addLoan - Adding loans for user: {}", loan.getCustomerName());
-        Loan newLoan = loanService.saveLoan(loan);
-        logger.info("END addLoan - Adding loans with id: {}", newLoan.getId());
+        logger.info("Adding loan for customer: {}", loan.getCustomerName());
+        Loan newLoan = service.saveLoan(loan);
         return new ResponseEntity<>(newLoan, HttpStatus.CREATED);
     }
 
-    //Eliminar un préstamo por id
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteLoan(@PathVariable int id) throws LoanNotFoundException {
-        logger.info("BEGIN deleteLoan - Deleting loan with id: {}", id);
-        try {
-            loanService.deleteLoan(id);
-            logger.info("END deleteLoan - Loan deleted with id: {}", id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }catch (Exception e) {
-            logger.info("Error in deleteLoan - Loan not found: {}", id, e);
-            throw e;
-        }
-    }
-
-    //para actualizar un préstamo por id
+    // PUT: Actualizar préstamo por ID
     @PutMapping("/{id}")
-    public ResponseEntity<Loan> updateLoan(@PathVariable int id, @Valid @RequestBody Loan loanDetails) throws LoanNotFoundException {
-        logger.info("BEGIN updateLoan - Updating loan with id: {}", id);
-        try {
-            Loan updatedLoan = loanService.updateLoan(id, loanDetails);
-            logger.info("END updateLoan - Updating loan with id: {}", updatedLoan.getId());
-            return new ResponseEntity<>(updatedLoan, HttpStatus.OK);
-        } catch (Exception e) {
-            logger.info("Error in updateLoan - Loan not found with id: {}", id, e);
-            throw e;
-        }
+    public ResponseEntity<Loan> updateLoan(@PathVariable long id, @Valid @RequestBody Loan loanDetails)
+            throws LoanNotFoundException {
+        logger.info("Updating loan ID: {}", id);
+        Loan updatedLoan = service.updateLoan(id, loanDetails);
+        return new ResponseEntity<>(updatedLoan, HttpStatus.OK);
     }
 
-    //para actualizar parcialmente un préstamo por id
+    // PATCH: Actualización parcial
     @PatchMapping("/{id}")
-    public ResponseEntity<Loan> updateLoan(@PathVariable long id, @Valid @RequestBody Map<String, Object> updates) {
-        logger.info("BEGIN updateLoanPartial - Partially updating loan with ID: {}", id);
-        try {
-            Loan updatedLoan = loanService.updateLoanPartial(id, updates);
-            logger.info("END updateLoanPartial - Loan updated with id: {}", updatedLoan.getId());
-            return new ResponseEntity<>(updatedLoan, HttpStatus.OK);
-        } catch (Exception e) {
-            logger.info("Error in updateLoanPartial - Loan not found with id: {}", id, e);
-            throw e;
-        }
+    public ResponseEntity<Loan> updateLoanPartial(@PathVariable long id, @RequestBody Map<String, Object> updates) {
+        logger.info("Partially updating loan ID: {}", id);
+        Loan updatedLoan = service.updateLoanPartial(id, updates);
+        return new ResponseEntity<>(updatedLoan, HttpStatus.OK);
     }
 
-    //para manejar excepciones de recurso no encontrado
-    @ExceptionHandler(LoanNotFoundException.class)
-    public ResponseEntity<Void> handleLoanNotFoundException(LoanNotFoundException exception) {
-        logger.info("Handling handleLoanNotFoundException - {}", exception.getMessage(), exception);
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    // DELETE: Eliminar préstamo por ID
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteLoan(@PathVariable long id) throws LoanNotFoundException {
+        logger.info("Deleting loan ID: {}", id);
+        service.deleteLoan(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
 }

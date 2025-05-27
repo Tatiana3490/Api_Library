@@ -15,7 +15,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
-
 @RestController
 @RequestMapping("/authors")
 public class AuthorController {
@@ -28,121 +27,87 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    //Obtener todos los autores
+    // GET: Listar todos los autores
     @GetMapping
     public ResponseEntity<List<Author>> getAllAuthors() {
         logger.info("BEGIN getAllAuthors");
         List<Author> authors = authorService.getAllAuthors();
-        logger.info("END getAllAuthors - Total authors fetched: {}", + authors.size());
+        logger.info("END getAllAuthors - Total authors fetched: {}", authors.size());
         return new ResponseEntity<>(authors, HttpStatus.OK);
     }
 
-    //Añadir un nuevo autor
+    // POST: Crear un nuevo autor
     @PostMapping
     public ResponseEntity<Author> addAuthor(@Valid @RequestBody Author author) {
         logger.info("BEGIN addAuthor - Adding new author: {}", author.getName());
         Author newAuthor = authorService.saveAuthor(author);
-        logger.info("END addAuthor - Author added with id: {}", newAuthor.getId());
+        logger.info("END addAuthor - Author added with ID: {}", newAuthor.getId());
         return new ResponseEntity<>(newAuthor, HttpStatus.CREATED);
     }
 
-    //Buscar por nombre de autor
+    // GET: Buscar autores por nombre
     @GetMapping("/name")
     public ResponseEntity<List<Author>> getAuthorByName(@RequestParam String name) {
-        logger.info("BEGIN getAuthorByName  - Searching author by name: {}", name);
+        logger.info("Searching author by name: {}", name);
         List<Author> authors = authorService.getAuthorByName(name);
-        logger.info("END getAuthorByName - Authors fetched: {}", + authors.size());
         return new ResponseEntity<>(authors, HttpStatus.OK);
     }
 
-    //Buscar por apellido del autor
+    // GET: Buscar autores por apellido
     @GetMapping("/surname")
     public ResponseEntity<List<Author>> getAuthorBySurname(@RequestParam String surname) {
-        logger.info("BEGIN getAuthorBySurname  - Searching author by name: {}", surname);
+        logger.info("Searching author by surname: {}", surname);
         List<Author> authors = authorService.getAuthorBySurname(surname);
-        logger.info("END getAuthorBySurname - Authors fetched: {}", + authors.size());
         return new ResponseEntity<>(authors, HttpStatus.OK);
     }
-    //Buscar autores por nacionalidad
+
+    // GET: Buscar autores por nacionalidad
     @GetMapping("/nationality")
     public ResponseEntity<List<Author>> getAuthorByNationality(@RequestParam String nationality) {
-        logger.info("BEGIN getAuthorByNationality - Searching author by name: {}", nationality);
+        logger.info("Searching author by nationality: {}", nationality);
         List<Author> authors = authorService.getAuthorByNationality(nationality);
-        logger.info("END getAuthorByNationality - Authors fetched: {}", + authors.size());
         return new ResponseEntity<>(authors, HttpStatus.OK);
     }
 
-    //Buscar autores por fecha de nacimiento
+    // GET: Buscar autores por fecha de nacimiento
     @GetMapping("/birthday")
     public ResponseEntity<List<Author>> getAuthorByBirthday(@RequestParam LocalDate birthday) {
-        logger.info("BEGIN getAuthorByBirthday - Searching author by birthday: {}", birthday);
+        logger.info("Searching author by birthday: {}", birthday);
         List<Author> authors = authorService.getAuthorByBirthdate(birthday);
-        logger.info("END getAuthorByBirthday - Authors fetched: {}", + authors.size());
         return new ResponseEntity<>(authors, HttpStatus.OK);
     }
 
-    //Obtener autores por id
+    // GET: Obtener autor por ID
     @GetMapping("/{id}")
     public ResponseEntity<Author> getAuthorById(@PathVariable long id) throws AuthorNotFoundException {
-        logger.info("BEGIN getAuthorById - Searching author by id: {}", id);
-        try {
-            Author author = authorService.getAuthorById(id);
-            logger.info("END getAuthorById - Author fetched: {}", + author.getId());
-            return new ResponseEntity<>(author, HttpStatus.OK);
-        } catch (Exception e){
-            logger.error("Error in getAuthorById - Author not found with id: {}", id,e);
-            throw e;
-        }
+        logger.info("Searching author by ID: {}", id);
+        Author author = authorService.getAuthorById(id);
+        return new ResponseEntity<>(author, HttpStatus.OK);
     }
 
-    //Actualizar autor por id
+    // PUT: Actualizar autor completamente por ID
     @PutMapping("/{id}")
     public ResponseEntity<Author> updateAuthor(@PathVariable long id, @Valid @RequestBody Author authorDetails)
             throws AuthorNotFoundException {
-        logger.info("BEGIN updateAuthor - Updating author by id: {}", id);
-        try {
-            Author updatedAuthor = authorService.updateAuthor(id, authorDetails);
-            logger.info("END updateAuthor - Author updated with id: {}", + updatedAuthor.getId());
-            return new ResponseEntity<>(updatedAuthor, HttpStatus.OK);
-        }catch (Exception e) {
-            logger.error("Error in updateAuthor - Author not found with id: {}", id,e);
-            throw e;
-        }
+        logger.info("Updating author by ID: {}", id);
+        Author updatedAuthor = authorService.updateAuthor(id, authorDetails);
+        return new ResponseEntity<>(updatedAuthor, HttpStatus.OK);
     }
 
-    //Actualizar parcialmente un autor por id
+    // PATCH: Actualizar parcialmente un autor por ID
     @PatchMapping("/{id}")
-    public ResponseEntity<Author> updateAuthor(@PathVariable long id, @Valid @RequestBody Map<String, Object> updates)
+    public ResponseEntity<Author> updateAuthorPartial(@PathVariable long id, @RequestBody Map<String, Object> updates)
             throws AuthorNotFoundException {
-        logger.info("BEGIN updateAuthor - Partially Updating author by id: {}", id);
-        try {
-            Author updateAuthor = authorService.updateAuthorPartial(id, updates);
-            logger.info("END updateAuthor - Author updated with id: {}", + updateAuthor.getId());
-            return ResponseEntity.ok(updateAuthor);
-        } catch (Exception e){
-            logger.error("Error in updateAuthor - Author not found with id: {}", id,e);
-            throw e;
-        }
+        logger.info("Partially updating author by ID: {}", id);
+        Author updatedAuthor = authorService.updateAuthorPartial(id, updates);
+        return ResponseEntity.ok(updatedAuthor);
     }
 
-    //Para eliminar un autor por id
+    // DELETE: Eliminar autor por ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAuthor(@PathVariable long id) throws AuthorNotFoundException {
-        logger.info("BEGIN deleteAuthor - Deleting author by id: {}", id);
-        try {
-            authorService.deleteAuthor(id);
-            logger.info("END deleteAuthor - Author deleted with id: {}", id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e){
-            logger.error("Error in deleteAuthor - Author not found with id: {}", id,e);
-            throw e;
-        }
-    }
-
-    //Manejar excepciones de autor no encontrado
-    @ExceptionHandler(AuthorNotFoundException.class)
-    public ResponseEntity<String> handleAuthorNotFoundException(AuthorNotFoundException e) {
-        logger.error(e.getMessage());
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        logger.info("Deleting author by ID: {}", id);
+        authorService.deleteAuthor(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

@@ -19,107 +19,77 @@ import java.util.Map;
 public class UserController {
 
     private final Logger logger = LoggerFactory.getLogger(UserController.class);
-    private final UserService userService;
+    private final UserService service;
 
     @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public UserController(UserService service) {
+        this.service = service;
     }
 
-    //para obtener todos los usuarios
+    // GET: Listar todos los usuarios
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
-        logger.info(" BEGIN getAllUsers");
-        List<User> users = userService.getAllUsers();
-        logger.info(" END getAllUsers - Total users fetched: {}", users.size());
+        logger.info("Fetching all users");
+        List<User> users = service.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    //para obtener un usuario por email
+    // GET: Obtener usuario por email
     @GetMapping("/email")
-    public ResponseEntity<User> getUserByEmail(@RequestParam("email") String email) {
-        logger.info(" BEGIN getUserByEmail - Searching user with email: {}", email);
-        User user = userService.getUserByEmail(email);
-        logger.info(" END getUserByEmail - user found: {}", user.getId());
+    public ResponseEntity<User> getByEmail(@RequestParam String email) {
+        logger.info("Searching user by email: {}", email);
+        User user = service.getUserByEmail(email);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    //para obtener un usuario por nombre de usuario
+    // GET: Obtener usuario por nombre de usuario
     @GetMapping("/username")
-    public ResponseEntity<User> getUserByUsername(@RequestParam("username") String username) {
-        logger.info(" BEGIN getUserByUsername - Searching user with username: {}", username);
-        User user = userService.getUserByUsername(username);
-        logger.info(" END getUserByUsername - user found: {}", user.getId());
+    public ResponseEntity<User> getByUsername(@RequestParam String username) {
+        logger.info("Searching user by username: {}", username);
+        User user = service.getUserByUsername(username);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    //para obtener usuarios activos
+    // GET: Usuarios activos
     @GetMapping("/active")
     public ResponseEntity<List<User>> getActiveUsers() {
-        logger.info("BEGIN getActiveUsers - Fetching active users");
-        List<User> activeUsers = userService.getActiveUsers();
-
-        if (activeUsers.isEmpty()) {
-            logger.info("No active users found.");
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        logger.info("END getActiveUsers - Total active users fetched: {}", activeUsers.size());
-        return new ResponseEntity<>(activeUsers, HttpStatus.OK);
+        logger.info("Fetching active users");
+        List<User> users = service.getActiveUsers();
+        return users.isEmpty()
+                ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
+                : new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-
-    //para añadir un usuario nuevo
+    // POST: Crear nuevo usuario
     @PostMapping
     public ResponseEntity<User> addUser(@Valid @RequestBody User user) {
-        logger.info(" BEGIN addUser - Adding user: {}", user.getEmail());
-        User newUser = userService.saveUser(user);
-        logger.info(" END addUser - User added with id: {}", newUser.getId());
+        logger.info("Adding new user: {}", user.getEmail());
+        User newUser = service.saveUser(user);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
-    //para actualizar un usuario por id
+    // PUT: Actualizar usuario completo
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @Valid @RequestBody User userDetails) {
-        logger.info(" BEGIN updateUser - Updating user with id: {}", id);
-        try {
-            User updatedUser = userService.updateUser(id, userDetails);
-            logger.info(" END updateUser - User updated with id: {}", id);
-            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
-        } catch (UserNotFoundException e) {
-            logger.error(" Error in updateUser - User not found with id: {}", id, e);
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    //para actualizar un usuario por id parcialmente
-    @PatchMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @Valid @RequestBody Map<String, Object> updates) {
-        logger.info(" BEGIN updateUserPartial - Partially updating user with id: {}", id);
-        User updatedUser = userService.updateUserPartial(id, updates);
-        logger.info("END updateUserPartial - User updated with id: {}", id);
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @Valid @RequestBody User userDetails)
+            throws UserNotFoundException {
+        logger.info("Updating user with ID: {}", id);
+        User updatedUser = service.updateUser(id, userDetails);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
-    //para eliminar un usuario por id
+    // PATCH: Actualización parcial
+    @PatchMapping("/{id}")
+    public ResponseEntity<User> updateUserPartial(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
+        logger.info("Partially updating user with ID: {}", id);
+        User updatedUser = service.updateUserPartial(id, updates);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+    }
+
+    // DELETE: Eliminar usuario
     @DeleteMapping("/{id}")
-    public ResponseEntity<User> deleteUser(@PathVariable long id) {
-        logger.info(" BEGIN deleteUser - Deleting user with id: {}", id);
-        try {
-            userService.deleteUser(id);
-            logger.info(" END deleteUser - User deleted with id: {}", id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (UserNotFoundException e) {
-            logger.error(" Error in deleteUser - User not found with id: {}", id, e);
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) throws UserNotFoundException {
+        logger.info("Deleting user with ID: {}", id);
+        service.deleteUser(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-    //para manejar las excepciones de usuario no encontrado
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<User> handleUserNotFoundException(UserNotFoundException e) {
-        logger.error("Handling UserNotFoundException - {}", e.getMessage());
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
 }
