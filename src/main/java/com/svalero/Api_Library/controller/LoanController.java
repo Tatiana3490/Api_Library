@@ -1,5 +1,6 @@
 package com.svalero.Api_Library.controller;
 
+import com.svalero.Api_Library.DTO.LoanDTO;
 import com.svalero.Api_Library.domain.Loan;
 import com.svalero.Api_Library.exception.LoanNotFoundException;
 import com.svalero.Api_Library.service.LoanService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/loans")
@@ -29,10 +31,11 @@ public class LoanController {
 
     // GET: Listar todos los préstamos
     @GetMapping
-    public ResponseEntity<List<Loan>> getAllLoans() {
+    public List<LoanDTO> getAllLoans() {
         logger.info("Fetching all loans");
-        List<Loan> loans = service.getAllLoans();
-        return new ResponseEntity<>(loans, HttpStatus.OK);
+        return service.getAllLoans().stream()
+                .map(service::convertToDTO)
+                .collect(Collectors.toList());
     }
 
     // GET: Buscar por ID
@@ -61,7 +64,8 @@ public class LoanController {
 
     // GET: Buscar por rango de fechas
     @GetMapping("/range")
-    public ResponseEntity<List<Loan>> getByDateRange(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
+    public ResponseEntity<List<Loan>> getByDateRange(@RequestParam LocalDate startDate,
+                                                     @RequestParam LocalDate endDate) {
         logger.info("Fetching loans between {} and {}", startDate, endDate);
         List<Loan> loans = service.getLoansBetweenDates(startDate, endDate);
         return new ResponseEntity<>(loans, HttpStatus.OK);
