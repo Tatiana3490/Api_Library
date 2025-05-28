@@ -85,27 +85,33 @@ paths:
         '204':
           description: Usuario eliminado
 
-  /books:
+  /book-categories:
     get:
-      summary: Obtener todos los libros
+      summary: Obtener todas las categorías
       responses:
         '200':
-          description: Lista de libros
+          description: Lista de categorías
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookCategory'
     post:
-      summary: Crear un nuevo libro
+      summary: Crear una nueva categoría
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Book'
+              $ref: '#/components/schemas/BookCategory'
       responses:
         '201':
-          description: Libro creado
+          description: Categoría creada
 
-  /books/{id}:
+  /book-categories/{id}:
     get:
-      summary: Obtener un libro por ID
+      summary: Obtener una categoría por ID
       parameters:
         - name: id
           in: path
@@ -114,9 +120,9 @@ paths:
             type: integer
       responses:
         '200':
-          description: Libro encontrado
+          description: Categoría encontrada
     put:
-      summary: Actualizar un libro
+      summary: Actualizar una categoría
       parameters:
         - name: id
           in: path
@@ -128,12 +134,12 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Book'
+              $ref: '#/components/schemas/BookCategory'
       responses:
         '200':
-          description: Libro actualizado
+          description: Categoría actualizada
     patch:
-      summary: Actualizar parcialmente un libro
+      summary: Actualizar parcialmente una categoría
       parameters:
         - name: id
           in: path
@@ -148,9 +154,9 @@ paths:
               type: object
       responses:
         '200':
-          description: Libro actualizado parcialmente
+          description: Categoría actualizada parcialmente
     delete:
-      summary: Eliminar un libro
+      summary: Eliminar una categoría
       parameters:
         - name: id
           in: path
@@ -159,165 +165,17 @@ paths:
             type: integer
       responses:
         '204':
-          description: Libro eliminado
-
-  /authors:
-    get:
-      summary: Obtener todos los autores
-      responses:
-        '200':
-          description: Lista de autores
-    post:
-      summary: Crear un nuevo autor
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Author'
-      responses:
-        '201':
-          description: Autor creado
-
-  /authors/{id}:
-    get:
-      summary: Obtener un autor por ID
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Autor encontrado
-    put:
-      summary: Actualizar un autor
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Author'
-      responses:
-        '200':
-          description: Autor actualizado
-    patch:
-      summary: Actualizar parcialmente un autor
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-      responses:
-        '200':
-          description: Autor actualizado parcialmente
-    delete:
-      summary: Eliminar un autor
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '204':
-          description: Autor eliminado
-
-  /loans:
-    get:
-      summary: Obtener todos los préstamos
-      responses:
-        '200':
-          description: Lista de préstamos
-    post:
-      summary: Crear un nuevo préstamo
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Loan'
-      responses:
-        '201':
-          description: Préstamo creado
-
-  /loans/{id}:
-    get:
-      summary: Obtener un préstamo por ID
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Préstamo encontrado
-    put:
-      summary: Actualizar un préstamo
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Loan'
-      responses:
-        '200':
-          description: Préstamo actualizado
-    patch:
-      summary: Actualizar parcialmente un préstamo
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-      responses:
-        '200':
-          description: Préstamo actualizado parcialmente
-    delete:
-      summary: Eliminar un préstamo
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '204':
-          description: Préstamo eliminado
+          description: Categoría eliminada
 
 components:
   schemas:
     User:
       type: object
-      required: [name, username, email, password]
+      required:
+        - name
+        - username
+        - email
+        - password
       properties:
         id:
           type: integer
@@ -335,64 +193,11 @@ components:
         active:
           type: boolean
 
-    Book:
-      type: object
-      required: [title, pages]
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        genre:
-          type: string
-        pages:
-          type: integer
-        price:
-          type: number
-        available:
-          type: boolean
-
-    Author:
-      type: object
-      required: [name, surname]
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        surname:
-          type: string
-        birthdate:
-          type: string
-          format: date
-        nationality:
-          type: string
-        active:
-          type: boolean
-
-    Loan:
-      type: object
-      required: [customerName, loanDate, quantity, book]
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        customerName:
-          type: string
-        email:
-          type: string
-        loanDate:
-          type: string
-          format: date
-        quantity:
-          type: integer
-        book:
-          $ref: '#/components/schemas/Book'
-
     BookCategory:
       type: object
-      required: [name, description]
+      required:
+        - name
+        - description
       properties:
         id:
           type: integer
