@@ -38,73 +38,89 @@ public class LoanController {
                 .collect(Collectors.toList());
     }
 
-    // GET: Buscar por ID
+    // GET: Buscar préstamo por ID
     @GetMapping("/{id}")
-    public ResponseEntity<Loan> getLoanById(@PathVariable long id) throws LoanNotFoundException {
+    public ResponseEntity<LoanDTO> getLoanById(@PathVariable long id) throws LoanNotFoundException {
         logger.info("Fetching loan by ID: {}", id);
         Loan loan = service.getLoanById(id);
-        return new ResponseEntity<>(loan, HttpStatus.OK);
+        LoanDTO loanDTO = service.convertToDTO(loan);
+        return new ResponseEntity<>(loanDTO, HttpStatus.OK);
     }
 
-    // GET: Buscar por nombre de cliente
+    // GET: Buscar préstamos por nombre de cliente
     @GetMapping("/customer-name")
-    public ResponseEntity<List<Loan>> getByCustomerName(@RequestParam String customerName) {
+    public ResponseEntity<List<LoanDTO>> getByCustomerName(@RequestParam String customerName) {
         logger.info("Fetching loans for customer: {}", customerName);
-        List<Loan> loans = service.getLoanByCustomerName(customerName);
-        return new ResponseEntity<>(loans, HttpStatus.OK);
+        List<LoanDTO> loanDTOs = service.getLoanByCustomerName(customerName).stream()
+                .map(service::convertToDTO)
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(loanDTOs, HttpStatus.OK);
     }
 
-    // GET: Buscar por fecha de préstamo
+    // GET: Buscar préstamos por fecha
     @GetMapping("/loan-date")
-    public ResponseEntity<List<Loan>> getByLoanDate(@RequestParam LocalDate loanDate) {
+    public ResponseEntity<List<LoanDTO>> getByLoanDate(@RequestParam LocalDate loanDate) {
         logger.info("Fetching loans for loan date: {}", loanDate);
-        List<Loan> loans = service.getLoanByLoanDate(loanDate);
-        return new ResponseEntity<>(loans, HttpStatus.OK);
+        List<LoanDTO> loanDTOs = service.getLoanByLoanDate(loanDate).stream()
+                .map(service::convertToDTO)
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(loanDTOs, HttpStatus.OK);
     }
 
-    // GET: Buscar por rango de fechas
+    // GET: Buscar préstamos entre dos fechas
     @GetMapping("/range")
-    public ResponseEntity<List<Loan>> getByDateRange(@RequestParam LocalDate startDate,
-                                                     @RequestParam LocalDate endDate) {
-        logger.info("Fetching loans between {} and {}", startDate, endDate);
-        List<Loan> loans = service.getLoansBetweenDates(startDate, endDate);
-        return new ResponseEntity<>(loans, HttpStatus.OK);
+    public ResponseEntity<List<LoanDTO>> getLoansBetweenDates(
+            @RequestParam("startDate") LocalDate startDate,
+            @RequestParam("endDate") LocalDate endDate) {
+        logger.info("Fetching loans from {} to {}", startDate, endDate);
+        List<LoanDTO> loanDTOs = service.getLoansBetweenDates(startDate, endDate).stream()
+                .map(service::convertToDTO)
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(loanDTOs, HttpStatus.OK);
     }
 
-    // GET: Buscar por cantidad de libros prestados
+    // GET: Buscar préstamos por cantidad
     @GetMapping("/quantity")
-    public ResponseEntity<List<Loan>> getByQuantity(@RequestParam int quantity) {
+    public ResponseEntity<List<LoanDTO>> getByQuantity(@RequestParam int quantity) {
         logger.info("Fetching loans by quantity: {}", quantity);
-        List<Loan> loans = service.getLoanByQuantity(quantity);
-        return new ResponseEntity<>(loans, HttpStatus.OK);
+        List<LoanDTO> loanDTOs = service.getLoanByQuantity(quantity).stream()
+                .map(service::convertToDTO)
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(loanDTOs, HttpStatus.OK);
     }
 
     // POST: Crear nuevo préstamo
     @PostMapping
-    public ResponseEntity<Loan> addLoan(@Valid @RequestBody Loan loan) {
+    public ResponseEntity<LoanDTO> addLoan(@Valid @RequestBody Loan loan) {
         logger.info("Adding loan for customer: {}", loan.getCustomerName());
         Loan newLoan = service.saveLoan(loan);
-        return new ResponseEntity<>(newLoan, HttpStatus.CREATED);
+        LoanDTO dto = service.convertToDTO(newLoan);
+        return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
 
-    // PUT: Actualizar préstamo por ID
+    // PUT: Actualizar préstamo completo
     @PutMapping("/{id}")
-    public ResponseEntity<Loan> updateLoan(@PathVariable long id, @Valid @RequestBody Loan loanDetails)
-            throws LoanNotFoundException {
+    public ResponseEntity<LoanDTO> updateLoan(
+            @PathVariable long id,
+            @Valid @RequestBody Loan loanDetails) throws LoanNotFoundException {
         logger.info("Updating loan ID: {}", id);
         Loan updatedLoan = service.updateLoan(id, loanDetails);
-        return new ResponseEntity<>(updatedLoan, HttpStatus.OK);
+        LoanDTO dto = service.convertToDTO(updatedLoan);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
     // PATCH: Actualización parcial
     @PatchMapping("/{id}")
-    public ResponseEntity<Loan> updateLoanPartial(@PathVariable long id, @RequestBody Map<String, Object> updates) {
+    public ResponseEntity<LoanDTO> updateLoanPartial(
+            @PathVariable long id,
+            @RequestBody Map<String, Object> updates) {
         logger.info("Partially updating loan ID: {}", id);
         Loan updatedLoan = service.updateLoanPartial(id, updates);
-        return new ResponseEntity<>(updatedLoan, HttpStatus.OK);
+        LoanDTO dto = service.convertToDTO(updatedLoan);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
-    // DELETE: Eliminar préstamo por ID
+    // DELETE: Eliminar préstamo
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteLoan(@PathVariable long id) throws LoanNotFoundException {
         logger.info("Deleting loan ID: {}", id);
