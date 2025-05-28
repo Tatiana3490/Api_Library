@@ -3,7 +3,6 @@ info:
   title: API Library
   version: 1.0.0
   description: API REST para gestionar una biblioteca
-
 servers:
   - url: http://localhost:8082
 
@@ -27,14 +26,14 @@ paths:
           description: Usuario creado
 
   /users/{id}:
-    parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
     get:
       summary: Obtener un usuario por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: Usuario encontrado
@@ -42,6 +41,12 @@ paths:
           description: Usuario no encontrado
     put:
       summary: Actualizar un usuario
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       requestBody:
         required: true
         content:
@@ -53,6 +58,12 @@ paths:
           description: Usuario actualizado
     patch:
       summary: Actualizar parcialmente un usuario
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       requestBody:
         required: true
         content:
@@ -64,6 +75,12 @@ paths:
           description: Usuario actualizado parcialmente
     delete:
       summary: Eliminar un usuario
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '204':
           description: Usuario eliminado
@@ -87,19 +104,25 @@ paths:
           description: Libro creado
 
   /books/{id}:
-    parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
     get:
       summary: Obtener un libro por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: Libro encontrado
     put:
       summary: Actualizar un libro
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       requestBody:
         required: true
         content:
@@ -111,6 +134,12 @@ paths:
           description: Libro actualizado
     patch:
       summary: Actualizar parcialmente un libro
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       requestBody:
         required: true
         content:
@@ -122,6 +151,12 @@ paths:
           description: Libro actualizado parcialmente
     delete:
       summary: Eliminar un libro
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '204':
           description: Libro eliminado
@@ -145,19 +180,25 @@ paths:
           description: Autor creado
 
   /authors/{id}:
-    parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
     get:
       summary: Obtener un autor por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: Autor encontrado
     put:
       summary: Actualizar un autor
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       requestBody:
         required: true
         content:
@@ -169,6 +210,12 @@ paths:
           description: Autor actualizado
     patch:
       summary: Actualizar parcialmente un autor
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       requestBody:
         required: true
         content:
@@ -180,67 +227,15 @@ paths:
           description: Autor actualizado parcialmente
     delete:
       summary: Eliminar un autor
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '204':
           description: Autor eliminado
-
-  /book-categories:
-    get:
-      summary: Obtener todas las categorías
-      responses:
-        '200':
-          description: Lista de categorías
-    post:
-      summary: Crear una nueva categoría
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BookCategory'
-      responses:
-        '201':
-          description: Categoría creada
-
-  /book-categories/{id}:
-    parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
-    get:
-      summary: Obtener una categoría por ID
-      responses:
-        '200':
-          description: Categoría encontrada
-    put:
-      summary: Actualizar una categoría
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BookCategory'
-      responses:
-        '200':
-          description: Categoría actualizada
-    patch:
-      summary: Actualizar parcialmente una categoría
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-      responses:
-        '200':
-          description: Categoría actualizada parcialmente
-    delete:
-      summary: Eliminar una categoría
-      responses:
-        '204':
-          description: Categoría eliminada
 
   /loans:
     get:
@@ -261,19 +256,25 @@ paths:
           description: Préstamo creado
 
   /loans/{id}:
-    parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
     get:
       summary: Obtener un préstamo por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '200':
           description: Préstamo encontrado
     put:
       summary: Actualizar un préstamo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       requestBody:
         required: true
         content:
@@ -285,6 +286,12 @@ paths:
           description: Préstamo actualizado
     patch:
       summary: Actualizar parcialmente un préstamo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       requestBody:
         required: true
         content:
@@ -296,6 +303,12 @@ paths:
           description: Préstamo actualizado parcialmente
     delete:
       summary: Eliminar un préstamo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
       responses:
         '204':
           description: Préstamo eliminado
@@ -304,11 +317,7 @@ components:
   schemas:
     User:
       type: object
-      required:
-        - name
-        - username
-        - email
-        - password
+      required: [name, username, email, password]
       properties:
         id:
           type: integer
@@ -325,11 +334,10 @@ components:
           format: date
         active:
           type: boolean
+
     Book:
       type: object
-      required:
-        - title
-        - pages
+      required: [title, pages]
       properties:
         id:
           type: integer
@@ -343,11 +351,10 @@ components:
           type: number
         available:
           type: boolean
+
     Author:
       type: object
-      required:
-        - name
-        - surname
+      required: [name, surname]
       properties:
         id:
           type: integer
@@ -362,30 +369,10 @@ components:
           type: string
         active:
           type: boolean
-    BookCategory:
-      type: object
-      required:
-        - name
-        - description
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        description:
-          type: string
-        active:
-          type: boolean
-        createdDate:
-          type: string
-          format: date
-        numberBooks:
-          type: integer
+
     Loan:
       type: object
-      required:
-        - customerName
-        - loanDate
+      required: [customerName, loanDate, quantity, book]
       properties:
         id:
           type: integer
@@ -399,4 +386,24 @@ components:
           type: string
           format: date
         quantity:
+          type: integer
+        book:
+          $ref: '#/components/schemas/Book'
+
+    BookCategory:
+      type: object
+      required: [name, description]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        active:
+          type: boolean
+        createdDate:
+          type: string
+          format: date
+        numberBooks:
           type: integer
