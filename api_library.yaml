@@ -6,15 +6,35 @@ info:
 servers:
   - url: http://localhost:8082
 
+tags:
+  - name: Usuarios
+    description: Operaciones relacionadas con usuarios
+  - name: Libros
+    description: Operaciones relacionadas con libros
+  - name: Categorías
+    description: Operaciones sobre categorías de libros
+  - name: Préstamos
+    description: Gestión de préstamos de libros
+  - name: Autores
+    description: Administración de autores
+
 paths:
   /users:
     get:
       summary: Obtener todos los usuarios
+      tags: [Usuarios]
       responses:
         '200':
           description: Lista de usuarios
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
     post:
       summary: Crear un nuevo usuario
+      tags: [Usuarios]
       requestBody:
         required: true
         content:
@@ -28,6 +48,7 @@ paths:
   /users/{id}:
     get:
       summary: Obtener un usuario por ID
+      tags: [Usuarios]
       parameters:
         - name: id
           in: path
@@ -37,10 +58,15 @@ paths:
       responses:
         '200':
           description: Usuario encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
         '404':
           description: Usuario no encontrado
     put:
       summary: Actualizar un usuario
+      tags: [Usuarios]
       parameters:
         - name: id
           in: path
@@ -56,8 +82,13 @@ paths:
       responses:
         '200':
           description: Usuario actualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
     patch:
       summary: Actualizar parcialmente un usuario
+      tags: [Usuarios]
       parameters:
         - name: id
           in: path
@@ -73,8 +104,13 @@ paths:
       responses:
         '200':
           description: Usuario actualizado parcialmente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
     delete:
       summary: Eliminar un usuario
+      tags: [Usuarios]
       parameters:
         - name: id
           in: path
@@ -84,10 +120,133 @@ paths:
       responses:
         '204':
           description: Usuario eliminado
+          content: {}
+
+  /books:
+    get:
+      summary: Obtener todos los libros
+      tags: [Libros]
+      responses:
+        '200':
+          description: Lista de libros
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+    post:
+      summary: Crear un nuevo libro
+      tags: [Libros]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+      responses:
+        '201':
+          description: Libro creado
+
+  /books/{id}:
+    get:
+      summary: Obtener un libro por ID
+      tags: [Libros]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Libro encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+    put:
+      summary: Actualizar un libro
+      tags: [Libros]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+      responses:
+        '200':
+          description: Libro actualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+    patch:
+      summary: Actualizar parcialmente un libro
+      tags: [Libros]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Libro actualizado parcialmente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+    delete:
+      summary: Eliminar un libro
+      tags: [Libros]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Libro eliminado
+          content: {}
+
+  /books/search:
+    get:
+      summary: Buscar libros por título
+      tags: [Libros]
+      parameters:
+        - name: title
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Libros encontrados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
 
   /book-categories:
     get:
-      summary: Obtener todas las categorías
+      summary: Obtener todas las categorías de libros
+      tags: [Categorías]
       responses:
         '200':
           description: Lista de categorías
@@ -99,6 +258,7 @@ paths:
                   $ref: '#/components/schemas/BookCategory'
     post:
       summary: Crear una nueva categoría
+      tags: [Categorías]
       requestBody:
         required: true
         content:
@@ -112,6 +272,7 @@ paths:
   /book-categories/{id}:
     get:
       summary: Obtener una categoría por ID
+      tags: [Categorías]
       parameters:
         - name: id
           in: path
@@ -121,8 +282,13 @@ paths:
       responses:
         '200':
           description: Categoría encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookCategory'
     put:
       summary: Actualizar una categoría
+      tags: [Categorías]
       parameters:
         - name: id
           in: path
@@ -140,6 +306,208 @@ paths:
           description: Categoría actualizada
     patch:
       summary: Actualizar parcialmente una categoría
+      tags: [Categorías]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Campos a actualizar de la categoría (puedes enviar solo algunos)
+      responses:
+        '200':
+          description: Categoría actualizada parcialmente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookCategory'
+
+    delete:
+      summary: Eliminar una categoría
+      tags: [Categorías]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Categoría eliminada
+
+  /loans:
+    get:
+      summary: Obtener todos los préstamos
+      tags: [Préstamos]
+      responses:
+        '200':
+          description: Lista de préstamos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Loan'
+    post:
+      summary: Crear un nuevo préstamo
+      tags: [Préstamos]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Loan'
+      responses:
+        '201':
+          description: Préstamo creado
+
+  /loans/{id}:
+    get:
+      summary: Obtener un préstamo por ID
+      tags: [Préstamos]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Préstamo encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Loan'
+    put:
+      summary: Actualizar un préstamo
+      tags: [Préstamos]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Loan'
+      responses:
+        '200':
+          description: Préstamo actualizado
+    patch:
+      summary: Actualizar parcialmente un préstamo
+      tags: [ Préstamos ]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Campos opcionales para actualizar el préstamo
+      responses:
+        '200':
+          description: Préstamo actualizado parcialmente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Loan'
+    delete:
+      summary: Eliminar un préstamo
+      tags: [Préstamos]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Préstamo eliminado
+
+  /authors:
+    get:
+      summary: Obtener todos los autores
+      tags: [Autores]
+      responses:
+        '200':
+          description: Lista de autores
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Author'
+    post:
+      summary: Crear un nuevo autor
+      tags: [Autores]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+      responses:
+        '201':
+          description: Autor creado
+
+  /authors/{id}:
+    get:
+      summary: Obtener un autor por ID
+      tags: [Autores]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Autor encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+        '404':
+          description: Autor no encontrado
+    put:
+      summary: Actualizar un autor
+      tags: [Autores]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+      responses:
+        '200':
+          description: Autor actualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+    patch:
+      summary: Actualizar parcialmente un autor
+      tags: [Autores]
       parameters:
         - name: id
           in: path
@@ -154,9 +522,14 @@ paths:
               type: object
       responses:
         '200':
-          description: Categoría actualizada parcialmente
+          description: Autor actualizado parcialmente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
     delete:
-      summary: Eliminar una categoría
+      summary: Eliminar un autor
+      tags: [Autores]
       parameters:
         - name: id
           in: path
@@ -165,7 +538,9 @@ paths:
             type: integer
       responses:
         '204':
-          description: Categoría eliminada
+          description: Autor eliminado
+          content: {}
+
 
 components:
   schemas:
@@ -193,6 +568,48 @@ components:
         active:
           type: boolean
 
+    Book:
+      type: object
+      required:
+        - title
+        - genre
+        - pages
+        - price
+        - available
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        genre:
+          type: string
+        pages:
+          type: integer
+        price:
+          type: number
+        available:
+          type: boolean
+
+    Author:
+      type: object
+      required:
+        - name
+        - surname
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        surname:
+          type: string
+        birthdate:
+          type: string
+          format: date
+        nationality:
+          type: string
+        active:
+          type: boolean
+
     BookCategory:
       type: object
       required:
@@ -212,3 +629,25 @@ components:
           format: date
         numberBooks:
           type: integer
+
+    Loan:
+      type: object
+      required:
+        - customerName
+        - loanDate
+        - book
+        - quantity
+      properties:
+        id:
+          type: integer
+        customerName:
+          type: string
+        email:
+          type: string
+        loanDate:
+          type: string
+          format: date
+        quantity:
+          type: integer
+        book:
+          $ref: '#/components/schemas/Book'
