@@ -6,28 +6,86 @@ info:
 servers:
   - url: http://localhost:8082
 
+tags:
+  - name: Usuarios
+    description: Operaciones relacionadas con usuarios
+  - name: Libros
+    description: Operaciones relacionadas con libros
+  - name: Categorías
+    description: Operaciones sobre categorías de libros
+  - name: Préstamos
+    description: Gestión de préstamos de libros
+  - name: Autores
+    description: Administración de autores
+
 paths:
   /users:
     get:
       summary: Obtener todos los usuarios
+      tags: [Usuarios]
       responses:
         '200':
           description: Lista de usuarios
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+              examples:
+                requestUser1:
+                  summary: Usuario creado correctamente
+                  value:
+                    id: 1
+                    name: "Tatiana Alcubilla"
+                    username: "tatiana123"
+                    email: "tatiana@gmail.com"
+                    password: "********"
+                    creationDate: "2025-06-05"
+                    active: true
+                requestUser2:
+                  summary: Usuario activo
+                  value:
+                    id: 2
+                    name: "Laura Pérez"
+                    username: "laurap"
+                    email: "laura@example.com"
+                    password: "********"
+                    creationDate: "2023-03-10"
+                    active: true
+
+        '500':
+          description: Error interno del servidor
     post:
       summary: Crear un nuevo usuario
+      tags: [Usuarios]
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/User'
+            examples:
+              newUser:
+                summary: Crear un nuevo usuario
+                value:
+                  name: "Tatiana Alcubilla"
+                  username: "tatiana123"
+                  email: "tatiana@gmail.com"
+                  password: "********"
+
       responses:
         '201':
           description: Usuario creado
+        '400':
+          description: Solicitud incorrecta. Verifica los datos enviados.
+        '500':
+          description: Error interno del servidor.
 
   /users/{id}:
     get:
       summary: Obtener un usuario por ID
+      tags: [Usuarios]
       parameters:
         - name: id
           in: path
@@ -37,10 +95,30 @@ paths:
       responses:
         '200':
           description: Usuario encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                requestUser:
+                  summary: Usuario típico
+                  value:
+                    id: 1
+                    name: "Tatiana Alcubilla"
+                    username: "tatiana123"
+                    email: "tatiana@gmail.com"
+                    password: "********"
+                    creationDate: "2025-06-05"
+                    active: true
         '404':
           description: Usuario no encontrado
+        '400':
+          description: ID inválido
+        '500':
+          description: Error interno del servidor
     put:
       summary: Actualizar un usuario
+      tags: [Usuarios]
       parameters:
         - name: id
           in: path
@@ -56,8 +134,19 @@ paths:
       responses:
         '200':
           description: Usuario actualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Datos inválidos para actualizar
+        '404':
+          description: Usuario no encontrado
+        '500':
+          description: Error interno del servidor
     patch:
       summary: Actualizar parcialmente un usuario
+      tags: [Usuarios]
       parameters:
         - name: id
           in: path
@@ -73,8 +162,20 @@ paths:
       responses:
         '200':
           description: Usuario actualizado parcialmente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Datos inválidos para actualización parcial
+        '404':
+          description: Usuario no encontrado
+        '500':
+          description: Error interno del servidor
+
     delete:
       summary: Eliminar un usuario
+      tags: [Usuarios]
       parameters:
         - name: id
           in: path
@@ -84,10 +185,17 @@ paths:
       responses:
         '204':
           description: Usuario eliminado
+        '404':
+          description: Usuario no encontrado
+        '400':
+          description: ID inválido
+        '500':
+          description: Error interno del servidor
 
   /book-categories:
     get:
       summary: Obtener todas las categorías
+      tags: [Categorías]
       responses:
         '200':
           description: Lista de categorías
@@ -97,21 +205,58 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/BookCategory'
+              examples:
+                requestCategory1:
+                  summary: Categoría de ciencia ficción
+                  value:
+                    id: 1
+                    name: "Ciencia Ficción"
+                    description: "Libros del futuro y tecnología avanzada"
+                    active: true
+                    createdDate: "2023-01-01"
+                    numberBooks: 12
+                requestCategory2:
+                  summary: Categoría de historia
+                  value:
+                    id: 2
+                    name: "Historia"
+                    description: "Libros sobre eventos históricos"
+                    active: true
+                    createdDate: "2022-06-15"
+                    numberBooks: 8
+        '500':
+          description: Error interno del servidor
     post:
       summary: Crear una nueva categoría
+      tags: [Categorías]
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/BookCategory'
+            examples:
+              newCategory:
+                summary: Crear una categoría de libros
+                value:
+                  name: "Filosofía"
+                  description: "Libros sobre pensamiento, lógica y sabiduría"
+                  active: true
+                  createdDate: "2024-01-01"
+                  numberBooks: 0
+
       responses:
         '201':
           description: Categoría creada
+        '400':
+          description: Datos inválidos para crear categoría
+        '500':
+          description: Error interno del servidor
 
   /book-categories/{id}:
     get:
       summary: Obtener una categoría por ID
+      tags: [Categorías]
       parameters:
         - name: id
           in: path
@@ -121,8 +266,19 @@ paths:
       responses:
         '200':
           description: Categoría encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookCategory'
+        '404':
+          description: Categoría no encontrada
+        '400':
+          description: ID inválido
+        '500':
+          description: Error interno del servidor
     put:
       summary: Actualizar una categoría
+      tags: [Categorías]
       parameters:
         - name: id
           in: path
@@ -138,8 +294,15 @@ paths:
       responses:
         '200':
           description: Categoría actualizada
+        '400':
+          description: Datos inválidos
+        '404':
+          description: Categoría no encontrada
+        '500':
+          description: Error interno del servidor
     patch:
       summary: Actualizar parcialmente una categoría
+      tags: [Categorías]
       parameters:
         - name: id
           in: path
@@ -155,8 +318,19 @@ paths:
       responses:
         '200':
           description: Categoría actualizada parcialmente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookCategory'
+        '400':
+          description: Datos parciales inválidos
+        '404':
+          description: Categoría no encontrada
+        '500':
+          description: Error interno del servidor
     delete:
       summary: Eliminar una categoría
+      tags: [Categorías]
       parameters:
         - name: id
           in: path
@@ -166,6 +340,503 @@ paths:
       responses:
         '204':
           description: Categoría eliminada
+        '404':
+          description: Categoría no encontrada
+        '400':
+          description: ID inválido
+        '500':
+          description: Error interno del servidor
+  /authors:
+    get:
+      summary: Obtener todos los autores
+      tags: [Autores]
+      responses:
+        '200':
+          description: Lista de autores
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Author'
+              examples:
+                requestAuthor1:
+                  summary: Autor clásico
+                  value:
+                    id: 1
+                    name: "Julio"
+                    surname: "Verne"
+                    birthdate: "1828-02-08"
+                    nationality: "Francesa"
+                    active: false
+                requestAuthor2:
+                  summary: Autora contemporánea
+                  value:
+                    id: 2
+                    name: "Isabel"
+                    surname: "Allende"
+                    birthdate: "1942-08-02"
+                    nationality: "Chilena"
+                    active: true
+        '500':
+          description: Error interno del servidor
+    post:
+      summary: Crear un nuevo autor
+      tags: [Autores]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+            examples:
+              newAuthor:
+                summary: Crear un nuevo autor
+                value:
+                  name: "Ursula"
+                  surname: "Le Guin"
+                  birthdate: "1929-10-21"
+                  nationality: "EE.UU"
+                  active: true
+
+      responses:
+        '201':
+          description: Autor creado
+        '400':
+          description: Datos inválidos para crear autor
+        '500':
+          description: Error interno del servidor
+
+  /authors/{id}:
+    get:
+        summary: Obtener un autor por ID
+        tags: [Autores]
+        parameters:
+          - name: id
+            in: path
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: Autor encontrado
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Author'
+          '404':
+            description: Autor no encontrado
+          '400':
+            description: ID inválido
+          '500':
+            description: Error interno del servidor
+    put:
+        summary: Actualizar un autor
+        tags: [Autores]
+        parameters:
+          - name: id
+            in: path
+            required: true
+            schema:
+              type: integer
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+        responses:
+          '200':
+            description: Autor actualizado
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Author'
+          '400':
+            description: Datos inválidos
+          '404':
+            description: Autor no encontrado
+          '500':
+            description: Error interno del servidor
+    patch:
+        summary: Actualizar parcialmente un autor
+        tags: [Autores]
+        parameters:
+          - name: id
+            in: path
+            required: true
+            schema:
+              type: integer
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+        responses:
+          '200':
+            description: Autor actualizado parcialmente
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Author'
+          '400':
+            description: Datos parciales inválidos
+          '404':
+            description: Autor no encontrado
+          '500':
+            description: Error interno del servidor
+    delete:
+      summary: Eliminar un autor
+      tags: [Autores]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Autor eliminado
+        '404':
+          description: Autor no encontrado
+        '400':
+          description: ID inválido
+        '500':
+          description: Error interno del servidor
+
+  /books:
+    get:
+      summary: Obtener todos los libros
+      tags: [Libros]
+      responses:
+        '200':
+          description: Lista de libros
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+              examples:
+                requestBook1:
+                  summary: Libro de aventuras
+                  value:
+                    id: 1
+                    title: "Viaje al Centro de la Tierra"
+                    genre: "Aventura"
+                    pages: 320
+                    price: 15.99
+                    available: true
+                requestBook2:
+                  summary: Novela de misterio
+                  value:
+                    id: 2
+                    title: "El Nombre de la Rosa"
+                    genre: "Misterio"
+                    pages: 540
+                    price: 18.5
+                    available: false
+
+        '500':
+          description: Error interno del servidor
+    post:
+      summary: Crear un nuevo libro
+      tags: [Libros]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+            examples:
+              newBook:
+                summary: Crear un nuevo libro
+                value:
+                  title: "La Odisea Espacial"
+                  genre: "Ciencia Ficción"
+                  pages: 302
+                  price: 12.99
+                  available: true
+      responses:
+        '201':
+          description: Libro creado
+        '400':
+          description: Datos inválidos para crear libro
+        '500':
+          description: Error interno del servidor
+
+  /books/{id}:
+      get:
+        summary: Obtener un libro por ID
+        tags: [Libros]
+        parameters:
+          - name: id
+            in: path
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: Libro encontrado
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Book'
+          '404':
+            description: Libro no encontrado
+          '400':
+            description: ID inválido
+          '500':
+            description: Error interno del servidor
+      put:
+        summary: Actualizar un libro
+        tags: [Libros]
+        parameters:
+          - name: id
+            in: path
+            required: true
+            schema:
+              type: integer
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        responses:
+          '200':
+            description: Libro actualizado
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Book'
+          '400':
+            description: Datos inválidos
+          '404':
+            description: Libro no encontrado
+          '500':
+            description: Error interno del servidor
+      patch:
+        summary: Actualizar parcialmente un libro
+        tags: [Libros]
+        parameters:
+          - name: id
+            in: path
+            required: true
+            schema:
+              type: integer
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+        responses:
+          '200':
+            description: Libro actualizado parcialmente
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Book'
+          '400':
+            description: Datos parciales inválidos
+          '404':
+            description: Libro no encontrado
+          '500':
+            description: Error interno del servidor
+      delete:
+        summary: Eliminar un libro
+        tags: [Libros]
+        parameters:
+          - name: id
+            in: path
+            required: true
+            schema:
+              type: integer
+        responses:
+          '204':
+            description: Libro eliminado
+          '404':
+            description: Libro no encontrado
+          '400':
+            description: ID inválido
+          '500':
+            description: Error interno del servidor
+
+  /loans:
+      get:
+        summary: Obtener todos los préstamos
+        tags: [Préstamos]
+        responses:
+          '200':
+            description: Lista de préstamos
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                   $ref: '#/components/schemas/Loan'
+                examples:
+                  requestLoans1:
+                    summary: Préstamo activo
+                    value:
+                      id: 1
+                      customerName: "Tatiana Alcubilla"
+                      email: "tatiana@gmail.com"
+                      loanDate: "2025-05-01"
+                      quantity: 1
+                      book:
+                        id: 1
+                        title: "Viaje al Centro de la Tierra"
+                        genre: "Aventura"
+                        pages: 320
+                        price: 15.99
+                        available: true
+                  requestLoans2:
+                    summary: Préstamo devuelto
+                    value:
+                      id: 2
+                      customerName: "Tatiana Alcubilla"
+                      email: "tatiana@gmail.com"
+                      loanDate: "2025-04-12"
+                      quantity: 2
+                      book:
+                        id: 2
+                        title: "El Nombre de la Rosa"
+                        genre: "Misterio"
+                        pages: 540
+                        price: 18.5
+                        available: false
+
+          '500':
+            description: Error interno del servidor
+      post:
+        summary: Crear un nuevo préstamo
+        tags: [Préstamos]
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Loan'
+              examples:
+                newLoan:
+                  summary: Crear un préstamo de libro
+                  value:
+                    customerName: "Tatiana Alcubilla"
+                    email: "tatiana@gmail.com"
+                    loanDate: "2025-05-25"
+                    quantity: 1
+                    book:
+                      id: 3
+                      title: "Crimen y Castigo"
+                      genre: "Novela"
+                      pages: 671
+                      price: 14.5
+                      available: false
+        responses:
+          '201':
+            description: Préstamo creado
+          '400':
+            description: Datos inválidos para crear préstamo
+          '500':
+            description: Error interno del servidor
+
+  /loans/{id}:
+    get:
+      summary: Obtener un préstamo por ID
+      tags: [Préstamos]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Préstamo encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Loan'
+        '404':
+          description: Préstamo no encontrado
+        '400':
+          description: ID inválido
+        '500':
+          description: Error interno del servidor
+    put:
+      summary: Actualizar un préstamo
+      tags: [Préstamos]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Loan'
+      responses:
+        '200':
+          description: Préstamo actualizado
+        '400':
+          description: Datos inválidos
+        '404':
+          description: Préstamo no encontrado
+        '500':
+          description: Error interno del servidor
+    patch:
+      summary: Actualizar parcialmente un préstamo
+      tags: [Préstamos]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Campos opcionales para actualizar el préstamo
+      responses:
+        '200':
+          description: Préstamo actualizado parcialmente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Loan'
+        '400':
+          description: Datos parciales inválidos
+        '404':
+          description: Préstamo no encontrado
+        '500':
+          description: Error interno del servidor
+    delete:
+      summary: Eliminar un préstamo
+      tags: [Préstamos]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Préstamo eliminado
+        '404':
+          description: Libro no encontrado
+        '400':
+          description: ID inválido
+        '500':
+          description: Error interno del servidor
 
 components:
   schemas:
@@ -181,17 +852,30 @@ components:
           type: integer
         name:
           type: string
+          maxLength: 100
+          description: Nombre completo del usuario.
         username:
           type: string
+          minLength: 3
+          maxLength: 20
+          description: Nombre de usuario entre 3 y 20 caracteres.
         email:
           type: string
+          format: email
+          description: Email del usuario
         password:
           type: string
+          format: password
+          minLength: 6
+          description: Contraseña del usuario, al menos 6 caracteres.
         creationDate:
           type: string
           format: date
+          description: Fecha de creación del usuario
         active:
           type: boolean
+          default: true
+          description: El usuario está activo o no.
 
     BookCategory:
       type: object
@@ -203,12 +887,109 @@ components:
           type: integer
         name:
           type: string
+          maxLength: 20
+          description: Nombre de la categoría
         description:
           type: string
+          description: Descripción de la categoría
         active:
           type: boolean
+          default: true
         createdDate:
           type: string
           format: date
+          description: Fecha de creación de la categoría.
         numberBooks:
           type: integer
+          description: Número de libros con esta categoría.
+    Author:
+      type: object
+      required:
+        - name
+        - surname
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          maxLength: 20
+          description: Nombre del autor del libro con un máximo de 20 caracteres.
+        surname:
+          type: string
+          minLength: 3
+          maxLength: 20
+          description: Apellido del autor entre 3 y 20 caracteres.
+        birthdate:
+          type: string
+          format: date
+          description: Fecha de nacimiento del autor.
+        nationality:
+          type: string
+          description: Nacionalidad del autor.
+        active:
+          type: boolean
+          default: true
+          description: Si está activo o no el autor.
+
+    Book:
+      type: object
+      required:
+        - title
+        - genre
+        - pages
+        - price
+        - available
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+          minLength: 3
+          description: Título del libro con un minimo de 3 caracteres.
+        genre:
+          type: string
+          minLength: 3
+          enum: ["Aventura", "Misterio", "Ciencia Ficción", "Romántico", "Histórico", "Novela"]
+          description: Género del libro con un mínimo de 3 caracteres.
+        pages:
+          type: integer
+          minimum: 1
+          description: Páginas del libro y como mínimas debe tener 1 página.
+        price:
+          type: number
+          minimum: 0
+          description: Precio del libro. No puede tener un precio negativo.
+        available:
+          type: boolean
+          description: Indica si el libro está disponible para préstamo
+
+    Loan:
+      type: object
+      required:
+        - customerName
+        - loanDate
+        - book
+        - quantity
+      properties:
+        id:
+          type: integer
+        customerName:
+          type: string
+          minLength: 2
+          maxLength: 100
+          description: Nombre del cliente que tiene el préstamo.
+        email:
+          type: string
+          format: email
+          description: Email del cliente que tiene el préstamo.
+        loanDate:
+          type: string
+          format: date
+          description: Fecha del préstamo.
+        quantity:
+          type: integer
+          minimum: 1
+          description: Cantidad de libros prestados.
+        book:
+          $ref: '#/components/schemas/Book'
+
