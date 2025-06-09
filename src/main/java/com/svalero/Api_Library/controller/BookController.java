@@ -26,91 +26,103 @@ public class BookController {
         this.service = service;
     }
 
-    // GET: Listar todos los libros
+    // ========== GET: Consultas básicas ==========
+
     @GetMapping
     public ResponseEntity<List<Book>> getAllBooks() {
         logger.info("Fetching all books");
-        List<Book> books = service.getAllBooks();
-        return new ResponseEntity<>(books, HttpStatus.OK);
+        return new ResponseEntity<>(service.getAllBooks(), HttpStatus.OK);
     }
 
-    // GET: Buscar por ID
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable long id) throws BookNotFoundException {
-        logger.info("Searching book by ID: {}", id);
-        Book book = service.getBookById(id);
-        return new ResponseEntity<>(book, HttpStatus.OK);
+        logger.info("Fetching book by ID: {}", id);
+        return new ResponseEntity<>(service.getBookById(id), HttpStatus.OK);
     }
 
-    // GET: Buscar por título
     @GetMapping("/title")
-    public ResponseEntity<List<Book>> getBookByTitle(@RequestParam String title) {
-        logger.info("Searching books by title: {}", title);
-        List<Book> books = service.getBookByTitle(title);
-        return new ResponseEntity<>(books, HttpStatus.OK);
+    public ResponseEntity<List<Book>> getBooksByTitle(@RequestParam String title) {
+        logger.info("Fetching books by title: {}", title);
+        return new ResponseEntity<>(service.getBookByTitle(title), HttpStatus.OK);
     }
 
-    // GET: Buscar por género
     @GetMapping("/genre")
-    public ResponseEntity<List<Book>> getBookByGenre(@RequestParam String genre) {
-        logger.info("Searching books by genre: {}", genre);
-        List<Book> books = service.getBookByGenre(genre);
-        return new ResponseEntity<>(books, HttpStatus.OK);
+    public ResponseEntity<List<Book>> getBooksByGenre(@RequestParam String genre) {
+        logger.info("Fetching books by genre: {}", genre);
+        return new ResponseEntity<>(service.getBookByGenre(genre), HttpStatus.OK);
     }
 
-    // GET: Buscar por número de páginas
-    @GetMapping("/pages")
-    public ResponseEntity<List<Book>> getBookByPages(@RequestParam int pages) {
-        logger.info("Searching books by pages: {}", pages);
-        List<Book> books = service.getBookByPages(pages);
-        return new ResponseEntity<>(books, HttpStatus.OK);
-    }
-
-    // GET: Buscar por precio
-    @GetMapping("/price")
-    public ResponseEntity<List<Book>> getBookByPrice(@RequestParam double price) {
-        logger.info("Searching books by price: {}", price);
-        List<Book> books = service.getBookByPrice(price);
-        return new ResponseEntity<>(books, HttpStatus.OK);
-    }
-
-    // GET: Buscar por disponibilidad
     @GetMapping("/available")
-    public ResponseEntity<List<Book>> getBookByAvailability(@RequestParam boolean available) {
-        logger.info("Searching books by availability: {}", available);
-        List<Book> books = service.getBookByAvailability(available);
-        return new ResponseEntity<>(books, HttpStatus.OK);
+    public ResponseEntity<List<Book>> getBooksByAvailable(@RequestParam boolean available) {
+        logger.info("Fetching books by availability: {}", available);
+        return new ResponseEntity<>(service.getBookByAvailability(available), HttpStatus.OK);
     }
 
-    // POST: Crear un nuevo libro
+    // ========== GET: Filtros combinados (3 campos) ==========
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Book>> getBooksByTitleAndAvailableAndGenre(
+            @RequestParam String title,
+            @RequestParam boolean available,
+            @RequestParam String genre) {
+        logger.info("Fetching books by title={}, available={}, genre={}", title, available, genre);
+        return new ResponseEntity<>(
+                service.findBooksByTitleAndAvailableAndGenre(title, available, genre),
+                HttpStatus.OK
+        );
+    }
+
+    // ========== GET: JPQL ==========
+
+    @GetMapping("/pages-greater-than")
+    public ResponseEntity<List<Book>> getBooksWithPagesGreaterThan(@RequestParam int pages) {
+        logger.info("Fetching books with more than {} pages", pages);
+        return new ResponseEntity<>(service.findBooksWithPagesGreaterThan(pages), HttpStatus.OK);
+    }
+
+    @GetMapping("/price-less-than")
+    public ResponseEntity<List<Book>> getBooksWithPriceLessThan(@RequestParam float price) {
+        logger.info("Fetching books with price less than {}", price);
+        return new ResponseEntity<>(service.findBooksWithPriceLessThan(price), HttpStatus.OK);
+    }
+
+    @GetMapping("/genre-contains")
+    public ResponseEntity<List<Book>> getBooksWithGenreLike(@RequestParam String keyword) {
+        logger.info("Fetching books where genre contains '{}'", keyword);
+        return new ResponseEntity<>(service.findBooksWithGenreLike(keyword), HttpStatus.OK);
+    }
+
+    // ========== POST: Crear libro ==========
+
     @PostMapping
     public ResponseEntity<Book> addBook(@Valid @RequestBody Book book) {
         logger.info("Adding new book: {}", book.getTitle());
-        Book newBook = service.saveBook(book);
-        return new ResponseEntity<>(newBook, HttpStatus.CREATED);
+        return new ResponseEntity<>(service.saveBook(book), HttpStatus.CREATED);
     }
 
-    // PUT: Actualizar libro por ID
+    // ========== PUT: Actualización completa ==========
+
     @PutMapping("/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable long id, @Valid @RequestBody Book bookDetails)
+    public ResponseEntity<Book> updateBook(@PathVariable long id, @Valid @RequestBody Book book)
             throws BookNotFoundException {
-        logger.info("Updating book ID: {}", id);
-        Book updatedBook = service.updateBook(id, bookDetails);
-        return new ResponseEntity<>(updatedBook, HttpStatus.OK);
+        logger.info("Updating book with ID: {}", id);
+        return new ResponseEntity<>(service.updateBook(id, book), HttpStatus.OK);
     }
 
-    // PATCH: Actualizar parcialmente por ID
+    // ========== PATCH: Actualización parcial ==========
+
     @PatchMapping("/{id}")
-    public ResponseEntity<Book> updateBookPartial(@PathVariable long id, @RequestBody Map<String, Object> updates) {
-        logger.info("Partially updating book ID: {}", id);
-        Book updatedBook = service.updateBookPartial(id, updates);
-        return ResponseEntity.ok(updatedBook);
+    public ResponseEntity<Book> updateBookPartial(@PathVariable long id, @RequestBody Map<String, Object> updates)
+            throws BookNotFoundException {
+        logger.info("Partially updating book with ID: {}", id);
+        return new ResponseEntity<>(service.updateBookPartial(id, updates), HttpStatus.OK);
     }
 
-    // DELETE: Eliminar libro por ID
+    // ========== DELETE: Eliminar libro ==========
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable long id) throws BookNotFoundException {
-        logger.info("Deleting book ID: {}", id);
+        logger.info("Deleting book with ID: {}", id);
         service.deleteBook(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
