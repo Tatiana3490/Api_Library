@@ -126,4 +126,11 @@ public class BookController {
         service.deleteBook(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("/price-greater-than-native")
+    public ResponseEntity<List<Book>> getBooksWithPriceGreaterThanNative(@RequestParam float price) {
+        logger.info("Fetching books with native SQL price > {}", price);
+        return new ResponseEntity<>(service.findBooksWithPriceGreaterThanNative(price), HttpStatus.OK);
+    }
+
 }
