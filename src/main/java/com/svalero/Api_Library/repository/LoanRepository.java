@@ -10,6 +10,8 @@ import java.util.List;
 
 @Repository
 public interface LoanRepository extends CrudRepository<Loan, Long> {
+
+    // ================= BÚSQUEDAS BÁSICAS ================= //
     //Metodos para buscar
     List<Loan> findAll();
     List<Loan> findByCustomerName(String customerName);
