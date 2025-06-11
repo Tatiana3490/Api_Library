@@ -13,12 +13,12 @@ public interface BookRepository extends CrudRepository<Book, Long> {
 
     // ================= BÚSQUEDAS BÁSICAS ================= //
 
-    List<Book> findAll();                             // Obtener todos los libros
-    List<Book> findByTitle(String title);             // Buscar por título exacto
-    List<Book> findByGenre(String genre);             // Buscar por género exacto
-    List<Book> findByPages(int page);                 // Buscar por número exacto de páginas
-    List<Book> findByPrice(double price);             // Buscar por precio exacto
-    List<Book> findByAvailable(boolean available);    // Buscar por disponibilidad
+    List<Book> findAll();
+    List<Book> findByTitle(String title);
+    List<Book> findByGenre(String genre);
+    List<Book> findByPages(int page);
+    List<Book> findByPrice(double price);
+    List<Book> findByAvailable(boolean available);
 
     // ================= CONSULTAS PERSONALIZADAS (JPQL) ================= //
 

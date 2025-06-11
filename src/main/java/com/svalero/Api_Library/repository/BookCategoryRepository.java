@@ -10,6 +10,7 @@ import java.util.List;
 
 @Repository
 public interface BookCategoryRepository extends CrudRepository<BookCategory, Long> {
+    // ================= BÚSQUEDAS BÁSICAS ================= //
     //Metodos para buscar
     List<BookCategory> findAll();
     List<BookCategory> findByName(String name);

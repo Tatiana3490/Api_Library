@@ -8,6 +8,8 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
+
+    // ================= BÚSQUEDAS BÁSICAS ================= //
     //Metodos para buscar
     List<User> findAll();
     User findByEmail(String email);

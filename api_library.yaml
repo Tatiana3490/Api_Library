@@ -21,8 +21,28 @@ tags:
 paths:
   /users:
     get:
-      summary: Obtener todos los usuarios
+      summary: Obtener todos los usuarios (con filtros opcionales)
       tags: [Usuarios]
+      parameters:
+        - name: active
+          in: query
+          description: Filtrar por usuarios activos
+          required: false
+          schema:
+            type: boolean
+        - name: username
+          in: query
+          description: Filtrar por nombre de usuario
+          required: false
+          schema:
+            type: string
+        - name: email
+          in: query
+          description: Filtrar por email
+          required: false
+          schema:
+            type: string
+            format: email
       responses:
         '200':
           description: Lista de usuarios
@@ -194,8 +214,28 @@ paths:
 
   /book-categories:
     get:
-      summary: Obtener todas las categorías
+      summary: Obtener todas las categorías (con filtros opcionales)
       tags: [Categorías]
+      parameters:
+        - name: active
+          in: query
+          description: Filtrar por estado activo
+          required: false
+          schema:
+            type: boolean
+        - name: createdDate
+          in: query
+          description: Filtrar por fecha de creación
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: name
+          in: query
+          description: Filtrar por nombre de la categoría
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: Lista de categorías
@@ -348,8 +388,28 @@ paths:
           description: Error interno del servidor
   /authors:
     get:
-      summary: Obtener todos los autores
+      summary: Obtener todos los autores (con filtros opcionales)
       tags: [Autores]
+      parameters:
+        - name: nationality
+          in: query
+          description: Filtrar por nacionalidad
+          required: false
+          schema:
+            type: string
+        - name: active
+          in: query
+          description: Filtrar por estado activo
+          required: false
+          schema:
+            type: boolean
+        - name: birthdate
+          in: query
+          description: Filtrar por fecha de nacimiento
+          required: false
+          schema:
+            type: string
+            format: date
       responses:
         '200':
           description: Lista de autores
@@ -507,8 +567,29 @@ paths:
 
   /books:
     get:
-      summary: Obtener todos los libros
+      summary: Obtener todos los libros (con filtros opcionales)
       tags: [Libros]
+      parameters:
+        - name: genre
+          in: query
+          description: Filtrar por género
+          required: false
+          schema:
+            type: string
+            enum: [ "Aventura", "Misterio", "Ciencia Ficción", "Romántico", "Histórico", "Novela" ]
+        - name: available
+          in: query
+          description: Filtrar por disponibilidad
+          required: false
+          schema:
+            type: boolean
+        - name: minPages
+          in: query
+          description: Filtrar por número mínimo de páginas
+          required: false
+          schema:
+            type: integer
+            minimum: 1
       responses:
         '200':
           description: Lista de libros
@@ -666,8 +747,29 @@ paths:
 
   /loans:
       get:
-        summary: Obtener todos los préstamos
+        summary: Obtener todos los préstamos (con filtros opcionales)
         tags: [Préstamos]
+        parameters:
+          - name: email
+            in: query
+            description: Filtrar por email del cliente
+            required: false
+            schema:
+              type: string
+              format: email
+          - name: loanDate
+            in: query
+            description: Filtrar por fecha del préstamo
+            required: false
+            schema:
+              type: string
+              format: date
+          - name: quantity
+            in: query
+            description: Filtrar por cantidad de libros prestados
+            required: false
+            schema:
+              type: integer
         responses:
           '200':
             description: Lista de préstamos

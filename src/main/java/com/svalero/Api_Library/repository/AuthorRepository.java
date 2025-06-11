@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface AuthorRepository extends CrudRepository<Author, Long> {
 
+    // ================= BÚSQUEDAS BÁSICAS ================= //
     //Metodos para buscar
     List<Author> findAll();
     List<Author> findByName(String name);
