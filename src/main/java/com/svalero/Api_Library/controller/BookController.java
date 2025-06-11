@@ -10,7 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Map;
 
@@ -132,5 +135,34 @@ public class BookController {
         logger.info("Fetching books with native SQL price > {}", price);
         return new ResponseEntity<>(service.findBooksWithPriceGreaterThanNative(price), HttpStatus.OK);
     }
+
+    // ========== Para subir CSV ============
+
+    @PostMapping("/upload")
+    public ResponseEntity<String> uploadBooksFile(@RequestParam("file") MultipartFile file) {
+        logger.info("Uploading file: {}", file.getOriginalFilename());
+
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+
+                // Asumimos un CSV simple con 5 columnas: title, genre, pages, price, available
+                Book book = new Book();
+                book.setTitle(data[0].trim());
+                book.setGenre(data[1].trim());
+                book.setPages(Integer.parseInt(data[2].trim()));
+                book.setPrice(Float.parseFloat(data[3].trim()));
+                book.setAvailable(Boolean.parseBoolean(data[4].trim()));
+
+                service.saveBook(book);
+            }
+            return new ResponseEntity<>("Libros cargados correctamente", HttpStatus.OK);
+        } catch (Exception e) {
+            logger.error("Error al procesar el fichero", e);
+            return new ResponseEntity<>("Error al procesar el fichero", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 
 }

@@ -117,6 +117,8 @@ public class BookService {
         return bookRepository.findBooksByTitleAndAvailableAndGenre(title, available, genre);
     }
 
+    // ===================== CONSULTAS SQL =====================
+
     public List<Book> findBooksWithPriceGreaterThanNative(float price) {
         return bookRepository.findBooksWithPriceGreaterThanNative(price);
     }
