@@ -88,4 +88,12 @@ public class UserService {
         }
         userRepository.deleteById(id);
     }
+
+    // ===================== CONSULTAS SQL =====================
+    public List<User> findUsersByNameContaining(String keyword) {
+        return userRepository.findUsersByNameContainingNative(keyword);
+    }
+
+
+
 }
