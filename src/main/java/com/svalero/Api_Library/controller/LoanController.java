@@ -29,6 +29,9 @@ public class LoanController {
         this.service = service;
     }
 
+    @Autowired
+    private LoanService loanService;
+
     // GET: Listar todos los préstamos
     @GetMapping
     public List<LoanDTO> getAllLoans() {
@@ -127,4 +130,12 @@ public class LoanController {
         service.deleteLoan(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    // ========== CONSULTA SQL native ==========
+    @GetMapping("/quantity")
+    public ResponseEntity<List<Loan>> getLoansWithQuantityGreaterThan(@RequestParam int quantity) {
+        List<Loan> loans = loanService.findLoansWithQuantityGreaterThan(quantity);
+        return ResponseEntity.ok(loans);
+    }
 }
+

@@ -1,6 +1,5 @@
 package com.svalero.Api_Library.repository;
 
-import com.svalero.Api_Library.domain.Book;
 import com.svalero.Api_Library.domain.BookCategory;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

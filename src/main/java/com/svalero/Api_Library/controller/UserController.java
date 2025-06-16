@@ -26,6 +26,9 @@ public class UserController {
         this.service = service;
     }
 
+    @Autowired
+    private UserService userService;
+
     // GET: Listar todos los usuarios
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
@@ -91,5 +94,12 @@ public class UserController {
         logger.info("Deleting user with ID: {}", id);
         service.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    // ========== CONSULTA SQL native ==========
+    @GetMapping("/search")
+    public ResponseEntity<List<User>> getUsersByNameContaining(@RequestParam String name) {
+        List<User> users = userService.findUsersByNameContaining(name);
+        return ResponseEntity.ok(users);
     }
 }

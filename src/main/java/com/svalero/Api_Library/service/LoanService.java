@@ -119,4 +119,9 @@ public class LoanService {
 
         return dto;
     }
+
+    // ===================== CONSULTAS SQL =====================
+    public List<Loan> findLoansWithQuantityGreaterThan(int quantity) {
+        return loanRepository.findLoansWithQuantityGreaterThan(quantity);
+    }
 }

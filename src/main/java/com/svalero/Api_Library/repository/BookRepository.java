@@ -40,7 +40,7 @@ public interface BookRepository extends CrudRepository<Book, Long> {
 
     // ================= CONSULTAS SQL NATIVAS ================= //
 
-    @Query(value = "SELECT * FROM book WHERE price > :price", nativeQuery = true)
+    @Query(value = "SELECT * FROM Book WHERE price > :price", nativeQuery = true)
     List<Book> findBooksWithPriceGreaterThanNative(@Param("price") float price);
 
 
