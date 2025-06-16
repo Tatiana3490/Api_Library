@@ -4,6 +4,7 @@ import com.svalero.Api_Library.domain.User;
 import com.svalero.Api_Library.exception.UserNotFoundException;
 import com.svalero.Api_Library.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
@@ -35,8 +36,10 @@ public class UserService {
 
     //para obtener usuarios por nombre de usuario
     public User getUserByUsername(String username) {
-        return userRepository.findByUsername(username);
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
+
     //para obtener los usuarios activos
     public List<User> getActiveUsers() {
         return userRepository.findByActiveTrue();
