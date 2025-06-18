@@ -76,6 +76,8 @@ La aplicación se iniciará en http://localhost:8082.
     -Test de todos los endpoints
     -Variables de entorno ({{baseUrl}}) parametrizadas
 
+### Autor ###
 
+Proyecto realizado por Tatiana Alcubilla Muñoz como práctica de Spring Boot.
 
 
