@@ -132,7 +132,7 @@ public class LoanController {
     }
 
     // ========== CONSULTA SQL native ==========
-    @GetMapping("/quantity")
+    @GetMapping("/quantity/greater")
     public ResponseEntity<List<Loan>> getLoansWithQuantityGreaterThan(@RequestParam int quantity) {
         List<Loan> loans = loanService.findLoansWithQuantityGreaterThan(quantity);
         return ResponseEntity.ok(loans);
