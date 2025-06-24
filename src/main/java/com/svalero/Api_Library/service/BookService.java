@@ -21,7 +21,7 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    // ===================== LECTURA (READ) =====================
+    // ===================== READ  =====================
 
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
@@ -52,13 +52,13 @@ public class BookService {
         return bookRepository.findByAvailable(availability);
     }
 
-    // ===================== CREACIÓN (CREATE) =====================
+    // ===================== CREATE =====================
 
     public Book saveBook(Book book) {
         return bookRepository.save(book);
     }
 
-    // ===================== ACTUALIZACIÓN COMPLETA (UPDATE) =====================
+    // ===================== UPDATE =====================
 
     public Book updateBook(Long id, Book bookDetails) throws BookNotFoundException {
         Book existingBook = bookRepository.findById(id)
@@ -90,7 +90,7 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    // ===================== ELIMINACIÓN (DELETE) =====================
+    // ===================== DELETE =====================
 
     public void deleteBook(Long id) throws BookNotFoundException {
         if (!bookRepository.existsById(id)) {

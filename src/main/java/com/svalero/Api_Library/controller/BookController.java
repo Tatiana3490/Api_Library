@@ -100,7 +100,9 @@ public class BookController {
     @PostMapping
     public ResponseEntity<Book> addBook(@Valid @RequestBody Book book) {
         logger.info("Adding new book: {}", book.getTitle());
-        return new ResponseEntity<>(service.saveBook(book), HttpStatus.CREATED);
+        Book savedBook = service.saveBook(book);
+        Book fullBook = service.getBookById(savedBook.getId());
+        return new ResponseEntity<>(fullBook, HttpStatus.CREATED);
     }
 
     // ========== PUT: Actualización completa ==========

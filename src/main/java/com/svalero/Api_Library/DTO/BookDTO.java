@@ -8,5 +8,7 @@ public class BookDTO {
     private String title;
     private String genre;
     private boolean available;
+    private String authorName;
+    private String categoryName;
 
 }
