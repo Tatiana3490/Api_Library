@@ -19,21 +19,19 @@ import java.util.Map;
 public class UserController {
 
     private final Logger logger = LoggerFactory.getLogger(UserController.class);
-    private final UserService service;
+    private final UserService userService;
 
     @Autowired
     public UserController(UserService service) {
-        this.service = service;
+        this.userService = service;
     }
 
-    @Autowired
-    private UserService userService;
 
     // GET: Listar todos los usuarios
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         logger.info("Fetching all users");
-        List<User> users = service.getAllUsers();
+        List<User> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
@@ -41,7 +39,7 @@ public class UserController {
     @GetMapping("/email")
     public ResponseEntity<User> getByEmail(@RequestParam String email) {
         logger.info("Searching user by email: {}", email);
-        User user = service.getUserByEmail(email);
+        User user = userService.getUserByEmail(email);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
@@ -49,7 +47,7 @@ public class UserController {
     @GetMapping("/username")
     public ResponseEntity<User> getByUsername(@RequestParam String username) {
         logger.info("Searching user by username: {}", username);
-        User user = service.getUserByUsername(username);
+        User user = userService.getUserByUsername(username);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
@@ -57,7 +55,7 @@ public class UserController {
     @GetMapping("/active")
     public ResponseEntity<List<User>> getActiveUsers() {
         logger.info("Fetching active users");
-        List<User> users = service.getActiveUsers();
+        List<User> users = userService.getActiveUsers();
         return users.isEmpty()
                 ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
                 : new ResponseEntity<>(users, HttpStatus.OK);
@@ -67,7 +65,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<User> addUser(@Valid @RequestBody User user) {
         logger.info("Adding new user: {}", user.getEmail());
-        User newUser = service.saveUser(user);
+        User newUser = userService.saveUser(user);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
@@ -76,7 +74,7 @@ public class UserController {
     public ResponseEntity<User> updateUser(@PathVariable Long id, @Valid @RequestBody User userDetails)
             throws UserNotFoundException {
         logger.info("Updating user with ID: {}", id);
-        User updatedUser = service.updateUser(id, userDetails);
+        User updatedUser = userService.updateUser(id, userDetails);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
@@ -84,7 +82,7 @@ public class UserController {
     @PatchMapping("/{id}")
     public ResponseEntity<User> updateUserPartial(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
         logger.info("Partially updating user with ID: {}", id);
-        User updatedUser = service.updateUserPartial(id, updates);
+        User updatedUser = userService.updateUserPartial(id, updates);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
@@ -92,7 +90,7 @@ public class UserController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) throws UserNotFoundException {
         logger.info("Deleting user with ID: {}", id);
-        service.deleteUser(id);
+        userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

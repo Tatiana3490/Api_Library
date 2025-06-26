@@ -20,18 +20,18 @@ import java.util.Map;
 public class BookCategoryController {
 
     private final Logger logger = LoggerFactory.getLogger(BookCategoryController.class);
-    private final BookCategoryService service;
+    private final BookCategoryService bookCategoryService;
 
     @Autowired
     public BookCategoryController(BookCategoryService service) {
-        this.service = service;
+        this.bookCategoryService = service;
     }
 
     // GET: Listar todas las categorías
     @GetMapping
     public ResponseEntity<List<BookCategory>> getAllBookCategories() {
         logger.info("Fetching all book categories");
-        List<BookCategory> categories = service.getAllBookCategories();
+        List<BookCategory> categories = bookCategoryService.getAllBookCategories();
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
@@ -39,7 +39,7 @@ public class BookCategoryController {
     @GetMapping("/{id}")
     public ResponseEntity<BookCategory> getById(@PathVariable long id) throws BookCategoryNotFoundException {
         logger.info("Searching category by ID: {}", id);
-        BookCategory category = service.getBookCategoriesById(id);
+        BookCategory category = bookCategoryService.getBookCategoriesById(id);
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
 
@@ -47,7 +47,7 @@ public class BookCategoryController {
     @GetMapping("/name")
     public ResponseEntity<List<BookCategory>> getByName(@RequestParam String name) {
         logger.info("Searching category by name: {}", name);
-        List<BookCategory> categories = service.getBookCategoriesByName(name);
+        List<BookCategory> categories = bookCategoryService.getBookCategoriesByName(name);
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
@@ -55,7 +55,7 @@ public class BookCategoryController {
     @GetMapping("/description")
     public ResponseEntity<List<BookCategory>> getByDescription(@RequestParam String description) {
         logger.info("Searching category by description: {}", description);
-        List<BookCategory> categories = service.getBookCategoriesByDescription(description);
+        List<BookCategory> categories = bookCategoryService.getBookCategoriesByDescription(description);
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
@@ -63,7 +63,7 @@ public class BookCategoryController {
     @GetMapping("/active")
     public ResponseEntity<List<BookCategory>> getByActive(@RequestParam(defaultValue = "true") boolean active) {
         logger.info("Searching categories by active: {}", active);
-        List<BookCategory> categories = service.getBookCategoriesByActive(active);
+        List<BookCategory> categories = bookCategoryService.getBookCategoriesByActive(active);
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
@@ -71,7 +71,7 @@ public class BookCategoryController {
     @GetMapping("/creation-date")
     public ResponseEntity<List<BookCategory>> getByCreatedDate(@RequestParam LocalDate date) {
         logger.info("Searching categories by creation date: {}", date);
-        List<BookCategory> categories = service.getBookCategoriesByCreateDate(date);
+        List<BookCategory> categories = bookCategoryService.getBookCategoriesByCreateDate(date);
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
@@ -79,7 +79,7 @@ public class BookCategoryController {
     @GetMapping("/number-books")
     public ResponseEntity<List<BookCategory>> getByNumberBooks(@RequestParam int numberBooks) {
         logger.info("Searching categories with number of books: {}", numberBooks);
-        List<BookCategory> categories = service.getBookCategoriesByNumberBooks(numberBooks);
+        List<BookCategory> categories = bookCategoryService.getBookCategoriesByNumberBooks(numberBooks);
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
@@ -87,7 +87,7 @@ public class BookCategoryController {
     @GetMapping("/min-books")
     public ResponseEntity<List<BookCategory>> getWithMinBooks(@RequestParam int minBooks) {
         logger.info("Searching categories with at least {} books", minBooks);
-        List<BookCategory> categories = service.getBookCategoriesWithMinBooks(minBooks);
+        List<BookCategory> categories = bookCategoryService.getBookCategoriesWithMinBooks(minBooks);
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
@@ -95,7 +95,7 @@ public class BookCategoryController {
     @PostMapping
     public ResponseEntity<BookCategory> addCategory(@Valid @RequestBody BookCategory bookCategory) {
         logger.info("Adding new category: {}", bookCategory.getName());
-        BookCategory newCategory = service.saveBookCategory(bookCategory);
+        BookCategory newCategory = bookCategoryService.saveBookCategory(bookCategory);
         return new ResponseEntity<>(newCategory, HttpStatus.CREATED);
     }
 
@@ -104,7 +104,7 @@ public class BookCategoryController {
     public ResponseEntity<BookCategory> updateCategory(@PathVariable long id, @Valid @RequestBody BookCategory details)
             throws BookCategoryNotFoundException {
         logger.info("Updating category ID: {}", id);
-        BookCategory updated = service.updateBookCategory(id, details);
+        BookCategory updated = bookCategoryService.updateBookCategory(id, details);
         return new ResponseEntity<>(updated, HttpStatus.OK);
     }
 
@@ -113,7 +113,7 @@ public class BookCategoryController {
     public ResponseEntity<BookCategory> updatePartial(@PathVariable Long id, @RequestBody Map<String, Object> updates)
             throws BookCategoryNotFoundException {
         logger.info("Partially updating category ID: {}", id);
-        BookCategory updated = service.updateBookCategoryPartial(id, updates);
+        BookCategory updated = bookCategoryService.updateBookCategoryPartial(id, updates);
         return new ResponseEntity<>(updated, HttpStatus.OK);
     }
 
@@ -121,7 +121,7 @@ public class BookCategoryController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable long id) throws BookCategoryNotFoundException {
         logger.info("Deleting category ID: {}", id);
-        service.deleteBookCategory(id);
+        bookCategoryService.deleteBookCategory(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

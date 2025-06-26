@@ -22,22 +22,21 @@ import java.util.stream.Collectors;
 public class LoanController {
 
     private final Logger logger = LoggerFactory.getLogger(LoanController.class);
-    private final LoanService service;
+    private final LoanService loanService;
 
     @Autowired
     public LoanController(LoanService service) {
-        this.service = service;
+        this.loanService = service;
     }
 
-    @Autowired
-    private LoanService loanService;
+
 
     // GET: Listar todos los préstamos
     @GetMapping
     public List<LoanDTO> getAllLoans() {
         logger.info("Fetching all loans");
-        return service.getAllLoans().stream()
-                .map(service::convertToDTO)
+        return loanService.getAllLoans().stream()
+                .map(loanService::convertToDTO)
                 .collect(Collectors.toList());
     }
 
@@ -45,8 +44,8 @@ public class LoanController {
     @GetMapping("/{id}")
     public ResponseEntity<LoanDTO> getLoanById(@PathVariable long id) throws LoanNotFoundException {
         logger.info("Fetching loan by ID: {}", id);
-        Loan loan = service.getLoanById(id);
-        LoanDTO loanDTO = service.convertToDTO(loan);
+        Loan loan = loanService.getLoanById(id);
+        LoanDTO loanDTO = loanService.convertToDTO(loan);
         return new ResponseEntity<>(loanDTO, HttpStatus.OK);
     }
 
@@ -54,8 +53,8 @@ public class LoanController {
     @GetMapping("/customer-name")
     public ResponseEntity<List<LoanDTO>> getByCustomerName(@RequestParam String customerName) {
         logger.info("Fetching loans for customer: {}", customerName);
-        List<LoanDTO> loanDTOs = service.getLoanByCustomerName(customerName).stream()
-                .map(service::convertToDTO)
+        List<LoanDTO> loanDTOs = loanService.getLoanByCustomerName(customerName).stream()
+                .map(loanService::convertToDTO)
                 .collect(Collectors.toList());
         return new ResponseEntity<>(loanDTOs, HttpStatus.OK);
     }
@@ -64,8 +63,8 @@ public class LoanController {
     @GetMapping("/loan-date")
     public ResponseEntity<List<LoanDTO>> getByLoanDate(@RequestParam LocalDate loanDate) {
         logger.info("Fetching loans for loan date: {}", loanDate);
-        List<LoanDTO> loanDTOs = service.getLoanByLoanDate(loanDate).stream()
-                .map(service::convertToDTO)
+        List<LoanDTO> loanDTOs = loanService.getLoanByLoanDate(loanDate).stream()
+                .map(loanService::convertToDTO)
                 .collect(Collectors.toList());
         return new ResponseEntity<>(loanDTOs, HttpStatus.OK);
     }
@@ -76,8 +75,8 @@ public class LoanController {
             @RequestParam("startDate") LocalDate startDate,
             @RequestParam("endDate") LocalDate endDate) {
         logger.info("Fetching loans from {} to {}", startDate, endDate);
-        List<LoanDTO> loanDTOs = service.getLoansBetweenDates(startDate, endDate).stream()
-                .map(service::convertToDTO)
+        List<LoanDTO> loanDTOs = loanService.getLoansBetweenDates(startDate, endDate).stream()
+                .map(loanService::convertToDTO)
                 .collect(Collectors.toList());
         return new ResponseEntity<>(loanDTOs, HttpStatus.OK);
     }
@@ -86,8 +85,8 @@ public class LoanController {
     @GetMapping("/quantity")
     public ResponseEntity<List<LoanDTO>> getByQuantity(@RequestParam int quantity) {
         logger.info("Fetching loans by quantity: {}", quantity);
-        List<LoanDTO> loanDTOs = service.getLoanByQuantity(quantity).stream()
-                .map(service::convertToDTO)
+        List<LoanDTO> loanDTOs = loanService.getLoanByQuantity(quantity).stream()
+                .map(loanService::convertToDTO)
                 .collect(Collectors.toList());
         return new ResponseEntity<>(loanDTOs, HttpStatus.OK);
     }
@@ -96,8 +95,8 @@ public class LoanController {
     @PostMapping
     public ResponseEntity<LoanDTO> addLoan(@Valid @RequestBody Loan loan) {
         logger.info("Adding loan for customer: {}", loan.getCustomerName());
-        Loan newLoan = service.saveLoan(loan);
-        LoanDTO dto = service.convertToDTO(newLoan);
+        Loan newLoan = loanService.saveLoan(loan);
+        LoanDTO dto = loanService.convertToDTO(newLoan);
         return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
 
@@ -107,8 +106,8 @@ public class LoanController {
             @PathVariable long id,
             @Valid @RequestBody Loan loanDetails) throws LoanNotFoundException {
         logger.info("Updating loan ID: {}", id);
-        Loan updatedLoan = service.updateLoan(id, loanDetails);
-        LoanDTO dto = service.convertToDTO(updatedLoan);
+        Loan updatedLoan = loanService.updateLoan(id, loanDetails);
+        LoanDTO dto = loanService.convertToDTO(updatedLoan);
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
@@ -118,8 +117,8 @@ public class LoanController {
             @PathVariable long id,
             @RequestBody Map<String, Object> updates) {
         logger.info("Partially updating loan ID: {}", id);
-        Loan updatedLoan = service.updateLoanPartial(id, updates);
-        LoanDTO dto = service.convertToDTO(updatedLoan);
+        Loan updatedLoan = loanService.updateLoanPartial(id, updates);
+        LoanDTO dto = loanService.convertToDTO(updatedLoan);
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
@@ -127,7 +126,7 @@ public class LoanController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteLoan(@PathVariable long id) throws LoanNotFoundException {
         logger.info("Deleting loan ID: {}", id);
-        service.deleteLoan(id);
+        loanService.deleteLoan(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

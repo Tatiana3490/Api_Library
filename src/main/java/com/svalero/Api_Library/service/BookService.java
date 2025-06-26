@@ -1,5 +1,8 @@
 package com.svalero.Api_Library.service;
 
+import com.svalero.Api_Library.DTO.AuthorDTO;
+import com.svalero.Api_Library.DTO.BookCategoryDTO;
+import com.svalero.Api_Library.DTO.BookDTO;
 import com.svalero.Api_Library.domain.Book;
 import com.svalero.Api_Library.exception.BookNotFoundException;
 import com.svalero.Api_Library.repository.BookRepository;
@@ -10,6 +13,7 @@ import org.springframework.util.ReflectionUtils;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class BookService {
@@ -122,6 +126,43 @@ public class BookService {
     public List<Book> findBooksWithPriceGreaterThanNative(float price) {
         return bookRepository.findBooksWithPriceGreaterThanNative(price);
     }
+
+    // ===================== DTO =====================
+    public BookDTO convertToDTO(Book book) {
+        BookDTO dto = new BookDTO();
+        dto.setId(book.getId());
+        dto.setTitle(book.getTitle());
+        dto.setGenre(book.getGenre());
+        dto.setAvailable(book.isAvailable());
+
+        // Convertir Author a DTO
+        if (book.getAuthor() != null) {
+            AuthorDTO authorDTO = new AuthorDTO();
+            authorDTO.setId(book.getAuthor().getId());
+            authorDTO.setName(book.getAuthor().getName());
+            authorDTO.setSurname(book.getAuthor().getSurname());
+            dto.setAuthor(authorDTO);
+        }
+
+        // Convertir Categoría a DTO
+        if (book.getCategory() != null) {
+            BookCategoryDTO catDTO = new BookCategoryDTO();
+            catDTO.setId(book.getCategory().getId());
+            catDTO.setName(book.getCategory().getName());
+            dto.setCategory(catDTO);
+        }
+
+        return dto;
+    }
+
+    public List<BookDTO> getAllBooksDTO() {
+        List<Book> books = bookRepository.findAll();
+        return books.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+
+    }
+
 
 
 }
