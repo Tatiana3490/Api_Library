@@ -36,7 +36,7 @@ public class BookCategory {
     private int numberBooks;
 
     @OneToMany(mappedBy = "category")
-    @JsonBackReference(value = "book-category")
+    @JsonBackReference(value = "category_book")
     private List<Book> books;
 
 }

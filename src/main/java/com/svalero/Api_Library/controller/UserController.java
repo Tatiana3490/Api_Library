@@ -1,5 +1,6 @@
 package com.svalero.Api_Library.controller;
 
+import com.svalero.Api_Library.DTO.UserInDto;
 import com.svalero.Api_Library.domain.User;
 import com.svalero.Api_Library.exception.UserNotFoundException;
 import com.svalero.Api_Library.service.UserService;
@@ -63,8 +64,14 @@ public class UserController {
 
     // POST: Crear nuevo usuario
     @PostMapping
-    public ResponseEntity<User> addUser(@Valid @RequestBody User user) {
+    public ResponseEntity<User> addUser(@Valid @RequestBody UserInDto user) {
         logger.info("Adding new user: {}", user.getEmail());
+       System.out.println(user.getCreationDate());
+       System.out.println(user.getPassword());
+       System.out.println(user.getUsername());
+
+
+
         User newUser = userService.saveUser(user);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }

@@ -5,7 +5,10 @@ import com.svalero.Api_Library.DTO.BookCategoryDTO;
 import com.svalero.Api_Library.DTO.BookDTO;
 import com.svalero.Api_Library.domain.Book;
 import com.svalero.Api_Library.exception.BookNotFoundException;
+import com.svalero.Api_Library.repository.AuthorRepository;
+import com.svalero.Api_Library.repository.BookCategoryRepository;
 import com.svalero.Api_Library.repository.BookRepository;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
@@ -15,13 +18,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Data
 @Service
 public class BookService {
 
-    private final BookRepository bookRepository;
+    private  final BookRepository bookRepository;
+    private  AuthorRepository authorRepository;
+    private BookCategoryRepository bookCategoryRepository;
 
-    @Autowired
-    public BookService(BookRepository bookRepository) {
+
+    public BookService(AuthorRepository authorRepository, BookCategoryRepository bookCategoryRepository, BookRepository bookRepository) {
+        this.authorRepository = authorRepository;
+        this.bookCategoryRepository = bookCategoryRepository;
         this.bookRepository = bookRepository;
     }
 
@@ -30,6 +38,7 @@ public class BookService {
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
+
 
     public Book getBookById(long id) throws BookNotFoundException {
         return bookRepository.findById(id)

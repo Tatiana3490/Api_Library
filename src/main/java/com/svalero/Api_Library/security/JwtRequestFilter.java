@@ -28,6 +28,11 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain)
             throws ServletException, IOException {
+        String path= request.getServletPath();
+        //Excluye la autorización para el login
+        if(path.equals("/auth/login")){filterChain.doFilter(request, response);
+        return;}
+
 
         final String authorizationHeader = request.getHeader("Authorization");
 

@@ -1,5 +1,6 @@
 package com.svalero.Api_Library.service;
 
+import com.svalero.Api_Library.DTO.UserInDto;
 import com.svalero.Api_Library.domain.User;
 import com.svalero.Api_Library.exception.UserNotFoundException;
 import com.svalero.Api_Library.repository.UserRepository;
@@ -8,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
+import org.modelmapper.ModelMapper;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -23,6 +25,8 @@ public class UserService {
     }
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private ModelMapper modelMapper;
 
     //para obtener todos los usuarios
     public List<User> getAllUsers() {
@@ -46,11 +50,11 @@ public class UserService {
     }
 
     //para guardar un nuevo usuario
-    public User saveUser(User user) {
+    public User saveUser(UserInDto user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return userRepository.save(user);
+        User newUser= modelMapper.map(user, User.class);
+        return userRepository.save(newUser);
     }
-
 
     // Actualizar un usuario por ID
     public User updateUser(Long id, User userDetails) throws UserNotFoundException {

@@ -1,5 +1,6 @@
 package com.svalero.Api_Library.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,6 +32,7 @@ public class Author {
 
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JsonBackReference(value = "author_book")
     private List<Book> books;
 
 }

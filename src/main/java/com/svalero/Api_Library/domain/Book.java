@@ -32,10 +32,12 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
+    @JsonManagedReference(value = "category_book")
     private BookCategory category;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
+    @JsonManagedReference(value = "author_book")
     private Author author;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
