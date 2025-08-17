@@ -19,17 +19,27 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column(nullable = false)
     private String name;
+
     @Column(nullable = false)
     private String surname;
+
     @Column(nullable = false)
     private LocalDate birthdate;
+
     @Column
-    private Boolean active =true;
+    private Boolean active = true;
+
     @Column(nullable = false)
     private String nationality;
 
+    @Column(name = "latitude")
+    private Double latitude;
+
+    @Column(name = "longitude")
+    private Double longitude;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, orphanRemoval = true)
     @JsonBackReference(value = "author_book")

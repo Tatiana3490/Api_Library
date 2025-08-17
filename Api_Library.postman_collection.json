@@ -1,0 +1,1645 @@
+{
+	"info": {
+		"_postman_id": "db200f4e-92bf-4d35-951b-625097950ca1",
+		"name": "Api_Library",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40609576"
+	},
+	"item": [
+		{
+			"name": "Login (JWT)",
+			"item": [
+				{
+					"name": "Token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"isabel123\",\r\n  \"password\": \"isabelmola\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "All users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTQyNDMwMTksImV4cCI6MTc1NDMyOTQxOX0.nQq4FPJMx1XoM04C33M_o0AAxH_nqpxIPFu-__dwBJc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTQxNTE4NjgsImV4cCI6MTc1NDIzODI2OH0.3of1K4SrbFvJoIhufLqm0rLQdRdFnVmSxltPHNIXudU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/email?email=alicia@gmail.com",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"email"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "alicia@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add user Error",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Tati\",\r\n  \"username\": \"T8\",\r\n  \"email\": \"malformato-email\",\r\n  \"password\": \"abc\",\r\n  \"creationDate\": \"2025-02-30\",\r\n  \"active\": true\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTUyODIzMjEsImV4cCI6MTc1NTM2ODcyMX0.uJxFV5QEcgvnDhoWOAs_SRP1gtPzvs2CgS1riCXRN1E\"",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Diego\",\r\n  \"username\": \"diego123\",\r\n  \"email\": \"diego123@gmail.com\",\r\n  \"password\": \"diego123\",\r\n  \"creationDate\": \"2025-08-15\",\r\n  \"active\": true\r\n  \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by username",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/username?username=Tati8",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"username"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "Tati8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Active  users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/active",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update by id completly",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Jose\",\r\n  \"username\": \"JoseP\",\r\n  \"email\": \"john.jose@hotmail.com\",\r\n  \"password\": \"nuevaclave\",\r\n  \"active\": false\r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/34",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update by id Error",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Fantasma\",\r\n  \"username\": \"noExiste\",\r\n  \"email\": \"noexiste@fake.com\",\r\n  \"password\": \"SuperClave123\",\r\n  \"creationDate\": \"2025-01-01\",\r\n  \"active\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/99999",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"99999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update partially",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"active\": false\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/34",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"34"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authors",
+			"item": [
+				{
+					"name": "Add author",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA3ODc4NjAsImV4cCI6MTc1MDg3NDI2MH0.TbPC9oKgvwKjANXOL41jF_OcyL5ToDbCxhkCo-ob6RA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Tatiana\",\r\n  \"surname\": \"Alcubilla\",\r\n  \"birthdate\": \"1990-04-03\",\r\n  \"active\": true,\r\n  \"nationality\": \"Española\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/authors",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All authors",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTU0NDAzNTksImV4cCI6MTc1NTUyNjc1OX0.sP72L0RAaYmgzKCs5fY8-ehqqBWFYinfPdlbf41_tic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/authors",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTU0NDAzNTksImV4cCI6MTc1NTUyNjc1OX0.sP72L0RAaYmgzKCs5fY8-ehqqBWFYinfPdlbf41_tic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/authors/name?name=Isaac",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authors",
+								"name"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Isaac"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by surname",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTU0NDAzNTksImV4cCI6MTc1NTUyNjc1OX0.sP72L0RAaYmgzKCs5fY8-ehqqBWFYinfPdlbf41_tic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/authors/surname?surname=Asimov",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authors",
+								"surname"
+							],
+							"query": [
+								{
+									"key": "surname",
+									"value": "Asimov"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by nationality",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTU0NDAzNTksImV4cCI6MTc1NTUyNjc1OX0.sP72L0RAaYmgzKCs5fY8-ehqqBWFYinfPdlbf41_tic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/authors/nationality?nationality=Madrileño",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authors",
+								"nationality"
+							],
+							"query": [
+								{
+									"key": "nationality",
+									"value": "Madrileño"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by birthdate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTU0NDAzNTksImV4cCI6MTc1NTUyNjc1OX0.sP72L0RAaYmgzKCs5fY8-ehqqBWFYinfPdlbf41_tic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/authors/birthday?birthday=1616-04-21",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authors",
+								"birthday"
+							],
+							"query": [
+								{
+									"key": "birthday",
+									"value": "1616-04-21"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTU0NDAzNTksImV4cCI6MTc1NTUyNjc1OX0.sP72L0RAaYmgzKCs5fY8-ehqqBWFYinfPdlbf41_tic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/authors/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update author completly",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Isaac\",\r\n    \"surname\": \"Newton\",\r\n    \"birthdate\": \"1616-04-22\",\r\n    \"active\": false,\r\n    \"nationality\": \"Madrileño\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/authors/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update partially",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTU0NDAzNTksImV4cCI6MTc1NTUyNjc1OX0.sP72L0RAaYmgzKCs5fY8-ehqqBWFYinfPdlbf41_tic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nationality\": \"Rusa\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/authors/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete author",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTU0NDAzNTksImV4cCI6MTc1NTUyNjc1OX0.sP72L0RAaYmgzKCs5fY8-ehqqBWFYinfPdlbf41_tic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/authors/97",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"authors",
+								"97"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Book Categories",
+			"item": [
+				{
+					"name": "Add book categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTQyNDMwMTksImV4cCI6MTc1NDMyOTQxOX0.nQq4FPJMx1XoM04C33M_o0AAxH_nqpxIPFu-__dwBJc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Programación\",\r\n  \"description\": \"Programación\",\r\n  \"active\": true,\r\n  \"createdDate\": \"2019-08-03\",\r\n  \"numberBooks\": 7\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/book-categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"book-categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all book categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA3ODc4NjAsImV4cCI6MTc1MDg3NDI2MH0.TbPC9oKgvwKjANXOL41jF_OcyL5ToDbCxhkCo-ob6RA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/book-categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"book-categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Active categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/book-categories/active",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"book-categories",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"Ciencia Ficción Moderna\",\r\n   \"description\": \"Libros actualizados de ciencia ficción\",\r\n   \"active\": false,\r\n   \"createdDate\": \"2024-03-22\",\r\n   \"numberBooks\": 12\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/book-categories/98",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"book-categories",
+								"98"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/book-categories/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"book-categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "All books",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>ID</th>\r",
+									"        <th>Title</th>\r",
+									"        <th>Genre</th>\r",
+									"        <th>Pages</th>\r",
+									"        <th>Price</th>\r",
+									"        <th>Available</th>\r",
+									"    </tr>\r",
+									"    \r",
+									"    {{#each response}}\r",
+									"        <tr>\r",
+									"            <td>{{id}}</td>\r",
+									"            <td>{{title}}</td>\r",
+									"            <td>{{genre}}</td>\r",
+									"            <td>{{pages}}</td>\r",
+									"            <td>{{price}}</td>\r",
+									"            <td>{{available}}</td>\r",
+									"        </tr>\r",
+									"    {{/each}}\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return { response: pm.response.json() };\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTQyNDMwMTksImV4cCI6MTc1NDMyOTQxOX0.nQq4FPJMx1XoM04C33M_o0AAxH_nqpxIPFu-__dwBJc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/books",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new Book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTQyMTMyNDgsImV4cCI6MTc1NDI5OTY0OH0.2bjHtmAQ6r0bNll4FcmT_0o2NPOG2IRjO3IrFIU42Po",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"La vida de pi\",\r\n  \"genre\": \"Aventura\",\r\n  \"pages\": 500,\r\n  \"price\": 20.99,\r\n  \"available\": true,\r\n  \"author\": {\r\n    \"id\": 97\r\n  },\r\n  \"category\": {\r\n    \"id\": 98\r\n  }\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/books",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find a book by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA3ODc4NjAsImV4cCI6MTc1MDg3NDI2MH0.TbPC9oKgvwKjANXOL41jF_OcyL5ToDbCxhkCo-ob6RA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/books/66",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"66"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find book by title",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/books/title?title=El señor de los anillos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"title"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "El señor de los anillos"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find book by genre",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/books/genre?genre=Fantasía",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"genre"
+							],
+							"query": [
+								{
+									"key": "genre",
+									"value": "Fantasía"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find book by number of pages",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/books/pages?pages=1200",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"pages"
+							],
+							"query": [
+								{
+									"key": "pages",
+									"value": "1200"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find book by price",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/books/price?price=29.99",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"price"
+							],
+							"query": [
+								{
+									"key": "price",
+									"value": "29.99"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find book by availability",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/books/available?available=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"available"
+							],
+							"query": [
+								{
+									"key": "available",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update book by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Foundation and Empire\",\r\n  \"genre\": \"Sci-Fi\",\r\n  \"publicationDate\": \"1952-01-01\",\r\n  \"authorId\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/books/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update book partially by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\": 49.99\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/books/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete book by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA3ODc4NjAsImV4cCI6MTc1MDg3NDI2MH0.TbPC9oKgvwKjANXOL41jF_OcyL5ToDbCxhkCo-ob6RA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/books/98",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"98"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Loans",
+			"item": [
+				{
+					"name": "All loans",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/loans",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"loans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add loan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTQyNDMwMTksImV4cCI6MTc1NDMyOTQxOX0.nQq4FPJMx1XoM04C33M_o0AAxH_nqpxIPFu-__dwBJc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Loan-003\",\r\n  \"customerName\": \"Alicia\",\r\n  \"email\": \"alicia@gmail.com\",\r\n  \"loanDate\": \"2025-08-03\",\r\n  \"quantity\": 1,\r\n  \"book\": {\r\n    \"id\": 4\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/loans",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"loans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by username",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/loans/customer-name?customerName=Juan Pérez",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"loans",
+								"customer-name"
+							],
+							"query": [
+								{
+									"key": "customerName",
+									"value": "Juan Pérez"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by create date",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/loans/loan-date?loanDate=2025-06-03",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"loans",
+								"loan-date"
+							],
+							"query": [
+								{
+									"key": "loanDate",
+									"value": "2025-06-03"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find between 2 date",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/loans/range?startDate=2025-01-01&endDate=2025-06-02",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"loans",
+								"range"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2025-01-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-06-02"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by quantity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/loans/quantity?quantity=2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"loans",
+								"quantity"
+							],
+							"query": [
+								{
+									"key": "quantity",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/loans/65",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"loans",
+								"65"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/loans/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"loans",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Loan-001\",\r\n  \"customerName\": \"Tatiana\",\r\n  \"email\": \"tatiana@gmail.com\",\r\n  \"loanDate\": \"2025-06-03\",\r\n  \"quantity\": 2,\r\n  \"book\": {\r\n    \"id\": 4\r\n  }\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/loans/65",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"loans",
+								"65"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar parcialmente loan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpc2FiZWwxMjMiLCJpYXQiOjE3NTA2OTM5ODgsImV4cCI6MTc1MDc4MDM4OH0.IDZbVWtzPjwLOxURCmhL6P3Bb-A00VD_S87j8L9aQkw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"nuevoemaillargo@gmail.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/loans/65",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"loans",
+								"65"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
