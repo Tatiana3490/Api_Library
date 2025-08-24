@@ -1,6 +1,7 @@
 package com.svalero.Api_Library.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -16,27 +17,31 @@ import java.util.List;
 @AllArgsConstructor
 @Entity(name = "BookCategory")
 @Table(name = "book_categories")
-
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class BookCategory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @NotNull(message = "Name is required")
     @Column(nullable = false, unique = true)
     private String name;
+
     @Column(nullable = false)
     private String description;
+
     @Column(nullable = false)
     private Boolean active = true;
+
     @NotNull(message = "Date is required")
     @Column(name = "creation_date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate createdDate;
+
     @Column(name = "number_books", nullable = false)
     private int numberBooks;
 
     @OneToMany(mappedBy = "category")
-    @JsonBackReference(value = "category_book")
     private List<Book> books;
-
 }

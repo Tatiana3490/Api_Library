@@ -78,6 +78,8 @@ public class AuthorService {
         existingAuthor.setBirthdate(authorDetails.getBirthdate());
         existingAuthor.setNationality(authorDetails.getNationality());
         existingAuthor.setActive(authorDetails.getActive());
+        existingAuthor.setLatitude(authorDetails.getLatitude());
+        existingAuthor.setLongitude(authorDetails.getLongitude());
 
         return authorRepository.save(existingAuthor);
     }
@@ -86,6 +88,7 @@ public class AuthorService {
         Author author = authorRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Author not found with id: " + id));
 
+
         updates.forEach((key, value) ->{
             Field field = ReflectionUtils.findField(Author.class, key);
             if (field != null) {
@@ -93,6 +96,8 @@ public class AuthorService {
                 ReflectionUtils.setField(field, author, value);
             }
         });
+
+
 
         return authorRepository.save(author);
 

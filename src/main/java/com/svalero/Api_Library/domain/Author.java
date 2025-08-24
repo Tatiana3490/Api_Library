@@ -1,6 +1,7 @@
 package com.svalero.Api_Library.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity(name = "Author")
 @Table(name = "authors")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Author {
 
     @Id
@@ -35,14 +37,12 @@ public class Author {
     @Column(nullable = false)
     private String nationality;
 
-    @Column(name = "latitude")
+    @Column
     private Double latitude;
 
-    @Column(name = "longitude")
+    @Column
     private Double longitude;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, orphanRemoval = true)
-    @JsonBackReference(value = "author_book")
     private List<Book> books;
-
 }
