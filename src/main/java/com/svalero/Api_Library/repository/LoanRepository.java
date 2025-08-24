@@ -22,8 +22,12 @@ public interface LoanRepository extends CrudRepository<Loan, Long> {
     List<Loan> findByLoanDateBetween(LocalDate startDate, LocalDate endDate);
 
 
+
     // ================= CONSULTAS SQL NATIVAS ================= //
     @Query(value = "SELECT * FROM loans WHERE quantity >= :quantity", nativeQuery = true)
     List<Loan> findLoansWithQuantityGreaterThan(@Param("quantity") int quantity);
+    // Mayor que
+    @Query(value = "SELECT * FROM loans l WHERE l.quantity > :min", nativeQuery = true)
+    List<Loan> findLoansWithQuantityGreaterThanNative(@Param("min") int min);
 
 }

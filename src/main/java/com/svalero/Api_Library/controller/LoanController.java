@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,15 +30,12 @@ public class LoanController {
         this.service = service;
     }
 
-    @Autowired
-    private LoanService loanService;
-
     // GET: Listar todos los préstamos
     @GetMapping
     public List<LoanDTO> getAllLoans() {
         logger.info("Fetching all loans");
-        return service.getAllLoans().stream()
-                .map(service::convertToDTO)
+        return service.getAllLoans()
+                .stream().map(service::convertToDTO)
                 .collect(Collectors.toList());
     }
 
@@ -46,50 +44,60 @@ public class LoanController {
     public ResponseEntity<LoanDTO> getLoanById(@PathVariable long id) throws LoanNotFoundException {
         logger.info("Fetching loan by ID: {}", id);
         Loan loan = service.getLoanById(id);
-        LoanDTO loanDTO = service.convertToDTO(loan);
-        return new ResponseEntity<>(loanDTO, HttpStatus.OK);
+        return ResponseEntity.ok(service.convertToDTO(loan));
     }
 
     // GET: Buscar préstamos por nombre de cliente
     @GetMapping("/customer-name")
     public ResponseEntity<List<LoanDTO>> getByCustomerName(@RequestParam String customerName) {
         logger.info("Fetching loans for customer: {}", customerName);
-        List<LoanDTO> loanDTOs = service.getLoanByCustomerName(customerName).stream()
-                .map(service::convertToDTO)
+        List<LoanDTO> loanDTOs = service.getLoanByCustomerName(customerName)
+                .stream().map(service::convertToDTO)
                 .collect(Collectors.toList());
-        return new ResponseEntity<>(loanDTOs, HttpStatus.OK);
+        return ResponseEntity.ok(loanDTOs);
     }
 
-    // GET: Buscar préstamos por fecha
+    // GET: Buscar préstamos por fecha (ISO: yyyy-MM-dd)
     @GetMapping("/loan-date")
-    public ResponseEntity<List<LoanDTO>> getByLoanDate(@RequestParam LocalDate loanDate) {
+    public ResponseEntity<List<LoanDTO>> getByLoanDate(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate loanDate) {
         logger.info("Fetching loans for loan date: {}", loanDate);
-        List<LoanDTO> loanDTOs = service.getLoanByLoanDate(loanDate).stream()
-                .map(service::convertToDTO)
+        List<LoanDTO> loanDTOs = service.getLoanByLoanDate(loanDate)
+                .stream().map(service::convertToDTO)
                 .collect(Collectors.toList());
-        return new ResponseEntity<>(loanDTOs, HttpStatus.OK);
+        return ResponseEntity.ok(loanDTOs);
     }
 
-    // GET: Buscar préstamos entre dos fechas
+    // GET: Buscar préstamos entre dos fechas (ISO)
     @GetMapping("/range")
     public ResponseEntity<List<LoanDTO>> getLoansBetweenDates(
-            @RequestParam("startDate") LocalDate startDate,
-            @RequestParam("endDate") LocalDate endDate) {
+            @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam("endDate")   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
         logger.info("Fetching loans from {} to {}", startDate, endDate);
-        List<LoanDTO> loanDTOs = service.getLoansBetweenDates(startDate, endDate).stream()
-                .map(service::convertToDTO)
+        List<LoanDTO> loanDTOs = service.getLoansBetweenDates(startDate, endDate)
+                .stream().map(service::convertToDTO)
                 .collect(Collectors.toList());
-        return new ResponseEntity<>(loanDTOs, HttpStatus.OK);
+        return ResponseEntity.ok(loanDTOs);
     }
 
-    // GET: Buscar préstamos por cantidad
-    @GetMapping("/quantity")
-    public ResponseEntity<List<LoanDTO>> getByQuantity(@RequestParam int quantity) {
-        logger.info("Fetching loans by quantity: {}", quantity);
-        List<LoanDTO> loanDTOs = service.getLoanByQuantity(quantity).stream()
-                .map(service::convertToDTO)
+    // === CANTIDAD EXACTA (NO NATIVA) -> /loans/quantity/eq/{quantity}
+    @GetMapping("/quantity/eq/{quantity}")
+    public ResponseEntity<List<LoanDTO>> getByQuantity(@PathVariable int quantity) {
+        logger.info("Fetching loans by exact quantity: {}", quantity);
+        List<LoanDTO> loanDTOs = service.getLoanByQuantity(quantity)
+                .stream().map(service::convertToDTO)
                 .collect(Collectors.toList());
-        return new ResponseEntity<>(loanDTOs, HttpStatus.OK);
+        return ResponseEntity.ok(loanDTOs);
+    }
+
+    // === CANTIDAD MAYOR QUE (SQL NATIVA) -> /loans/quantity/native/gt/{min}
+    @GetMapping("/quantity/native/gt/{min}")
+    public ResponseEntity<List<LoanDTO>> getLoansWithQuantityGreaterThanNative(@PathVariable int min) {
+        logger.info("Fetching loans with quantity > {} (native)", min);
+        List<LoanDTO> loanDTOs = service.findLoansWithQuantityGreaterThanNative(min)
+                .stream().map(service::convertToDTO)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(loanDTOs);
     }
 
     // POST: Crear nuevo préstamo
@@ -97,8 +105,7 @@ public class LoanController {
     public ResponseEntity<LoanDTO> addLoan(@Valid @RequestBody Loan loan) {
         logger.info("Adding loan for customer: {}", loan.getCustomerName());
         Loan newLoan = service.saveLoan(loan);
-        LoanDTO dto = service.convertToDTO(newLoan);
-        return new ResponseEntity<>(dto, HttpStatus.CREATED);
+        return new ResponseEntity<>(service.convertToDTO(newLoan), HttpStatus.CREATED);
     }
 
     // PUT: Actualizar préstamo completo
@@ -108,8 +115,7 @@ public class LoanController {
             @Valid @RequestBody Loan loanDetails) throws LoanNotFoundException {
         logger.info("Updating loan ID: {}", id);
         Loan updatedLoan = service.updateLoan(id, loanDetails);
-        LoanDTO dto = service.convertToDTO(updatedLoan);
-        return new ResponseEntity<>(dto, HttpStatus.OK);
+        return ResponseEntity.ok(service.convertToDTO(updatedLoan));
     }
 
     // PATCH: Actualización parcial
@@ -119,8 +125,7 @@ public class LoanController {
             @RequestBody Map<String, Object> updates) {
         logger.info("Partially updating loan ID: {}", id);
         Loan updatedLoan = service.updateLoanPartial(id, updates);
-        LoanDTO dto = service.convertToDTO(updatedLoan);
-        return new ResponseEntity<>(dto, HttpStatus.OK);
+        return ResponseEntity.ok(service.convertToDTO(updatedLoan));
     }
 
     // DELETE: Eliminar préstamo
@@ -128,14 +133,6 @@ public class LoanController {
     public ResponseEntity<Void> deleteLoan(@PathVariable long id) throws LoanNotFoundException {
         logger.info("Deleting loan ID: {}", id);
         service.deleteLoan(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
-    // ========== CONSULTA SQL native ==========
-    @GetMapping("/quantity")
-    public ResponseEntity<List<Loan>> getLoansWithQuantityGreaterThan(@RequestParam int quantity) {
-        List<Loan> loans = loanService.findLoansWithQuantityGreaterThan(quantity);
-        return ResponseEntity.ok(loans);
+        return ResponseEntity.noContent().build();
     }
 }
-
