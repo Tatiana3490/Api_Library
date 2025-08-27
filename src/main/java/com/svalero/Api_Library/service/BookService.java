@@ -1,14 +1,8 @@
 package com.svalero.Api_Library.service;
 
-import com.svalero.Api_Library.DTO.AuthorDTO;
-import com.svalero.Api_Library.DTO.BookCategoryDTO;
-import com.svalero.Api_Library.DTO.BookDTO;
 import com.svalero.Api_Library.domain.Book;
 import com.svalero.Api_Library.exception.BookNotFoundException;
-import com.svalero.Api_Library.repository.AuthorRepository;
-import com.svalero.Api_Library.repository.BookCategoryRepository;
 import com.svalero.Api_Library.repository.BookRepository;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
@@ -16,29 +10,22 @@ import org.springframework.util.ReflectionUtils;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-@Data
 @Service
 public class BookService {
 
-    private  final BookRepository bookRepository;
-    private  AuthorRepository authorRepository;
-    private BookCategoryRepository bookCategoryRepository;
+    private final BookRepository bookRepository;
 
-
-    public BookService(AuthorRepository authorRepository, BookCategoryRepository bookCategoryRepository, BookRepository bookRepository) {
-        this.authorRepository = authorRepository;
-        this.bookCategoryRepository = bookCategoryRepository;
+    @Autowired
+    public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
-    // ===================== READ  =====================
+    // ===================== LECTURA (READ) =====================
 
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
-
 
     public Book getBookById(long id) throws BookNotFoundException {
         return bookRepository.findById(id)
@@ -65,13 +52,13 @@ public class BookService {
         return bookRepository.findByAvailable(availability);
     }
 
-    // ===================== CREATE =====================
+    // ===================== CREACIÓN (CREATE) =====================
 
     public Book saveBook(Book book) {
         return bookRepository.save(book);
     }
 
-    // ===================== UPDATE =====================
+    // ===================== ACTUALIZACIÓN COMPLETA (UPDATE) =====================
 
     public Book updateBook(Long id, Book bookDetails) throws BookNotFoundException {
         Book existingBook = bookRepository.findById(id)
@@ -103,7 +90,7 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    // ===================== DELETE =====================
+    // ===================== ELIMINACIÓN (DELETE) =====================
 
     public void deleteBook(Long id) throws BookNotFoundException {
         if (!bookRepository.existsById(id)) {
@@ -135,43 +122,6 @@ public class BookService {
     public List<Book> findBooksWithPriceGreaterThanNative(float price) {
         return bookRepository.findBooksWithPriceGreaterThanNative(price);
     }
-
-    // ===================== DTO =====================
-    public BookDTO convertToDTO(Book book) {
-        BookDTO dto = new BookDTO();
-        dto.setId(book.getId());
-        dto.setTitle(book.getTitle());
-        dto.setGenre(book.getGenre());
-        dto.setAvailable(book.isAvailable());
-
-        // Convertir Author a DTO
-        if (book.getAuthor() != null) {
-            AuthorDTO authorDTO = new AuthorDTO();
-            authorDTO.setId(book.getAuthor().getId());
-            authorDTO.setName(book.getAuthor().getName());
-            authorDTO.setSurname(book.getAuthor().getSurname());
-            dto.setAuthor(authorDTO);
-        }
-
-        // Convertir Categoría a DTO
-        if (book.getCategory() != null) {
-            BookCategoryDTO catDTO = new BookCategoryDTO();
-            catDTO.setId(book.getCategory().getId());
-            catDTO.setName(book.getCategory().getName());
-            dto.setCategory(catDTO);
-        }
-
-        return dto;
-    }
-
-    public List<BookDTO> getAllBooksDTO() {
-        List<Book> books = bookRepository.findAll();
-        return books.stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
-
-    }
-
 
 
 }

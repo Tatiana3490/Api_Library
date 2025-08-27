@@ -99,7 +99,7 @@ public class BookCategoryService {
                 .orElseThrow(() -> new RuntimeException("Book Category not found with id: " + id));
 
         updates.forEach((key, value) -> {
-            Field field = ReflectionUtils.findField(Author.class, key);
+            Field field = ReflectionUtils.findField(BookCategory.class, key);
             if (field != null) {
                 field.setAccessible(true);
                 ReflectionUtils.setField(field, bookCategory, value);

@@ -1,6 +1,5 @@
 package com.svalero.Api_Library.controller;
 
-import com.svalero.Api_Library.DTO.BookDTO;
 import com.svalero.Api_Library.domain.Book;
 import com.svalero.Api_Library.exception.BookNotFoundException;
 import com.svalero.Api_Library.service.BookService;
@@ -23,11 +22,11 @@ import java.util.Map;
 public class BookController {
 
     private final Logger logger = LoggerFactory.getLogger(BookController.class);
-    private final BookService bookService;
+    private final BookService service;
 
     @Autowired
     public BookController(BookService service) {
-        this.bookService = service;
+        this.service = service;
     }
 
     // ========== GET: Consultas básicas ==========
@@ -35,31 +34,31 @@ public class BookController {
     @GetMapping
     public ResponseEntity<List<Book>> getAllBooks() {
         logger.info("Fetching all books");
-        return new ResponseEntity<>(bookService.getAllBooks(), HttpStatus.OK);
+        return new ResponseEntity<>(service.getAllBooks(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable long id) throws BookNotFoundException {
         logger.info("Fetching book by ID: {}", id);
-        return new ResponseEntity<>(bookService.getBookById(id), HttpStatus.OK);
+        return new ResponseEntity<>(service.getBookById(id), HttpStatus.OK);
     }
 
     @GetMapping("/title")
     public ResponseEntity<List<Book>> getBooksByTitle(@RequestParam String title) {
         logger.info("Fetching books by title: {}", title);
-        return new ResponseEntity<>(bookService.getBookByTitle(title), HttpStatus.OK);
+        return new ResponseEntity<>(service.getBookByTitle(title), HttpStatus.OK);
     }
 
     @GetMapping("/genre")
     public ResponseEntity<List<Book>> getBooksByGenre(@RequestParam String genre) {
         logger.info("Fetching books by genre: {}", genre);
-        return new ResponseEntity<>(bookService.getBookByGenre(genre), HttpStatus.OK);
+        return new ResponseEntity<>(service.getBookByGenre(genre), HttpStatus.OK);
     }
 
     @GetMapping("/available")
     public ResponseEntity<List<Book>> getBooksByAvailable(@RequestParam boolean available) {
         logger.info("Fetching books by availability: {}", available);
-        return new ResponseEntity<>(bookService.getBookByAvailability(available), HttpStatus.OK);
+        return new ResponseEntity<>(service.getBookByAvailability(available), HttpStatus.OK);
     }
 
     // ========== GET: Filtros combinados (3 campos) ==========
@@ -71,7 +70,7 @@ public class BookController {
             @RequestParam String genre) {
         logger.info("Fetching books by title={}, available={}, genre={}", title, available, genre);
         return new ResponseEntity<>(
-                bookService.findBooksByTitleAndAvailableAndGenre(title, available, genre),
+                service.findBooksByTitleAndAvailableAndGenre(title, available, genre),
                 HttpStatus.OK
         );
     }
@@ -81,19 +80,19 @@ public class BookController {
     @GetMapping("/pages-greater-than")
     public ResponseEntity<List<Book>> getBooksWithPagesGreaterThan(@RequestParam int pages) {
         logger.info("Fetching books with more than {} pages", pages);
-        return new ResponseEntity<>(bookService.findBooksWithPagesGreaterThan(pages), HttpStatus.OK);
+        return new ResponseEntity<>(service.findBooksWithPagesGreaterThan(pages), HttpStatus.OK);
     }
 
     @GetMapping("/price-less-than")
     public ResponseEntity<List<Book>> getBooksWithPriceLessThan(@RequestParam float price) {
         logger.info("Fetching books with price less than {}", price);
-        return new ResponseEntity<>(bookService.findBooksWithPriceLessThan(price), HttpStatus.OK);
+        return new ResponseEntity<>(service.findBooksWithPriceLessThan(price), HttpStatus.OK);
     }
 
     @GetMapping("/genre-contains")
     public ResponseEntity<List<Book>> getBooksWithGenreLike(@RequestParam String keyword) {
         logger.info("Fetching books where genre contains '{}'", keyword);
-        return new ResponseEntity<>(bookService.findBooksWithGenreLike(keyword), HttpStatus.OK);
+        return new ResponseEntity<>(service.findBooksWithGenreLike(keyword), HttpStatus.OK);
     }
 
     // ========== POST: Crear libro ==========
@@ -101,9 +100,7 @@ public class BookController {
     @PostMapping
     public ResponseEntity<Book> addBook(@Valid @RequestBody Book book) {
         logger.info("Adding new book: {}", book.getTitle());
-        Book savedBook = bookService.saveBook(book);
-        Book fullBook = bookService.getBookById(savedBook.getId());
-        return new ResponseEntity<>(fullBook, HttpStatus.CREATED);
+        return new ResponseEntity<>(service.saveBook(book), HttpStatus.CREATED);
     }
 
     // ========== PUT: Actualización completa ==========
@@ -112,7 +109,7 @@ public class BookController {
     public ResponseEntity<Book> updateBook(@PathVariable long id, @Valid @RequestBody Book book)
             throws BookNotFoundException {
         logger.info("Updating book with ID: {}", id);
-        return new ResponseEntity<>(bookService.updateBook(id, book), HttpStatus.OK);
+        return new ResponseEntity<>(service.updateBook(id, book), HttpStatus.OK);
     }
 
     // ========== PATCH: Actualización parcial ==========
@@ -121,7 +118,7 @@ public class BookController {
     public ResponseEntity<Book> updateBookPartial(@PathVariable long id, @RequestBody Map<String, Object> updates)
             throws BookNotFoundException {
         logger.info("Partially updating book with ID: {}", id);
-        return new ResponseEntity<>(bookService.updateBookPartial(id, updates), HttpStatus.OK);
+        return new ResponseEntity<>(service.updateBookPartial(id, updates), HttpStatus.OK);
     }
 
     // ========== DELETE: Eliminar libro ==========
@@ -129,14 +126,14 @@ public class BookController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable long id) throws BookNotFoundException {
         logger.info("Deleting book with ID: {}", id);
-        bookService.deleteBook(id);
+        service.deleteBook(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     // ========== CONSULTA SQL native ==========
     @GetMapping("/price-greater-than-native")
     public ResponseEntity<List<Book>> getBooksWithPriceGreaterThanNative(@RequestParam float price) {
         logger.info("Fetching books with native SQL price > {}", price);
-        return new ResponseEntity<>(bookService.findBooksWithPriceGreaterThanNative(price), HttpStatus.OK);
+        return new ResponseEntity<>(service.findBooksWithPriceGreaterThanNative(price), HttpStatus.OK);
     }
 
     // ========== Para subir CSV ============
@@ -158,7 +155,7 @@ public class BookController {
                 book.setPrice(Float.parseFloat(data[3].trim()));
                 book.setAvailable(Boolean.parseBoolean(data[4].trim()));
 
-                bookService.saveBook(book);
+                service.saveBook(book);
             }
             return new ResponseEntity<>("Libros cargados correctamente", HttpStatus.OK);
         } catch (Exception e) {
@@ -166,20 +163,6 @@ public class BookController {
             return new ResponseEntity<>("Error al procesar el fichero", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    // ========== DTO ============
-    @GetMapping("/books/summary")
-    public ResponseEntity<List<BookDTO>> getAllBooksDTO() {
-        return new ResponseEntity<>(bookService.getAllBooksDTO(), HttpStatus.OK);
-    }
-
-    @GetMapping("/books/{id}/summary")
-    public ResponseEntity<BookDTO> getBookAsDTO(@PathVariable long id) throws BookNotFoundException {
-        Book book = bookService.getBookById(id);
-        BookDTO dto = bookService.convertToDTO(book);
-        return new ResponseEntity<>(dto, HttpStatus.OK);
-    }
-
-
 
 
 }
