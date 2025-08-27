@@ -1,5 +1,6 @@
 package com.svalero.Api_Library.controller;
 
+
 import com.svalero.Api_Library.domain.User;
 import com.svalero.Api_Library.exception.UserNotFoundException;
 import com.svalero.Api_Library.service.UserService;
@@ -19,6 +20,7 @@ import java.util.Map;
 public class UserController {
 
     private final Logger logger = LoggerFactory.getLogger(UserController.class);
+
     private final UserService service;
 
     @Autowired
@@ -26,10 +28,7 @@ public class UserController {
         this.service = service;
     }
 
-    @Autowired
-    private UserService userService;
-
-    // GET: Listar todos los usuarios
+    // ========== GET: Listar todos los usuarios ==========
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         logger.info("Fetching all users");
@@ -37,7 +36,7 @@ public class UserController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    // GET: Obtener usuario por email
+    // ========== GET: Obtener usuario por email ==========
     @GetMapping("/email")
     public ResponseEntity<User> getByEmail(@RequestParam String email) {
         logger.info("Searching user by email: {}", email);
@@ -45,7 +44,7 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    // GET: Obtener usuario por nombre de usuario
+    // ========== GET: Obtener usuario por username ==========
     @GetMapping("/username")
     public ResponseEntity<User> getByUsername(@RequestParam String username) {
         logger.info("Searching user by username: {}", username);
@@ -53,7 +52,7 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    // GET: Usuarios activos
+    // ========== GET: Usuarios activos ==========
     @GetMapping("/active")
     public ResponseEntity<List<User>> getActiveUsers() {
         logger.info("Fetching active users");
@@ -63,32 +62,34 @@ public class UserController {
                 : new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    // POST: Crear nuevo usuario
+    // ========== POST: Crear nuevo usuario ==========
     @PostMapping
-    public ResponseEntity<User> addUser(@Valid @RequestBody User user) {
-        logger.info("Adding new user: {}", user.getEmail());
-        User newUser = service.saveUser(user);
+    public ResponseEntity<User> addUser(@Valid @RequestBody User dto) {
+        logger.info("Adding new user: {}", dto.getEmail());
+        User newUser = service.saveUser(dto); // ← ahora le pasamos el DTO correcto
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
-    // PUT: Actualizar usuario completo
+    // ========== PUT: Actualización completa ==========
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @Valid @RequestBody User userDetails)
+    public ResponseEntity<User> updateUser(@PathVariable Long id,
+                                           @Valid @RequestBody User dto)
             throws UserNotFoundException {
         logger.info("Updating user with ID: {}", id);
-        User updatedUser = service.updateUser(id, userDetails);
+        User updatedUser = service.updateUser(id, dto);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
-    // PATCH: Actualización parcial
+    // ========== PATCH: Actualización parcial ==========
     @PatchMapping("/{id}")
-    public ResponseEntity<User> updateUserPartial(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
+    public ResponseEntity<User> updateUserPartial(@PathVariable Long id,
+                                                  @RequestBody Map<String, Object> updates) {
         logger.info("Partially updating user with ID: {}", id);
         User updatedUser = service.updateUserPartial(id, updates);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
-    // DELETE: Eliminar usuario
+    // ========== DELETE: Eliminar usuario ==========
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) throws UserNotFoundException {
         logger.info("Deleting user with ID: {}", id);
@@ -96,10 +97,11 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    // ========== CONSULTA SQL native ==========
+    // ========== GET (consulta “search”) ==========
     @GetMapping("/search")
     public ResponseEntity<List<User>> getUsersByNameContaining(@RequestParam String name) {
-        List<User> users = userService.findUsersByNameContaining(name);
+        // 🧹 He quitado el segundo UserService duplicado; usamos el mismo 'service'
+        List<User> users = service.findUsersByNameContaining(name);
         return ResponseEntity.ok(users);
     }
 }
