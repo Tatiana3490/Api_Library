@@ -61,7 +61,7 @@ public class LoanService {
         // Si no existe, esto lanza LoanNotFoundException
         Loan existingLoan = getLoanById(id);
 
-        // 👇 "Soy dummie": aquí copio campo a campo lo que sí permito actualizar.
+        // aquí copio campo a campo lo que sí permito actualizar.
         existingLoan.setName(loanDetails.getName());
         existingLoan.setCustomerName(loanDetails.getCustomerName());
         existingLoan.setEmail(loanDetails.getEmail());
@@ -78,7 +78,7 @@ public class LoanService {
         Loan loan = loanRepository.findById(id)
                 .orElseThrow(() -> new LoanNotFoundException("Loan not found with id: " + id));
 
-        // 👇 "Soy dummie": si me pasan claves que coinciden con atributos de Loan, intento poner su valor.
+        //  si me pasan claves que coinciden con atributos de Loan, intento poner su valor.
         //      - Convierto tipos simples cuando hace falta (p.ej., String -> LocalDate).
         //      - Para relaciones (book) solo permito actualizar via bookId (más seguro).
         for (Map.Entry<String, Object> entry : updates.entrySet()) {
@@ -116,7 +116,7 @@ public class LoanService {
             if (field != null) {
                 field.setAccessible(true);
 
-                // 👇 Conversión muy básica para Strings numéricos → int/long si el field lo requiere
+                // Conversión muy básica para Strings numéricos → int/long si el field lo requiere
                 Class<?> type = field.getType();
                 Object coerced = value;
 
@@ -175,7 +175,7 @@ public class LoanService {
 
     /**
      * Convierto Loan a LoanDTO para no devolver todo el objeto (evito ciclos y JSON enormes).
-     * "Soy dummie": aquí solo saco lo que quiero exponer por API.
+     * Aquí solo saco lo que quiero exponer por API.
      */
     public LoanDTO convertToDTO(Loan loan) {
         LoanDTO dto = new LoanDTO();
