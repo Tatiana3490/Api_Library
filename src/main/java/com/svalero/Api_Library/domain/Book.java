@@ -2,7 +2,10 @@ package com.svalero.Api_Library.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,15 +21,19 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotBlank
     @NotNull(message = "Book name is required")
     @Column(name = "title", nullable = false, unique = true)
     private String title;
     @Column
     private String genre;
+    @Min(1)
     @Column
     private int pages;
+    @Positive
     @Column
     private double price;
+    @NotNull
     @Column
     private boolean available;
 
