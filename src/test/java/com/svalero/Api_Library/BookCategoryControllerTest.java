@@ -23,7 +23,6 @@ import java.util.Map;
 
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
-import static org.springframework.data.jpa.domain.AbstractAuditable_.createdDate;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -113,6 +112,7 @@ class BookCategoryControllerTest {
         verifyNoMoreInteractions(service);
     }
 
+
     // ===================== GET con filtros =====================
 
     @Test
@@ -159,7 +159,7 @@ class BookCategoryControllerTest {
     }
 
     @Test
-    @DisplayName("GET /book-categories/created-date?date=yyyy-MM-dd -> 200 OK")
+    @DisplayName("GET /book-categories/creation-date?date=yyyy-MM-dd -> 200 OK")
     void getByCreationDate_Returns200() throws Exception {
         LocalDate date = LocalDate.parse("2020-01-01");
         when(service.getBookCategoriesByCreateDate(date))
@@ -234,6 +234,16 @@ class BookCategoryControllerTest {
          verifyNoInteractions(service);
      }
 
+    @Test
+    @DisplayName("POST /book-categories -> 400 si description está en blanco")
+    void add_Returns400_WhenDescriptionBlank() throws Exception {
+        BookCategory invalid = cat(0,"Sci-Fi","", true, LocalDate.now(), 0);
+        mockMvc.perform(post("/book-categories")
+                        .contentType(APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(invalid)))
+                .andExpect(status().isBadRequest());
+        verifyNoInteractions(service);
+    }
     // ===================== PUT =====================
 
     @Test
@@ -330,6 +340,46 @@ class BookCategoryControllerTest {
 
         verify(service).deleteBookCategory(999L);
         verifyNoMoreInteractions(service);
+    }
+
+    @Test
+    @DisplayName("POST /book-categories -> 400 si numberBooks < 0")
+    void add_Returns400_WhenNegativeBooks() throws Exception {
+        BookCategory invalid = cat(0,"Sci-Fi","desc", true, LocalDate.now(), -1);
+
+        mockMvc.perform(post("/book-categories")
+                        .contentType(APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(invalid)))
+                .andExpect(status().isBadRequest());
+
+        verifyNoInteractions(service);
+    }
+
+    @Test
+    @DisplayName("POST /book-categories -> 400 si active es null")
+    void add_Returns400_WhenActiveIsNull() throws Exception {
+        BookCategory invalid = cat(0,"Sci-Fi","desc", true, LocalDate.now(), 0);
+        invalid.setActive(null);
+
+        mockMvc.perform(post("/book-categories")
+                        .contentType(APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(invalid)))
+                .andExpect(status().isBadRequest());
+
+        verifyNoInteractions(service);
+    }
+
+    @Test
+    @DisplayName("POST /book-categories -> 400 si createdDate es null")
+    void add_Returns400_WhenCreatedDateIsNull() throws Exception {
+        BookCategory invalid = cat(0,"Sci-Fi","desc", true, null, 0);
+
+        mockMvc.perform(post("/book-categories")
+                        .contentType(APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(invalid)))
+                .andExpect(status().isBadRequest());
+
+        verifyNoInteractions(service);
     }
 
 
