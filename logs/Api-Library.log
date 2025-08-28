@@ -5593,3 +5593,458 @@ java.lang.NumberFormatException: For input string: "NOT_A_NUMBER"
 2025-08-28 18:41:06,844 INFO c.s.A.c.BookController {getBooksWithGenreLike} [main] Fetching books where genre contains 'Fi'
 2025-08-28 18:41:06,857 INFO c.s.A.c.BookController {getBooksByAvailable} [main] Fetching books by availability: true
 2025-08-28 18:41:06,865 INFO c.s.A.c.BookController {getAllBooks} [main] Fetching all books
+2025-08-28 19:16:46,248 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 19:16:46,357 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting AuthorControllerTest using Java 21.0.5 with PID 14152 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 19:16:46,359 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 19:16:50,041 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: db947177-fae6-454e-9f56-64cb029d230e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 19:16:50,101 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 19:16:50,405 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 19:16:50,406 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 19:16:50,409 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 2 ms
+2025-08-28 19:16:50,467 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started AuthorControllerTest in 4.84 seconds (process running for 6.298)
+2025-08-28 19:16:50,633 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
+2025-08-28 19:16:50,639 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
+2025-08-28 19:17:21,490 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 19:17:21,599 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting AuthorControllerTest using Java 21.0.5 with PID 6076 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 19:17:21,601 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 19:17:25,532 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: 7ac6a967-e879-41cc-8586-6f796fd27cf0
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 19:17:25,592 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 19:17:25,920 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 19:17:25,921 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 19:17:25,924 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 2 ms
+2025-08-28 19:17:25,979 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started AuthorControllerTest in 5.123 seconds (process running for 6.523)
+2025-08-28 19:17:26,582 INFO c.s.A.c.AuthorController {addAuthor} [main] BEGIN addAuthor - Adding new author: Isaac
+2025-08-28 19:17:26,587 INFO c.s.A.c.AuthorController {addAuthor} [main] END addAuthor - Author added with ID: 10
+2025-08-28 19:17:26,733 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
+2025-08-28 19:17:26,734 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
+2025-08-28 19:17:50,926 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 19:17:51,085 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting AuthorControllerTest using Java 21.0.5 with PID 23036 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 19:17:51,087 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 19:17:55,039 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: 97a64b80-0e1b-492a-8d28-dad30b1425c9
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 19:17:55,095 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 19:17:55,440 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 19:17:55,441 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 19:17:55,443 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 2 ms
+2025-08-28 19:17:55,499 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started AuthorControllerTest in 5.224 seconds (process running for 6.682)
+2025-08-28 19:17:55,998 INFO c.s.A.c.AuthorController {addAuthor} [main] BEGIN addAuthor - Adding new author: Isaac
+2025-08-28 19:17:56,003 INFO c.s.A.c.AuthorController {addAuthor} [main] END addAuthor - Author added with ID: 10
+2025-08-28 19:17:56,148 INFO c.s.A.c.AuthorController {addAuthor} [main] BEGIN addAuthor - Adding new author: 
+2025-08-28 19:17:56,159 ERROR c.s.A.e.GlobalExceptionHandler {handleGeneralException} [main] Error 500 inesperado
+java.lang.NullPointerException: Cannot invoke "com.svalero.Api_Library.domain.Author.getId()" because "newAuthor" is null
+	at com.svalero.Api_Library.controller.AuthorController.addAuthor(AuthorController.java:44)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:257)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1088)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at org.springframework.test.web.servlet.TestDispatcherServlet.service(TestDispatcherServlet.java:72)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.springframework.mock.web.MockFilterChain$ServletFilterProxy.doFilter(MockFilterChain.java:165)
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
+	at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201)
+	at com.svalero.Api_Library.AuthorControllerTest.addAuthor_Returns400_WhenInvalid(AuthorControllerTest.java:111)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:767)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$8(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+2025-08-28 19:17:56,203 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
+2025-08-28 19:17:56,204 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
+2025-08-28 19:44:09,611 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 19:44:09,711 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting AuthorControllerTest using Java 21.0.5 with PID 24084 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 19:44:09,713 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 19:44:13,458 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: 9910349d-41f1-47b2-8bc5-17113b373cde
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 19:44:13,504 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 19:44:13,785 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 19:44:13,786 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 19:44:13,788 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 1 ms
+2025-08-28 19:44:13,839 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started AuthorControllerTest in 4.882 seconds (process running for 6.358)
+2025-08-28 19:44:14,334 INFO c.s.A.c.AuthorController {addAuthor} [main] BEGIN addAuthor - Adding new author: Isaac
+2025-08-28 19:44:14,338 INFO c.s.A.c.AuthorController {addAuthor} [main] END addAuthor - Author added with ID: 10
+2025-08-28 19:44:14,505 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Birthdate is required
+2025-08-28 19:44:14,530 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
+2025-08-28 19:44:14,532 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
+2025-08-28 19:45:00,038 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 19:45:00,129 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting AuthorControllerTest using Java 21.0.5 with PID 18300 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 19:45:00,130 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 19:45:03,526 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: 196de3be-5db8-4052-b75e-78d9e6e983e2
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 19:45:03,576 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 19:45:03,894 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 19:45:03,895 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 19:45:03,897 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 1 ms
+2025-08-28 19:45:03,946 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started AuthorControllerTest in 4.47 seconds (process running for 5.688)
+2025-08-28 19:45:04,441 INFO c.s.A.c.AuthorController {addAuthor} [main] BEGIN addAuthor - Adding new author: Isaac
+2025-08-28 19:45:04,447 INFO c.s.A.c.AuthorController {addAuthor} [main] END addAuthor - Author added with ID: 10
+2025-08-28 19:45:04,602 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Birthdate is required
+2025-08-28 19:45:04,642 INFO c.s.A.c.AuthorController {getAuthorByName} [main] Searching author by name: Frank
+2025-08-28 19:45:04,667 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
+2025-08-28 19:45:04,668 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
+2025-08-28 19:45:26,110 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 19:45:26,160 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting AuthorControllerTest using Java 21.0.5 with PID 18108 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 19:45:26,161 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 19:45:29,782 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: ca92ee5c-36b4-468b-86cd-cf526d2c88f9
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 19:45:29,841 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 19:45:30,130 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 19:45:30,131 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 19:45:30,133 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 2 ms
+2025-08-28 19:45:30,182 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started AuthorControllerTest in 4.665 seconds (process running for 5.883)
+2025-08-28 19:45:30,727 INFO c.s.A.c.AuthorController {addAuthor} [main] BEGIN addAuthor - Adding new author: Isaac
+2025-08-28 19:45:30,732 INFO c.s.A.c.AuthorController {addAuthor} [main] END addAuthor - Author added with ID: 10
+2025-08-28 19:45:30,893 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Name is required
+2025-08-28 19:45:30,929 INFO c.s.A.c.AuthorController {getAuthorByName} [main] Searching author by name: Frank
+2025-08-28 19:45:30,954 INFO c.s.A.c.AuthorController {getAuthorBySurname} [main] Searching author by surname: Herbert
+2025-08-28 19:45:30,966 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
+2025-08-28 19:45:30,967 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
+2025-08-28 19:45:55,816 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 19:45:55,909 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting AuthorControllerTest using Java 21.0.5 with PID 27280 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 19:45:55,911 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 19:45:59,550 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: 84a7343a-e9fe-4314-b5d0-63cba61216a8
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 19:45:59,598 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 19:46:00,018 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 19:46:00,020 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 19:46:00,024 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 2 ms
+2025-08-28 19:46:00,104 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started AuthorControllerTest in 4.879 seconds (process running for 6.246)
+2025-08-28 19:46:00,631 INFO c.s.A.c.AuthorController {addAuthor} [main] BEGIN addAuthor - Adding new author: Isaac
+2025-08-28 19:46:00,642 INFO c.s.A.c.AuthorController {addAuthor} [main] END addAuthor - Author added with ID: 10
+2025-08-28 19:46:00,853 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Birthdate is required
+2025-08-28 19:46:00,900 INFO c.s.A.c.AuthorController {getAuthorByName} [main] Searching author by name: Frank
+2025-08-28 19:46:00,929 INFO c.s.A.c.AuthorController {getAuthorBySurname} [main] Searching author by surname: Herbert
+2025-08-28 19:46:00,942 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
+2025-08-28 19:46:00,944 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
+2025-08-28 19:46:00,959 INFO c.s.A.c.AuthorController {getAuthorByNationality} [main] Searching author by nationality: USA
+2025-08-28 19:46:15,345 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 19:46:15,485 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting AuthorControllerTest using Java 21.0.5 with PID 14104 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 19:46:15,486 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 19:46:18,946 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: c8788239-37b0-452c-bb4e-2bd82e2b52d6
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 19:46:19,001 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 19:46:19,302 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 19:46:19,303 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 19:46:19,305 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 1 ms
+2025-08-28 19:46:19,355 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started AuthorControllerTest in 4.59 seconds (process running for 5.924)
+2025-08-28 19:46:19,819 INFO c.s.A.c.AuthorController {addAuthor} [main] BEGIN addAuthor - Adding new author: Isaac
+2025-08-28 19:46:19,826 INFO c.s.A.c.AuthorController {addAuthor} [main] END addAuthor - Author added with ID: 10
+2025-08-28 19:46:19,971 INFO c.s.A.c.AuthorController {getAuthorByBirthday} [main] Searching author by birthday: 1920-10-08
+2025-08-28 19:46:20,006 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Name is required
+2025-08-28 19:46:20,037 INFO c.s.A.c.AuthorController {getAuthorByName} [main] Searching author by name: Frank
+2025-08-28 19:46:20,049 INFO c.s.A.c.AuthorController {getAuthorBySurname} [main] Searching author by surname: Herbert
+2025-08-28 19:46:20,060 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
+2025-08-28 19:46:20,061 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
+2025-08-28 19:46:20,071 INFO c.s.A.c.AuthorController {getAuthorByNationality} [main] Searching author by nationality: USA
+2025-08-28 19:46:40,641 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 19:46:40,710 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting AuthorControllerTest using Java 21.0.5 with PID 10568 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 19:46:40,711 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 19:46:44,105 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: e20a6bbb-356d-4ded-acb1-17ce5a718489
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 19:46:44,156 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 19:46:44,458 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 19:46:44,459 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 19:46:44,461 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 1 ms
+2025-08-28 19:46:44,511 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started AuthorControllerTest in 4.48 seconds (process running for 5.736)
+2025-08-28 19:46:45,006 INFO c.s.A.c.AuthorController {addAuthor} [main] BEGIN addAuthor - Adding new author: Isaac
+2025-08-28 19:46:45,013 INFO c.s.A.c.AuthorController {addAuthor} [main] END addAuthor - Author added with ID: 10
+2025-08-28 19:46:45,173 INFO c.s.A.c.AuthorController {getAuthorByBirthday} [main] Searching author by birthday: 1920-10-08
+2025-08-28 19:46:45,217 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Name is required
+2025-08-28 19:46:45,249 INFO c.s.A.c.AuthorController {getAuthorById} [main] Searching author by ID: 1
+2025-08-28 19:46:45,269 INFO c.s.A.c.AuthorController {getAuthorByName} [main] Searching author by name: Frank
+2025-08-28 19:46:45,282 INFO c.s.A.c.AuthorController {getAuthorBySurname} [main] Searching author by surname: Herbert
+2025-08-28 19:46:45,295 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
+2025-08-28 19:46:45,296 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
+2025-08-28 19:46:45,308 INFO c.s.A.c.AuthorController {getAuthorByNationality} [main] Searching author by nationality: USA
+2025-08-28 19:47:08,340 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 19:47:08,445 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting AuthorControllerTest using Java 21.0.5 with PID 7668 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 19:47:08,447 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 19:47:11,951 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: 74dcb68a-54ff-42ac-ab61-11e2c6ecb4d2
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 19:47:11,997 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 19:47:12,326 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 19:47:12,326 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 19:47:12,328 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 1 ms
+2025-08-28 19:47:12,393 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started AuthorControllerTest in 4.596 seconds (process running for 5.845)
+2025-08-28 19:47:12,583 INFO c.s.A.c.AuthorController {getAuthorById} [main] Searching author by ID: 999
+2025-08-28 19:47:12,591 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: not found
+2025-08-28 19:47:13,082 INFO c.s.A.c.AuthorController {addAuthor} [main] BEGIN addAuthor - Adding new author: Isaac
+2025-08-28 19:47:13,084 INFO c.s.A.c.AuthorController {addAuthor} [main] END addAuthor - Author added with ID: 10
+2025-08-28 19:47:13,176 INFO c.s.A.c.AuthorController {getAuthorByBirthday} [main] Searching author by birthday: 1920-10-08
+2025-08-28 19:47:13,209 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Name is required
+2025-08-28 19:47:13,225 INFO c.s.A.c.AuthorController {getAuthorById} [main] Searching author by ID: 1
+2025-08-28 19:47:13,255 INFO c.s.A.c.AuthorController {getAuthorByName} [main] Searching author by name: Frank
+2025-08-28 19:47:13,265 INFO c.s.A.c.AuthorController {getAuthorBySurname} [main] Searching author by surname: Herbert
+2025-08-28 19:47:13,275 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
+2025-08-28 19:47:13,275 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
+2025-08-28 19:47:13,286 INFO c.s.A.c.AuthorController {getAuthorByNationality} [main] Searching author by nationality: USA
+2025-08-28 19:47:29,141 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 19:47:29,257 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting AuthorControllerTest using Java 21.0.5 with PID 16572 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 19:47:29,260 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 19:47:32,952 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: 4f25390f-e855-4b57-9061-f3096e0d0ddc
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 19:47:33,002 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 19:47:33,328 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 19:47:33,329 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 19:47:33,331 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 1 ms
+2025-08-28 19:47:33,378 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started AuthorControllerTest in 4.866 seconds (process running for 6.127)
+2025-08-28 19:47:33,607 INFO c.s.A.c.AuthorController {getAuthorById} [main] Searching author by ID: 999
+2025-08-28 19:47:33,616 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: not found
+2025-08-28 19:47:34,022 INFO c.s.A.c.AuthorController {addAuthor} [main] BEGIN addAuthor - Adding new author: Isaac
+2025-08-28 19:47:34,025 INFO c.s.A.c.AuthorController {addAuthor} [main] END addAuthor - Author added with ID: 10
+2025-08-28 19:47:34,126 INFO c.s.A.c.AuthorController {getAuthorByBirthday} [main] Searching author by birthday: 1920-10-08
+2025-08-28 19:47:34,160 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Name is required
+2025-08-28 19:47:34,174 INFO c.s.A.c.AuthorController {getAuthorById} [main] Searching author by ID: 1
+2025-08-28 19:47:34,189 INFO c.s.A.c.AuthorController {updateAuthor} [main] Updating author by ID: 1
+2025-08-28 19:47:34,205 INFO c.s.A.c.AuthorController {getAuthorByName} [main] Searching author by name: Frank
+2025-08-28 19:47:34,216 INFO c.s.A.c.AuthorController {getAuthorBySurname} [main] Searching author by surname: Herbert
+2025-08-28 19:47:34,227 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
+2025-08-28 19:47:34,227 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
+2025-08-28 19:47:34,237 INFO c.s.A.c.AuthorController {getAuthorByNationality} [main] Searching author by nationality: USA
+2025-08-28 19:47:50,451 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 19:47:50,548 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting AuthorControllerTest using Java 21.0.5 with PID 15408 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 19:47:50,550 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 19:47:53,978 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: eb2212ba-bf12-414f-9e7b-a4168a8fa667
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 19:47:54,041 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 19:47:54,342 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 19:47:54,343 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 19:47:54,345 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 2 ms
+2025-08-28 19:47:54,399 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started AuthorControllerTest in 4.464 seconds (process running for 5.642)
+2025-08-28 19:47:54,622 INFO c.s.A.c.AuthorController {getAuthorById} [main] Searching author by ID: 999
+2025-08-28 19:47:54,633 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: not found
+2025-08-28 19:47:55,106 INFO c.s.A.c.AuthorController {updateAuthor} [main] Updating author by ID: 999
+2025-08-28 19:47:55,107 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 19:47:55,123 INFO c.s.A.c.AuthorController {addAuthor} [main] BEGIN addAuthor - Adding new author: Isaac
+2025-08-28 19:47:55,125 INFO c.s.A.c.AuthorController {addAuthor} [main] END addAuthor - Author added with ID: 10
+2025-08-28 19:47:55,214 INFO c.s.A.c.AuthorController {getAuthorByBirthday} [main] Searching author by birthday: 1920-10-08
+2025-08-28 19:47:55,241 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Name is required
+2025-08-28 19:47:55,255 INFO c.s.A.c.AuthorController {getAuthorById} [main] Searching author by ID: 1
+2025-08-28 19:47:55,269 INFO c.s.A.c.AuthorController {updateAuthor} [main] Updating author by ID: 1
+2025-08-28 19:47:55,288 INFO c.s.A.c.AuthorController {getAuthorByName} [main] Searching author by name: Frank
+2025-08-28 19:47:55,301 INFO c.s.A.c.AuthorController {getAuthorBySurname} [main] Searching author by surname: Herbert
+2025-08-28 19:47:55,313 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
+2025-08-28 19:47:55,314 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
+2025-08-28 19:47:55,326 INFO c.s.A.c.AuthorController {getAuthorByNationality} [main] Searching author by nationality: USA
+2025-08-28 19:48:24,917 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 19:48:25,013 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting AuthorControllerTest using Java 21.0.5 with PID 20912 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 19:48:25,015 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 19:48:28,413 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: 211ad554-7bfa-460f-92a3-42b1173c1498
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 19:48:28,454 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 19:48:28,757 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 19:48:28,758 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 19:48:28,760 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 1 ms
+2025-08-28 19:48:28,810 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started AuthorControllerTest in 4.625 seconds (process running for 5.954)
+2025-08-28 19:48:28,979 INFO c.s.A.c.AuthorController {getAuthorById} [main] Searching author by ID: 999
+2025-08-28 19:48:28,988 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: not found
+2025-08-28 19:48:29,362 INFO c.s.A.c.AuthorController {updateAuthor} [main] Updating author by ID: 999
+2025-08-28 19:48:29,364 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 19:48:29,383 INFO c.s.A.c.AuthorController {addAuthor} [main] BEGIN addAuthor - Adding new author: Isaac
+2025-08-28 19:48:29,386 INFO c.s.A.c.AuthorController {addAuthor} [main] END addAuthor - Author added with ID: 10
+2025-08-28 19:48:29,471 INFO c.s.A.c.AuthorController {getAuthorByBirthday} [main] Searching author by birthday: 1920-10-08
+2025-08-28 19:48:29,503 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Birthdate is required
+2025-08-28 19:48:29,519 INFO c.s.A.c.AuthorController {getAuthorById} [main] Searching author by ID: 1
+2025-08-28 19:48:29,533 INFO c.s.A.c.AuthorController {updateAuthor} [main] Updating author by ID: 1
+2025-08-28 19:48:29,549 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Name is required
+2025-08-28 19:48:29,567 INFO c.s.A.c.AuthorController {getAuthorByName} [main] Searching author by name: Frank
+2025-08-28 19:48:29,578 INFO c.s.A.c.AuthorController {getAuthorBySurname} [main] Searching author by surname: Herbert
+2025-08-28 19:48:29,588 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
+2025-08-28 19:48:29,589 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
+2025-08-28 19:48:29,599 INFO c.s.A.c.AuthorController {getAuthorByNationality} [main] Searching author by nationality: USA
+2025-08-28 19:48:52,158 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 19:48:52,266 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting AuthorControllerTest using Java 21.0.5 with PID 10408 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 19:48:52,268 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 19:48:55,868 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: 1adef3d7-d7fa-4d72-b296-115f16e9754e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 19:48:55,921 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 19:48:56,190 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 19:48:56,191 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 19:48:56,193 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 2 ms
+2025-08-28 19:48:56,244 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started AuthorControllerTest in 4.622 seconds (process running for 5.818)
+2025-08-28 19:48:56,463 INFO c.s.A.c.AuthorController {getAuthorById} [main] Searching author by ID: 999
+2025-08-28 19:48:56,470 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: not found
+2025-08-28 19:48:56,962 INFO c.s.A.c.AuthorController {updateAuthor} [main] Updating author by ID: 999
+2025-08-28 19:48:56,964 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 19:48:56,996 INFO c.s.A.c.AuthorController {addAuthor} [main] BEGIN addAuthor - Adding new author: Isaac
+2025-08-28 19:48:56,999 INFO c.s.A.c.AuthorController {addAuthor} [main] END addAuthor - Author added with ID: 10
+2025-08-28 19:48:57,109 INFO c.s.A.c.AuthorController {updateAuthorPartial} [main] Partially updating author by ID: 1
+2025-08-28 19:48:57,129 INFO c.s.A.c.AuthorController {getAuthorByBirthday} [main] Searching author by birthday: 1920-10-08
+2025-08-28 19:48:57,164 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Name is required
+2025-08-28 19:48:57,184 INFO c.s.A.c.AuthorController {getAuthorById} [main] Searching author by ID: 1
+2025-08-28 19:48:57,202 INFO c.s.A.c.AuthorController {updateAuthor} [main] Updating author by ID: 1
+2025-08-28 19:48:57,221 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Name is required
+2025-08-28 19:48:57,243 INFO c.s.A.c.AuthorController {updateAuthorPartial} [main] Partially updating author by ID: 999
+2025-08-28 19:48:57,246 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 19:48:57,271 INFO c.s.A.c.AuthorController {getAuthorByName} [main] Searching author by name: Frank
+2025-08-28 19:48:57,284 INFO c.s.A.c.AuthorController {getAuthorBySurname} [main] Searching author by surname: Herbert
+2025-08-28 19:48:57,296 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
+2025-08-28 19:48:57,297 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
+2025-08-28 19:48:57,306 INFO c.s.A.c.AuthorController {getAuthorByNationality} [main] Searching author by nationality: USA
+2025-08-28 19:49:14,284 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 19:49:14,373 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting AuthorControllerTest using Java 21.0.5 with PID 12136 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 19:49:14,374 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 19:49:17,890 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: 5449abc0-d762-4e24-aca8-dc5bd404b62f
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 19:49:17,939 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 19:49:18,261 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 19:49:18,262 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 19:49:18,264 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 1 ms
+2025-08-28 19:49:18,315 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started AuthorControllerTest in 4.584 seconds (process running for 6.114)
+2025-08-28 19:49:18,531 INFO c.s.A.c.AuthorController {getAuthorById} [main] Searching author by ID: 999
+2025-08-28 19:49:18,539 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: not found
+2025-08-28 19:49:19,020 INFO c.s.A.c.AuthorController {updateAuthor} [main] Updating author by ID: 999
+2025-08-28 19:49:19,022 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 19:49:19,049 INFO c.s.A.c.AuthorController {addAuthor} [main] BEGIN addAuthor - Adding new author: Isaac
+2025-08-28 19:49:19,051 INFO c.s.A.c.AuthorController {addAuthor} [main] END addAuthor - Author added with ID: 10
+2025-08-28 19:49:19,179 INFO c.s.A.c.AuthorController {updateAuthorPartial} [main] Partially updating author by ID: 1
+2025-08-28 19:49:19,204 INFO c.s.A.c.AuthorController {getAuthorByBirthday} [main] Searching author by birthday: 1920-10-08
+2025-08-28 19:49:19,245 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Name is required
+2025-08-28 19:49:19,270 INFO c.s.A.c.AuthorController {getAuthorById} [main] Searching author by ID: 1
+2025-08-28 19:49:19,287 INFO c.s.A.c.AuthorController {updateAuthor} [main] Updating author by ID: 1
+2025-08-28 19:49:19,306 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Name is required
+2025-08-28 19:49:19,324 INFO c.s.A.c.AuthorController {updateAuthorPartial} [main] Partially updating author by ID: 999
+2025-08-28 19:49:19,325 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 19:49:19,347 INFO c.s.A.c.AuthorController {deleteAuthor} [main] Deleting author by ID: 999
+2025-08-28 19:49:19,349 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 19:49:19,370 INFO c.s.A.c.AuthorController {getAuthorByName} [main] Searching author by name: Frank
+2025-08-28 19:49:19,383 INFO c.s.A.c.AuthorController {getAuthorBySurname} [main] Searching author by surname: Herbert
+2025-08-28 19:49:19,393 INFO c.s.A.c.AuthorController {deleteAuthor} [main] Deleting author by ID: 1
+2025-08-28 19:49:19,402 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
+2025-08-28 19:49:19,403 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
+2025-08-28 19:49:19,412 INFO c.s.A.c.AuthorController {getAuthorByNationality} [main] Searching author by nationality: USA

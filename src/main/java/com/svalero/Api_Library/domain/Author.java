@@ -3,6 +3,9 @@ package com.svalero.Api_Library.domain;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,18 +25,23 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotBlank(message = "Name is required")
     @Column(nullable = false)
     private String name;
 
+    @NotBlank(message = "Surname is required")
     @Column(nullable = false)
     private String surname;
 
+    @NotNull(message = "Birthdate is required")
+    @Past(message = "Birthdate must be in the past")
     @Column(nullable = false)
     private LocalDate birthdate;
 
     @Column
     private Boolean active = true;
 
+    @NotBlank(message = "Nationality is required")
     @Column(nullable = false)
     private String nationality;
 
