@@ -5419,3 +5419,177 @@ This generated password is for development use only. Your security configuration
 2025-08-28 18:37:06,583 INFO c.s.A.c.BookCategoryController {getAllBookCategories} [main] Fetching all book categories
 2025-08-28 18:37:06,593 INFO c.s.A.c.BookCategoryController {getByDescription} [main] Searching category by description: Ficción
 2025-08-28 18:37:06,623 INFO c.s.A.c.BookCategoryController {updatePartial} [main] Partially updating category ID: 1
+2025-08-28 18:41:01,772 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 18:41:01,871 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting BookCategoryControllerTest using Java 21.0.5 with PID 23292 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 18:41:01,873 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 18:41:04,454 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: ff62d3a7-375d-4644-a081-1f0838e123ea
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 18:41:04,515 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 18:41:04,789 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 18:41:04,790 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 18:41:04,793 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 2 ms
+2025-08-28 18:41:04,837 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started BookCategoryControllerTest in 3.753 seconds (process running for 7.132)
+2025-08-28 18:41:05,009 INFO c.s.A.c.BookCategoryController {getByNumberBooks} [main] Searching categories with number of books: 10
+2025-08-28 18:41:05,274 INFO c.s.A.c.BookCategoryController {updatePartial} [main] Partially updating category ID: 999
+2025-08-28 18:41:05,278 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 18:41:05,296 INFO c.s.A.c.BookCategoryController {delete} [main] Deleting category ID: 999
+2025-08-28 18:41:05,299 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 18:41:05,311 INFO c.s.A.c.BookCategoryController {getWithMinBooks} [main] Searching categories with at least 15 books
+2025-08-28 18:41:05,325 INFO c.s.A.c.BookCategoryController {delete} [main] Deleting category ID: 1
+2025-08-28 18:41:05,553 INFO c.s.A.c.BookCategoryController {addCategory} [main] Adding new category: Sci-Fi
+2025-08-28 18:41:05,585 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Active is required
+2025-08-28 18:41:05,606 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Name is required
+2025-08-28 18:41:05,619 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Date is required
+2025-08-28 18:41:05,634 INFO c.s.A.c.BookCategoryController {getByCreatedDate} [main] Searching categories by creation date: 2020-01-01
+2025-08-28 18:41:05,649 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Number of books must be >= 0
+2025-08-28 18:41:05,663 INFO c.s.A.c.BookCategoryController {updateCategory} [main] Updating category ID: 999
+2025-08-28 18:41:05,667 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 18:41:05,678 INFO c.s.A.c.BookCategoryController {getByActive} [main] Searching categories by active: true
+2025-08-28 18:41:05,690 INFO c.s.A.c.BookCategoryController {getById} [main] Searching category by ID: 1
+2025-08-28 18:41:05,702 INFO c.s.A.c.BookCategoryController {getById} [main] Searching category by ID: 999
+2025-08-28 18:41:05,704 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: not found
+2025-08-28 18:41:05,715 INFO c.s.A.c.BookCategoryController {updateCategory} [main] Updating category ID: 1
+2025-08-28 18:41:05,726 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Description is required
+2025-08-28 18:41:05,749 INFO c.s.A.c.BookCategoryController {getByName} [main] Searching category by name: Sci-Fi
+2025-08-28 18:41:05,758 INFO c.s.A.c.BookCategoryController {getAllBookCategories} [main] Fetching all book categories
+2025-08-28 18:41:05,770 INFO c.s.A.c.BookCategoryController {getByDescription} [main] Searching category by description: Ficción
+2025-08-28 18:41:05,798 INFO c.s.A.c.BookCategoryController {updatePartial} [main] Partially updating category ID: 1
+2025-08-28 18:41:05,954 INFO o.s.t.c.s.AnnotationConfigContextLoaderUtils {detectDefaultConfigurationClasses} [main] Could not detect default configuration classes for test class [com.svalero.Api_Library.BookControllerTest]: BookControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-08-28 18:41:05,975 INFO o.s.b.t.c.SpringBootTestContextBootstrapper {getOrFindConfigurationClasses} [main] Found @SpringBootConfiguration com.svalero.Api_Library.ApiLibraryApplication for test class com.svalero.Api_Library.BookControllerTest
+2025-08-28 18:41:06,021 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting BookControllerTest using Java 21.0.5 with PID 23292 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 18:41:06,021 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 18:41:06,422 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: 2da470e1-70fc-46a7-9607-a1b8d7b7542e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 18:41:06,425 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 18:41:06,446 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 18:41:06,448 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 18:41:06,449 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 1 ms
+2025-08-28 18:41:06,461 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started BookControllerTest in 0.48 seconds (process running for 8.756)
+2025-08-28 18:41:06,477 INFO c.s.A.c.BookController {getBookById} [main] Fetching book by ID: 1
+2025-08-28 18:41:06,517 INFO c.s.A.c.BookController {getBookById} [main] Fetching book by ID: 999
+2025-08-28 18:41:06,521 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: not found
+2025-08-28 18:41:06,573 INFO c.s.A.c.BookController {updateBook} [main] Updating book with ID: 999
+2025-08-28 18:41:06,574 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 18:41:06,588 INFO c.s.A.c.BookController {getBooksByTitleAndAvailableAndGenre} [main] Fetching books by title=Dune, available=true, genre=Sci-Fi
+2025-08-28 18:41:06,605 INFO c.s.A.c.BookController {deleteBook} [main] Deleting book with ID: 999
+2025-08-28 18:41:06,607 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 18:41:06,623 INFO c.s.A.c.BookController {getBooksWithPriceLessThan} [main] Fetching books with price less than 25.0
+2025-08-28 18:41:06,646 INFO c.s.A.c.BookController {uploadBooksFile} [main] Uploading file: bad.csv
+2025-08-28 18:41:06,647 ERROR c.s.A.c.BookController {uploadBooksFile} [main] Error al procesar el fichero
+java.lang.NumberFormatException: For input string: "NOT_A_NUMBER"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:662)
+	at java.base/java.lang.Integer.parseInt(Integer.java:778)
+	at com.svalero.Api_Library.controller.BookController.uploadBooksFile(BookController.java:154)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:257)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1088)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at org.springframework.test.web.servlet.TestDispatcherServlet.service(TestDispatcherServlet.java:72)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.springframework.mock.web.MockFilterChain$ServletFilterProxy.doFilter(MockFilterChain.java:165)
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
+	at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201)
+	at com.svalero.Api_Library.BookControllerTest.uploadBooksFile_Returns500_OnInvalidCSV(BookControllerTest.java:406)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:767)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$8(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+2025-08-28 18:41:06,694 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: must not be blank
+2025-08-28 18:41:06,709 INFO c.s.A.c.BookController {getBooksWithPriceGreaterThanNative} [main] Fetching books with native SQL price > 20.0
+2025-08-28 18:41:06,725 INFO c.s.A.c.BookController {addBook} [main] Adding new book: Dune
+2025-08-28 18:41:06,738 INFO c.s.A.c.BookController {getBooksByTitle} [main] Fetching books by title: Dune
+2025-08-28 18:41:06,762 INFO c.s.A.c.BookController {updateBookPartial} [main] Partially updating book with ID: 1
+2025-08-28 18:41:06,772 INFO c.s.A.c.BookController {deleteBook} [main] Deleting book with ID: 1
+2025-08-28 18:41:06,785 INFO c.s.A.c.BookController {updateBookPartial} [main] Partially updating book with ID: 999
+2025-08-28 18:41:06,786 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 18:41:06,797 INFO c.s.A.c.BookController {getBooksWithPagesGreaterThan} [main] Fetching books with more than 400 pages
+2025-08-28 18:41:06,810 INFO c.s.A.c.BookController {uploadBooksFile} [main] Uploading file: books.csv
+2025-08-28 18:41:06,823 INFO c.s.A.c.BookController {updateBook} [main] Updating book with ID: 1
+2025-08-28 18:41:06,832 INFO c.s.A.c.BookController {getBooksByGenre} [main] Fetching books by genre: Sci-Fi
+2025-08-28 18:41:06,844 INFO c.s.A.c.BookController {getBooksWithGenreLike} [main] Fetching books where genre contains 'Fi'
+2025-08-28 18:41:06,857 INFO c.s.A.c.BookController {getBooksByAvailable} [main] Fetching books by availability: true
+2025-08-28 18:41:06,865 INFO c.s.A.c.BookController {getAllBooks} [main] Fetching all books
