@@ -6048,3 +6048,247 @@ This generated password is for development use only. Your security configuration
 2025-08-28 19:49:19,402 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
 2025-08-28 19:49:19,403 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
 2025-08-28 19:49:19,412 INFO c.s.A.c.AuthorController {getAuthorByNationality} [main] Searching author by nationality: USA
+2025-08-28 20:07:06,811 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 20:07:06,928 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting AuthorControllerTest using Java 21.0.5 with PID 1680 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 20:07:06,931 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 20:07:11,339 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: 274ad6d5-d8bd-4c99-9cf1-096727a96f33
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 20:07:11,401 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 20:07:11,753 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 20:07:11,754 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 20:07:11,757 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 2 ms
+2025-08-28 20:07:11,812 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started AuthorControllerTest in 5.638 seconds (process running for 7.456)
+2025-08-28 20:07:12,097 INFO c.s.A.c.AuthorController {getAuthorById} [main] Searching author by ID: 999
+2025-08-28 20:07:12,109 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: not found
+2025-08-28 20:07:12,623 INFO c.s.A.c.AuthorController {updateAuthor} [main] Updating author by ID: 999
+2025-08-28 20:07:12,626 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 20:07:12,652 INFO c.s.A.c.AuthorController {addAuthor} [main] BEGIN addAuthor - Adding new author: Isaac
+2025-08-28 20:07:12,654 INFO c.s.A.c.AuthorController {addAuthor} [main] END addAuthor - Author added with ID: 10
+2025-08-28 20:07:12,746 INFO c.s.A.c.AuthorController {updateAuthorPartial} [main] Partially updating author by ID: 1
+2025-08-28 20:07:12,770 INFO c.s.A.c.AuthorController {getAuthorByBirthday} [main] Searching author by birthday: 1920-10-08
+2025-08-28 20:07:12,815 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Birthdate is required
+2025-08-28 20:07:12,835 INFO c.s.A.c.AuthorController {getAuthorById} [main] Searching author by ID: 1
+2025-08-28 20:07:12,850 INFO c.s.A.c.AuthorController {updateAuthor} [main] Updating author by ID: 1
+2025-08-28 20:07:12,865 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Name is required
+2025-08-28 20:07:12,897 INFO c.s.A.c.AuthorController {updateAuthorPartial} [main] Partially updating author by ID: 999
+2025-08-28 20:07:12,899 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 20:07:12,913 INFO c.s.A.c.AuthorController {deleteAuthor} [main] Deleting author by ID: 999
+2025-08-28 20:07:12,915 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 20:07:12,937 INFO c.s.A.c.AuthorController {getAuthorByName} [main] Searching author by name: Frank
+2025-08-28 20:07:12,948 INFO c.s.A.c.AuthorController {getAuthorBySurname} [main] Searching author by surname: Herbert
+2025-08-28 20:07:12,961 INFO c.s.A.c.AuthorController {deleteAuthor} [main] Deleting author by ID: 1
+2025-08-28 20:07:12,974 INFO c.s.A.c.AuthorController {getAllAuthors} [main] BEGIN getAllAuthors
+2025-08-28 20:07:12,975 INFO c.s.A.c.AuthorController {getAllAuthors} [main] END getAllAuthors - Total authors fetched: 2
+2025-08-28 20:07:12,988 INFO c.s.A.c.AuthorController {getAuthorByNationality} [main] Searching author by nationality: USA
+2025-08-28 20:07:13,459 INFO o.s.t.c.s.AnnotationConfigContextLoaderUtils {detectDefaultConfigurationClasses} [main] Could not detect default configuration classes for test class [com.svalero.Api_Library.BookCategoryControllerTest]: BookCategoryControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-08-28 20:07:13,487 INFO o.s.b.t.c.SpringBootTestContextBootstrapper {getOrFindConfigurationClasses} [main] Found @SpringBootConfiguration com.svalero.Api_Library.ApiLibraryApplication for test class com.svalero.Api_Library.BookCategoryControllerTest
+2025-08-28 20:07:13,547 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting BookCategoryControllerTest using Java 21.0.5 with PID 1680 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 20:07:13,548 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 20:07:13,998 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: 4ad10be6-79f0-41b0-a968-9337868bd112
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 20:07:14,001 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 20:07:14,044 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 20:07:14,045 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 20:07:14,047 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 1 ms
+2025-08-28 20:07:14,057 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started BookCategoryControllerTest in 0.562 seconds (process running for 9.701)
+2025-08-28 20:07:14,071 INFO c.s.A.c.BookCategoryController {getByNumberBooks} [main] Searching categories with number of books: 10
+2025-08-28 20:07:14,092 INFO c.s.A.c.BookCategoryController {updatePartial} [main] Partially updating category ID: 999
+2025-08-28 20:07:14,094 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 20:07:14,107 INFO c.s.A.c.BookCategoryController {delete} [main] Deleting category ID: 999
+2025-08-28 20:07:14,111 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 20:07:14,120 INFO c.s.A.c.BookCategoryController {getWithMinBooks} [main] Searching categories with at least 15 books
+2025-08-28 20:07:14,128 INFO c.s.A.c.BookCategoryController {delete} [main] Deleting category ID: 1
+2025-08-28 20:07:14,160 INFO c.s.A.c.BookCategoryController {addCategory} [main] Adding new category: Sci-Fi
+2025-08-28 20:07:14,174 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Active is required
+2025-08-28 20:07:14,185 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Name is required
+2025-08-28 20:07:14,193 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Date is required
+2025-08-28 20:07:14,205 INFO c.s.A.c.BookCategoryController {getByCreatedDate} [main] Searching categories by creation date: 2020-01-01
+2025-08-28 20:07:14,216 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Number of books must be >= 0
+2025-08-28 20:07:14,228 INFO c.s.A.c.BookCategoryController {updateCategory} [main] Updating category ID: 999
+2025-08-28 20:07:14,230 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 20:07:14,241 INFO c.s.A.c.BookCategoryController {getByActive} [main] Searching categories by active: true
+2025-08-28 20:07:14,254 INFO c.s.A.c.BookCategoryController {getById} [main] Searching category by ID: 1
+2025-08-28 20:07:14,265 INFO c.s.A.c.BookCategoryController {getById} [main] Searching category by ID: 999
+2025-08-28 20:07:14,267 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: not found
+2025-08-28 20:07:14,277 INFO c.s.A.c.BookCategoryController {updateCategory} [main] Updating category ID: 1
+2025-08-28 20:07:14,290 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Description is required
+2025-08-28 20:07:14,303 INFO c.s.A.c.BookCategoryController {getByName} [main] Searching category by name: Sci-Fi
+2025-08-28 20:07:14,312 INFO c.s.A.c.BookCategoryController {getAllBookCategories} [main] Fetching all book categories
+2025-08-28 20:07:14,326 INFO c.s.A.c.BookCategoryController {getByDescription} [main] Searching category by description: Ficción
+2025-08-28 20:07:14,346 INFO c.s.A.c.BookCategoryController {updatePartial} [main] Partially updating category ID: 1
+2025-08-28 20:07:14,494 INFO o.s.t.c.s.AnnotationConfigContextLoaderUtils {detectDefaultConfigurationClasses} [main] Could not detect default configuration classes for test class [com.svalero.Api_Library.BookControllerTest]: BookControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-08-28 20:07:14,520 INFO o.s.b.t.c.SpringBootTestContextBootstrapper {getOrFindConfigurationClasses} [main] Found @SpringBootConfiguration com.svalero.Api_Library.ApiLibraryApplication for test class com.svalero.Api_Library.BookControllerTest
+2025-08-28 20:07:14,559 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting BookControllerTest using Java 21.0.5 with PID 1680 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 20:07:14,559 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 20:07:15,038 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: f88f7dfb-2595-4a6b-9097-02cd9680e841
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 20:07:15,040 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 20:07:15,061 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 20:07:15,061 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 20:07:15,063 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 0 ms
+2025-08-28 20:07:15,072 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started BookControllerTest in 0.549 seconds (process running for 10.715)
+2025-08-28 20:07:15,084 INFO c.s.A.c.BookController {getBookById} [main] Fetching book by ID: 1
+2025-08-28 20:07:15,110 INFO c.s.A.c.BookController {getBookById} [main] Fetching book by ID: 999
+2025-08-28 20:07:15,113 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: not found
+2025-08-28 20:07:15,148 INFO c.s.A.c.BookController {updateBook} [main] Updating book with ID: 999
+2025-08-28 20:07:15,150 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 20:07:15,161 INFO c.s.A.c.BookController {getBooksByTitleAndAvailableAndGenre} [main] Fetching books by title=Dune, available=true, genre=Sci-Fi
+2025-08-28 20:07:15,172 INFO c.s.A.c.BookController {deleteBook} [main] Deleting book with ID: 999
+2025-08-28 20:07:15,174 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 20:07:15,185 INFO c.s.A.c.BookController {getBooksWithPriceLessThan} [main] Fetching books with price less than 25.0
+2025-08-28 20:07:15,255 INFO c.s.A.c.BookController {uploadBooksFile} [main] Uploading file: bad.csv
+2025-08-28 20:07:15,256 ERROR c.s.A.c.BookController {uploadBooksFile} [main] Error al procesar el fichero
+java.lang.NumberFormatException: For input string: "NOT_A_NUMBER"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:662)
+	at java.base/java.lang.Integer.parseInt(Integer.java:778)
+	at com.svalero.Api_Library.controller.BookController.uploadBooksFile(BookController.java:154)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:257)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1088)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at org.springframework.test.web.servlet.TestDispatcherServlet.service(TestDispatcherServlet.java:72)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.springframework.mock.web.MockFilterChain$ServletFilterProxy.doFilter(MockFilterChain.java:165)
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)
+	at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201)
+	at com.svalero.Api_Library.BookControllerTest.uploadBooksFile_Returns500_OnInvalidCSV(BookControllerTest.java:406)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:767)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$8(TestMethodTestDescriptor.java:217)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:213)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:138)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+2025-08-28 20:07:15,305 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: must not be blank
+2025-08-28 20:07:15,318 INFO c.s.A.c.BookController {getBooksWithPriceGreaterThanNative} [main] Fetching books with native SQL price > 20.0
+2025-08-28 20:07:15,335 INFO c.s.A.c.BookController {addBook} [main] Adding new book: Dune
+2025-08-28 20:07:15,351 INFO c.s.A.c.BookController {getBooksByTitle} [main] Fetching books by title: Dune
+2025-08-28 20:07:15,370 INFO c.s.A.c.BookController {updateBookPartial} [main] Partially updating book with ID: 1
+2025-08-28 20:07:15,381 INFO c.s.A.c.BookController {deleteBook} [main] Deleting book with ID: 1
+2025-08-28 20:07:15,395 INFO c.s.A.c.BookController {updateBookPartial} [main] Partially updating book with ID: 999
+2025-08-28 20:07:15,396 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 20:07:15,407 INFO c.s.A.c.BookController {getBooksWithPagesGreaterThan} [main] Fetching books with more than 400 pages
+2025-08-28 20:07:15,415 INFO c.s.A.c.BookController {uploadBooksFile} [main] Uploading file: books.csv
+2025-08-28 20:07:15,428 INFO c.s.A.c.BookController {updateBook} [main] Updating book with ID: 1
+2025-08-28 20:07:15,441 INFO c.s.A.c.BookController {getBooksByGenre} [main] Fetching books by genre: Sci-Fi
+2025-08-28 20:07:15,451 INFO c.s.A.c.BookController {getBooksWithGenreLike} [main] Fetching books where genre contains 'Fi'
+2025-08-28 20:07:15,464 INFO c.s.A.c.BookController {getBooksByAvailable} [main] Fetching books by availability: true
+2025-08-28 20:07:15,474 INFO c.s.A.c.BookController {getAllBooks} [main] Fetching all books
+2025-08-28 20:25:20,268 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-08-28 20:25:20,341 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting LoanControllerTest using Java 21.0.5 with PID 22388 (started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-08-28 20:25:20,342 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-08-28 20:25:25,223 WARN o.s.b.a.s.s.UserDetailsServiceAutoConfiguration {getOrDeducePassword} [main] 
+
+Using generated security password: 23f7d928-3afe-484c-8565-1ff04b937bd6
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-28 20:25:25,306 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-08-28 20:25:25,899 INFO o.s.m.w.MockServletContext {log} [main] Initializing Spring TestDispatcherServlet ''
+2025-08-28 20:25:25,901 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Initializing Servlet ''
+2025-08-28 20:25:25,904 INFO o.s.w.s.FrameworkServlet {initServletBean} [main] Completed initialization in 2 ms
+2025-08-28 20:25:25,971 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started LoanControllerTest in 6.332 seconds (process running for 7.876)
+2025-08-28 20:25:26,575 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Customer name is required
+2025-08-28 20:25:26,708 INFO c.s.A.c.LoanController {deleteLoan} [main] Deleting loan ID: 999
+2025-08-28 20:25:26,721 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 20:25:26,761 INFO c.s.A.c.LoanController {getAllLoans} [main] Fetching all loans
+2025-08-28 20:25:26,873 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [main] Validación fallida: Customer name is required
+2025-08-28 20:25:26,895 INFO c.s.A.c.LoanController {getByLoanDate} [main] Fetching loans for loan date: 2024-01-10
+2025-08-28 20:25:26,929 INFO c.s.A.c.LoanController {getByCustomerName} [main] Fetching loans for customer: Alice
+2025-08-28 20:25:26,953 INFO c.s.A.c.LoanController {updateLoan} [main] Updating loan ID: 5
+2025-08-28 20:25:26,975 INFO c.s.A.c.LoanController {getLoanById} [main] Fetching loan by ID: 5
+2025-08-28 20:25:26,992 INFO c.s.A.c.LoanController {getLoanById} [main] Fetching loan by ID: 999
+2025-08-28 20:25:26,995 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: not found
+2025-08-28 20:25:27,013 INFO c.s.A.c.LoanController {getByQuantity} [main] Fetching loans by exact quantity: 3
+2025-08-28 20:25:27,028 INFO c.s.A.c.LoanController {getLoansWithQuantityGreaterThanNative} [main] Fetching loans with quantity > 4 (native)
+2025-08-28 20:25:27,045 INFO c.s.A.c.LoanController {getLoansBetweenDates} [main] Fetching loans from 2024-01-01 to 2024-01-31
+2025-08-28 20:25:27,062 INFO c.s.A.c.LoanController {updateLoan} [main] Updating loan ID: 999
+2025-08-28 20:25:27,064 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [main] Recurso no encontrado: no existe
+2025-08-28 20:25:27,079 INFO c.s.A.c.LoanController {addLoan} [main] Adding loan for customer: Alice
+2025-08-28 20:25:27,102 INFO c.s.A.c.LoanController {updateLoanPartial} [main] Partially updating loan ID: 3
+2025-08-28 20:25:27,117 INFO c.s.A.c.LoanController {deleteLoan} [main] Deleting loan ID: 4
