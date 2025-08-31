@@ -1,0 +1,5 @@
+{
+  "code": 400,
+  "error": "Bad Request",
+  "message": "Parámetro 'email' con formato inválido"
+}

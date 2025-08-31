@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "DELETE",
+    "url": "/users/1"
+  },
+  "response": {
+    "status": 204,
+    "bodyFileName": "deleteUser-204.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

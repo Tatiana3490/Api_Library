@@ -1,0 +1,5 @@
+{
+  "code": 400,
+  "error": "Bad Request",
+  "message": "Datos inválidos: formato incorrecto"
+}

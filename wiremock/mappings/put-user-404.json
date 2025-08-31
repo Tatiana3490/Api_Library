@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "/users/999"
+  },
+  "response": {
+    "status": 404,
+    "bodyFileName": "putUser-404.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

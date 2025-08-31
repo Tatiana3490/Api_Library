@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "DELETE",
+    "url": "/users/999"
+  },
+  "response": {
+    "status": 404,
+    "bodyFileName": "deleteUser-404.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

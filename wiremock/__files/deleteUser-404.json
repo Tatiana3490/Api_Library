@@ -1,0 +1,5 @@
+{
+  "code": 404,
+  "error": "Not Found",
+  "message": "Usuario con id=999 no existe"
+}

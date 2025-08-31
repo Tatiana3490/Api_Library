@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "/users/1"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "putUser-ok.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

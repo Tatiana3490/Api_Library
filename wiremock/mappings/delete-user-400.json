@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "DELETE",
+    "url": "/users/abc"
+  },
+  "response": {
+    "status": 400,
+    "bodyFileName": "invalidFormat.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
+
