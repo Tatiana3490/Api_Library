@@ -1,0 +1,523 @@
+{
+	"info": {
+		"_postman_id": "6b17ac58-24d5-4c62-9577-d32e3c534248",
+		"name": "Virtual Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40609576"
+	},
+	"item": [
+		{
+			"name": "users-200-ok",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 200\", () => pm.response.to.have.status(200));\r",
+							"const data = pm.response.json();\r",
+							"pm.test(\"Body es un array\", () => pm.expect(data).to.be.an(\"array\"));\r",
+							"pm.test(\"Usuarios tienen campos esperados\", () => {\r",
+							"  if (data.length > 0) {\r",
+							"    const u = data[0];\r",
+							"    pm.expect(u).to.have.keys([\"id\",\"name\",\"username\",\"email\",\"password\",\"creationDate\",\"active\"]);\r",
+							"    pm.expect(u.email).to.match(/^.+@.+\\..+$/);\r",
+							"    pm.expect(u.creationDate).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);\r",
+							"    pm.expect(u.active).to.be.a(\"boolean\");\r",
+							"  } else {\r",
+							"    pm.expect(data.length).to.equal(0); \r",
+							"  }\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{mockBaseUrl}}/users",
+					"host": [
+						"{{mockBaseUrl}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users-201-ok",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 201\", () => pm.response.to.have.status(201));\r",
+							"const created = pm.response.json();\r",
+							"pm.test(\"Devuelve id\", () => pm.expect(created).to.have.property(\"id\"));\r",
+							"pm.test(\"Email y fecha válidos\", () => {\r",
+							"  pm.expect(created.email).to.match(/^.+@.+\\..+$/);\r",
+							"  pm.expect(created.creationDate).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tatiana\",\r\n    \"username\": \"tatiana123\",\r\n    \"email\": \"tatiana123@example.com\",\r\n    \"password\": \"12345678\",\r\n    \"creationDate\": \"2025-06-05\",\r\n    \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{mockBaseUrl}}/users",
+					"host": [
+						"{{mockBaseUrl}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users-500-InternalServerError",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Debe responder 500\", () => pm.response.code === 500);\r",
+							"pm.test(\"Content-Type es JSON\", () =>\r",
+							"  pm.response.headers.get(\"Content-Type\").includes(\"application/json\")\r",
+							");\r",
+							"pm.test(\"Mensaje de error presente\", () => {\r",
+							"  const body = pm.response.json();\r",
+							"  pm.expect(body).to.have.property(\"message\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tatiana\",\r\n    \"username\": \"tatiana123\",\r\n    \"email\": \"tatiana123@example.com\",\r\n    \"password\": \"12345678\",\r\n    \"creationDate\": \"2025-06-05\",\r\n    \"active\": true\r\n}"
+				},
+				"url": {
+					"raw": "{{mockBaseUrl}}/users/n",
+					"host": [
+						"{{mockBaseUrl}}"
+					],
+					"path": [
+						"users",
+						"n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users/{id}-404-NotFound",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 404\", () => pm.response.to.have.status(404));\r",
+							"pm.test(\"Content-Type JSON\", () => pm.response.to.have.header(\"Content-Type\"));\r",
+							"pm.test(\"Cuerpo error con code y message\", () => {\r",
+							"  const body = pm.response.json();\r",
+							"  pm.expect(body).to.have.property(\"code\");\r",
+							"  pm.expect(body).to.have.property(\"message\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tatiana\",\r\n    \"username\": \"tatiana123\",\r\n    \"email\": \"tatiana123@example.com\",\r\n    \"password\": \"12345678\",\r\n    \"creationDate\": \"2025-06-05\",\r\n    \"active\": true\r\n}"
+				},
+				"url": {
+					"raw": "{{mockBaseUrl}}/users/999",
+					"host": [
+						"{{mockBaseUrl}}"
+					],
+					"path": [
+						"users",
+						"999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users-400-BadRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 400\", () => pm.response.to.have.status(400));\r",
+							"pm.test(\"Error con code y message\", () => {\r",
+							"  const err = pm.response.json();\r",
+							"  pm.expect(err).to.have.property(\"code\");\r",
+							"  pm.expect(err).to.have.property(\"message\");\r",
+							"});\r",
+							"pm.test(\"Mensaje informa del motivo\", () => {\r",
+							"  const msg = (pm.response.json().message || \"\").toLowerCase();\r",
+							"  pm.expect(msg).to.satisfy(m => m.includes(\"invalid\") || m.includes(\"formato\") || m.includes(\"obligatorio\"));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"\",\r\n    \"username\": \"tatiana123\",\r\n    \"email\": \"tatiana123@example.com\",\r\n    \"password\": \"12345678\",\r\n    \"creationDate\": \"2025-06-05\",\r\n    \"active\": true\r\n}"
+				},
+				"url": {
+					"raw": "{{mockBaseUrl}}/users",
+					"host": [
+						"{{mockBaseUrl}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users-500-InternalServerError",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 500\", () => pm.response.to.have.status(500));\r",
+							"pm.test(\"Content-Type JSON\", () => pm.response.to.have.header(\"Content-Type\"));\r",
+							"pm.test(\"Cuerpo error genérico\", () => {\r",
+							"  const err = pm.response.json();\r",
+							"  pm.expect(err).to.have.property(\"message\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tatiana\",\r\n    \"username\": \"tatiana123\",\r\n    \"email\": \"tatiana123@example.com\",\r\n    \"password\": \"12345678\",\r\n    \"creationDate\": \"2025-06-05\",\r\n    \"active\": true\r\n}"
+				},
+				"url": {
+					"raw": "{{mockBaseUrl}}/users/.+",
+					"host": [
+						"{{mockBaseUrl}}"
+					],
+					"path": [
+						"users",
+						".+"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users/{id}-200-ok",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 200\", () => pm.response.to.have.status(200));\r",
+							"const putRes = pm.response.json();\r",
+							"pm.test(\"ID coincide con path\", () => {\r",
+							"  const pathId = pm.request.url.path[pm.request.url.path.length - 1];\r",
+							"  if (/^\\d+$/.test(pathId)) pm.expect(putRes.id).to.eql(parseInt(pathId,10));\r",
+							"});\r",
+							"pm.test(\"Campos actualizados\", () => {\r",
+							"  let sent;\r",
+							"  try { sent = JSON.parse(pm.request.body.raw || \"{}\"); } catch { sent = {}; }\r",
+							"  Object.keys(sent).forEach(k => pm.expect(putRes[k]).to.eql(sent[k]));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tatiana A.\",\r\n    \"username\": \"tatiana123\",\r\n    \"email\": \"tatiana123@gmail.com\",\r\n    \"password\": \"********\",\r\n    \"creationDate\": \"2025-06-05\",\r\n    \"active\": true\r\n}"
+				},
+				"url": {
+					"raw": "{{mockBaseUrl}}/users/1",
+					"host": [
+						"{{mockBaseUrl}}"
+					],
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/users/{id}-400-BadRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 400\", () => pm.response.to.have.status(400));\r",
+							"pm.test(\"Error con code/message\", () => {\r",
+							"  const e = pm.response.json();\r",
+							"  pm.expect(e).to.have.property(\"code\");\r",
+							"  pm.expect(e).to.have.property(\"message\");\r",
+							"});\r",
+							"pm.test(\"Mensaje de validación\", () => {\r",
+							"  const m = (pm.response.json().message || \"\").toLowerCase();\r",
+							"  pm.expect(m.length).to.be.greaterThan(0);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Tatiana\",\r\n    \"username\": \"tatiana123\",\r\n    \"email\": \"tatiana123#example.com\",\r\n    \"password\": \"12345678\",\r\n    \"creationDate\": \"2025-06-05\",\r\n    \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{mockBaseUrl}}/users/1",
+					"host": [
+						"{{mockBaseUrl}}"
+					],
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users/{id}-404-NotFound",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 404\", () => pm.response.to.have.status(404));\r",
+							"pm.test(\"Error con code/message\", () => {\r",
+							"  const e = pm.response.json();\r",
+							"  pm.expect(e).to.have.property(\"code\");\r",
+							"  pm.expect(e).to.have.property(\"message\");\r",
+							"});\r",
+							"pm.test(\"ID inexistente en URL\", () => {\r",
+							"  const id = pm.request.url.path.pop();\r",
+							"  pm.expect(id).to.be.a(\"string\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{mockBaseUrl}}/users/999",
+					"host": [
+						"{{mockBaseUrl}}"
+					],
+					"path": [
+						"users",
+						"999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users/{id}-204-ok",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 204\", () => pm.response.to.have.status(204));\r",
+							"pm.test(\"Sin contenido en body\", () => pm.expect(pm.response.text()).to.have.length(0));\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{mockBaseUrl}}/users/1",
+					"host": [
+						"{{mockBaseUrl}}"
+					],
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users/{id}-404-NotFound",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 404\", () => pm.response.to.have.status(404));\r",
+							"pm.test(\"Error con code/message\", () => {\r",
+							"  const e = pm.response.json();\r",
+							"  pm.expect(e).to.have.property(\"code\");\r",
+							"  pm.expect(e).to.have.property(\"message\");\r",
+							"});\r",
+							"pm.test(\"Path incluye id\", () => {\r",
+							"  pm.expect(pm.request.url.path.pop()).to.be.a(\"string\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{mockBaseUrl}}/users/999",
+					"host": [
+						"{{mockBaseUrl}}"
+					],
+					"path": [
+						"users",
+						"999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users/{id}-400BadRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 400\", () => pm.response.to.have.status(400));\r",
+							"const err = pm.response.json();\r",
+							"pm.test(\"Cuerpo con code y message\", () => {\r",
+							"    pm.expect(err).to.have.property(\"code\");\r",
+							"    pm.expect(err).to.have.property(\"message\");\r",
+							"});\r",
+							"pm.test(\"Mensaje informa de ID inválido\", () => {\r",
+							"    const msg = (err.message || \"\").toLowerCase();\r",
+							"    pm.expect(msg).to.satisfy(m => m.includes(\"id\") && m.includes(\"inválido\"));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{mockBaseUrl}}/users/abc",
+					"host": [
+						"{{mockBaseUrl}}"
+					],
+					"path": [
+						"users",
+						"abc"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -11,9 +11,21 @@
 			"item": [
 				{
 					"name": "users-ok",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{mockBaseUrl}}/users",
 							"host": [
@@ -141,7 +153,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Tatiana Alcubilla\",\r\n    \"username\": \"tatiana123\",\r\n    \"email\": \"tatiana123@example.com\",\r\n    \"password\": \"********\",\r\n    \"creationDate\": \"2025-06-05\",\r\n    \"active\": true\r\n}",
+							"raw": "{\r\n    \"name\": \"Tatiana\",\r\n    \"username\": \"tatiana123\",\r\n    \"email\": \"tatiana123@example.com\",\r\n    \"password\": \"12345678\",\r\n    \"creationDate\": \"2025-06-05\",\r\n    \"active\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -173,7 +185,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"\",\r\n    \"username\": \"tatiana123\",\r\n    \"email\": \"tatiana123@example.com\",\r\n    \"password\": \"********\",\r\n    \"creationDate\": \"2025-06-05\",\r\n    \"active\": true\r\n}",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"username\": \"tatiana123\",\r\n    \"email\": \"tatiana123@example.com\",\r\n    \"password\": \"12345678\",\r\n    \"creationDate\": \"2025-06-05\",\r\n    \"active\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -205,7 +217,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Tatiana Alcubilla\",\r\n    \"username\": \"tatiana123\",\r\n    \"email\": \"tatiana123@example.com\",\r\n    \"password\": \"********\",\r\n    \"creationDate\": \"2025-06-05\",\r\n    \"active\": true\r\n}",
+							"raw": "{\r\n    \"name\": \"Tatiana\",\r\n    \"username\": \"tatiana123\",\r\n    \"email\": \"tatiana123@example.com\",\r\n    \"password\": \"12345678\",\r\n    \"creationDate\": \"2025-06-05\",\r\n    \"active\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -238,7 +250,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Tatiana\",\r\n    \"username\": \"tatiana123\",\r\n    \"email\": \"tatiana123@example.com\",\r\n    \"password\": \"12345678\",\r\n    \"creationDate\": \"2025-06-05\",\r\n    \"active\": true\r\n}",
+							"raw": "{\r\n    \"name\": \"Tatiana A.\",\r\n    \"username\": \"tatiana123\",\r\n    \"email\": \"tatiana123@example.com\",\r\n    \"password\": \"12345678\",\r\n    \"creationDate\": \"2025-06-05\",\r\n    \"active\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
