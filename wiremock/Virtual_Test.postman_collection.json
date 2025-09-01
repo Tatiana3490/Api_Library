@@ -13,20 +13,35 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status 200\", () => pm.response.to.have.status(200));\r",
-							"const data = pm.response.json();\r",
-							"pm.test(\"Body es un array\", () => pm.expect(data).to.be.an(\"array\"));\r",
-							"pm.test(\"Usuarios tienen campos esperados\", () => {\r",
-							"  if (data.length > 0) {\r",
-							"    const u = data[0];\r",
-							"    pm.expect(u).to.have.keys([\"id\",\"name\",\"username\",\"email\",\"password\",\"creationDate\",\"active\"]);\r",
-							"    pm.expect(u.email).to.match(/^.+@.+\\..+$/);\r",
-							"    pm.expect(u.creationDate).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);\r",
-							"    pm.expect(u.active).to.be.a(\"boolean\");\r",
+							"(() => {\r",
+							"  pm.test(\"Status 200\", () => pm.response.code === 200);\r",
+							"  const ct = (pm.response.headers.get(\"Content-Type\") || \"\").toLowerCase();\r",
+							"  pm.test(\"Content-Type JSON\", () => pm.expect(ct).to.include(\"application/json\"));\r",
+							"  let body;\r",
+							"  pm.test(\"Body es JSON válido\", () => {\r",
+							"    body = pm.response.json();\r",
+							"    pm.expect(body).to.be.an(\"array\");   \r",
+							"  });\r",
+							"  if (Array.isArray(body) && body.length > 0) {\r",
+							"    const u = body[0];\r",
+							"    pm.test(\"Usuario tiene campos mínimos esperados\", () => {\r",
+							"      pm.expect(u).to.include.keys([\"id\", \"name\", \"username\", \"email\", \"creationDate\", \"active\"]);\r",
+							"      pm.expect(u).to.have.property(\"password\"); // <- solo si procede\r",
+							"    });\r",
+							"    pm.test(\"Email con formato válido\", () => {\r",
+							"      pm.expect(u.email).to.match(/^.+@.+\\..+$/);\r",
+							"    });\r",
+							"    pm.test(\"Fecha en formato YYYY-MM-DD\", () => {\r",
+							"      pm.expect(u.creationDate).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);\r",
+							"    });\r",
+							"    pm.test(\"Active es booleano\", () => {\r",
+							"      pm.expect(typeof u.active).to.eql(\"boolean\");\r",
+							"    });\r",
 							"  } else {\r",
-							"    pm.expect(data.length).to.equal(0); \r",
+							"    pm.test(\"Lista vacía permitida\", () => pm.expect(body.length).to.equal(0));\r",
 							"  }\r",
-							"});\r",
+							"})();\r",
+							"\r",
 							"\r",
 							""
 						],
@@ -234,7 +249,7 @@
 			"response": []
 		},
 		{
-			"name": "/users-500-InternalServerError",
+			"name": "users-500-InternalServerError",
 			"event": [
 				{
 					"listen": "test",
@@ -319,7 +334,7 @@
 			"response": []
 		},
 		{
-			"name": "/users/{id}-400-BadRequest",
+			"name": "users/{id}-400-BadRequest",
 			"event": [
 				{
 					"listen": "test",

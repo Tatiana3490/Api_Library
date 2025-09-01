@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "test:api": "newman run \"wiremock/Virtual_Test.postman_collection.json\" --env-var mockBaseUrl=http://localhost:8083 -r htmlextra"
+  }
+
+}
