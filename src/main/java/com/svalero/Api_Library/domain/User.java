@@ -21,7 +21,7 @@ public class User {
     private Long id;
 
     @NotBlank(message = "Name is required")
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String name;
 
     @NotBlank(message = "Username is required")
@@ -34,8 +34,7 @@ public class User {
     private String email;
 
     @NotBlank(message = "Password is required")
-    @Size(min = 8, max = 30, message = "Password must be between 8 and 30 characters")
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String password;
 
     @NotNull(message = "Creation date is required")

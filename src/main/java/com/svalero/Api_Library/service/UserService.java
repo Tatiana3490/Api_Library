@@ -53,7 +53,7 @@ public class UserService {
     //para guardar un nuevo usuario
     public User saveUser(UserInDto user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        User newUser= modelMapper.map(user, User.class);
+        User newUser = modelMapper.map(user, User.class);
         return userRepository.save(newUser);
     }
 
@@ -71,8 +71,6 @@ public class UserService {
         return userRepository.save(existingUser);
     }
 
-
-
     public User updateUserPartial(Long id, Map<String, Object> updates) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
@@ -87,7 +85,7 @@ public class UserService {
 
             if (value != null) {
                 if (type.equals(LocalDate.class)) {
-                    toSet = LocalDate.parse(value.toString()); // "yyyy-MM-dd"
+                    toSet = LocalDate.parse(value.toString());
                 } else if (type.equals(Boolean.class) || type.equals(boolean.class)) {
                     toSet = (value instanceof Boolean) ? value : Boolean.parseBoolean(value.toString());
                 } else if (type.equals(Long.class) || type.equals(long.class)) {
@@ -95,7 +93,7 @@ public class UserService {
                 } else if (type.equals(Integer.class) || type.equals(int.class)) {
                     toSet = (value instanceof Number) ? ((Number) value).intValue() : Integer.parseInt(value.toString());
                 }
-                // añade más conversiones si tienes otros tipos (Double, etc.)
+
             }
 
             ReflectionUtils.setField(field, user, toSet);
@@ -103,7 +101,6 @@ public class UserService {
 
         return userRepository.save(user);
     }
-
 
     // para eliminar un usuario por id
     public void deleteUser(long id) throws UserNotFoundException {
@@ -117,7 +114,4 @@ public class UserService {
     public List<User> findUsersByNameContaining(String keyword) {
         return userRepository.findUsersByNameContainingNative(keyword);
     }
-
-
-
 }

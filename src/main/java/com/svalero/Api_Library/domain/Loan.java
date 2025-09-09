@@ -22,10 +22,10 @@ public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String name;
     @NotNull(message = "Customer name is required")
-    @Column(name="customer_name", nullable = false, unique = true)
+    @Column(name="customer_name", nullable = false)
     private String customerName;
     @Column
     private String email;

@@ -1,0 +1,209 @@
+2025-09-08 18:24:08,233 INFO o.h.v.i.u.Version {<clinit>} [background-preinit] HV000001: Hibernate Validator 8.0.2.Final
+2025-09-08 18:24:08,316 INFO o.s.b.StartupInfoLogger {logStarting} [main] Starting ApiLibraryApplication using Java 21.0.5 with PID 19844 (C:\Users\tatia\IdeaProjects\Api_Library\target\classes started by tatia in C:\Users\tatia\IdeaProjects\Api_Library)
+2025-09-08 18:24:08,317 INFO o.s.b.SpringApplication {logStartupProfileInfo} [main] No active profile set, falling back to 1 default profile: "default"
+2025-09-08 18:24:09,180 INFO o.s.d.r.c.RepositoryConfigurationDelegate {registerRepositoriesIn} [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-08 18:24:09,257 INFO o.s.d.r.c.RepositoryConfigurationDelegate {registerRepositoriesIn} [main] Finished Spring Data repository scanning in 68 ms. Found 5 JPA repository interfaces.
+2025-09-08 18:24:09,832 INFO o.s.b.w.e.t.TomcatWebServer {initialize} [main] Tomcat initialized with port 8082 (http)
+2025-09-08 18:24:09,845 INFO o.a.j.l.DirectJDKLog {log} [main] Initializing ProtocolHandler ["http-nio-8082"]
+2025-09-08 18:24:09,848 INFO o.a.j.l.DirectJDKLog {log} [main] Starting service [Tomcat]
+2025-09-08 18:24:09,849 INFO o.a.j.l.DirectJDKLog {log} [main] Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-09-08 18:24:09,912 INFO o.a.j.l.DirectJDKLog {log} [main] Initializing Spring embedded WebApplicationContext
+2025-09-08 18:24:09,913 INFO o.s.b.w.s.c.ServletWebServerApplicationContext {prepareWebApplicationContext} [main] Root WebApplicationContext: initialization completed in 1548 ms
+2025-09-08 18:24:10,044 INFO o.h.j.i.u.LogHelper {logPersistenceUnitInformation} [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-08 18:24:10,116 INFO o.h.Version {logVersion} [main] HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-09-08 18:24:10,155 INFO o.h.c.i.RegionFactoryInitiator {initiateService} [main] HHH000026: Second-level cache disabled
+2025-09-08 18:24:10,461 INFO o.s.o.j.p.SpringPersistenceUnitInfo {addTransformer} [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-08 18:24:10,494 INFO c.z.h.HikariDataSource {getConnection} [main] HikariPool-1 - Starting...
+2025-09-08 18:24:10,739 INFO c.z.h.p.HikariPool {checkFailFast} [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:~/api_library.db user=SA
+2025-09-08 18:24:10,741 INFO c.z.h.HikariDataSource {getConnection} [main] HikariPool-1 - Start completed.
+2025-09-08 18:24:10,770 WARN o.h.e.j.d.i.DialectFactoryImpl {constructDialect} [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08 18:24:10,793 INFO o.h.e.j.e.i.JdbcEnvironmentInitiator {initiateService} [main] HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-09-08 18:24:11,803 INFO o.h.e.t.j.p.i.JtaPlatformInitiator {initiateService} [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08 18:24:11,876 INFO o.s.o.j.AbstractEntityManagerFactoryBean {buildNativeEntityManagerFactory} [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-08 18:24:12,145 INFO o.s.d.j.r.q.QueryEnhancerFactory {<clinit>} [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-09-08 18:24:12,264 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer {configure} [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2025-09-08 18:24:13,131 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration {openEntityManagerInViewInterceptor} [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-08 18:24:13,585 INFO o.s.b.a.h.H2ConsoleAutoConfiguration$H2ConsoleLogger {log} [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:~/api_library.db'
+2025-09-08 18:24:13,660 INFO o.a.j.l.DirectJDKLog {log} [main] Starting ProtocolHandler ["http-nio-8082"]
+2025-09-08 18:24:13,684 INFO o.s.b.w.e.t.TomcatWebServer {start} [main] Tomcat started on port 8082 (http) with context path '/'
+2025-09-08 18:24:13,692 INFO o.s.b.StartupInfoLogger {logStarted} [main] Started ApiLibraryApplication in 6.039 seconds (process running for 6.443)
+2025-09-08 18:32:52,377 INFO o.a.j.l.DirectJDKLog {log} [http-nio-8082-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-08 18:32:52,378 INFO o.s.w.s.FrameworkServlet {initServletBean} [http-nio-8082-exec-1] Initializing Servlet 'dispatcherServlet'
+2025-09-08 18:32:52,381 INFO o.s.w.s.FrameworkServlet {initServletBean} [http-nio-8082-exec-1] Completed initialization in 2 ms
+2025-09-08 18:37:20,110 INFO c.s.A.c.UserController {addUser} [http-nio-8082-exec-5] Adding new user: gloriabendita@gmail.com
+2025-09-08 18:39:38,289 INFO c.s.A.c.UserController {updateUserPartial} [http-nio-8082-exec-8] Partially updating user with ID: 1
+2025-09-08 18:45:25,334 INFO c.s.A.c.UserController {getAllUsers} [http-nio-8082-exec-2] Fetching all users
+2025-09-08 18:51:38,279 WARN c.s.A.s.JwtAuthenticationFilter {doFilterInternal} [http-nio-8082-exec-4] Token inválido: JWT expired at 2025-09-07T19:09:02Z. Current time: 2025-09-08T16:51:38Z, a difference of 78156278 milliseconds.  Allowed clock skew: 0 milliseconds.
+2025-09-08 18:52:19,954 INFO c.s.A.c.UserController {getByEmail} [http-nio-8082-exec-5] Searching user by email: isamola@gmail.com
+2025-09-08 18:58:33,402 WARN c.s.A.e.GlobalExceptionHandler {handleValidationErrors} [http-nio-8082-exec-8] Validación fallida: Creation date is required
+2025-09-08 18:59:22,486 INFO c.s.A.c.UserController {updateUser} [http-nio-8082-exec-9] Updating user with ID: 225
+2025-09-08 19:00:38,083 INFO c.s.A.c.UserController {getByUsername} [http-nio-8082-exec-3] Searching user by username: Gloriabendita
+2025-09-08 19:00:38,085 ERROR c.s.A.e.GlobalExceptionHandler {handleGeneralException} [http-nio-8082-exec-3] Error 500 inesperado
+org.springframework.security.core.userdetails.UsernameNotFoundException: User not found
+	at com.svalero.Api_Library.service.UserService.lambda$getUserByUsername$0(UserService.java:45)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at com.svalero.Api_Library.service.UserService.getUserByUsername(UserService.java:45)
+	at com.svalero.Api_Library.controller.UserController.getByUsername(UserController.java:52)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:257)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1088)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at com.svalero.Api_Library.security.JwtRequestFilter.doFilterInternal(JwtRequestFilter.java:52)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.svalero.Api_Library.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:57)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:243)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:238)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-09-08 19:01:00,459 INFO c.s.A.c.UserController {getByUsername} [http-nio-8082-exec-4] Searching user by username: gloriabendita
+2025-09-08 19:02:12,024 INFO c.s.A.c.UserController {getActiveUsers} [http-nio-8082-exec-8] Fetching active users
+2025-09-08 21:25:08,523 INFO c.s.A.c.UserController {updateUser} [http-nio-8082-exec-2] Updating user with ID: 99999
+2025-09-08 21:25:08,526 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [http-nio-8082-exec-2] Recurso no encontrado: User not found with id: 99999
+2025-09-08 22:33:04,090 INFO c.s.A.c.UserController {updateUser} [http-nio-8082-exec-5] Updating user with ID: 99999
+2025-09-08 22:33:04,093 WARN c.s.A.e.GlobalExceptionHandler {handleNotFound} [http-nio-8082-exec-5] Recurso no encontrado: User not found with id: 99999
+2025-09-08 22:34:51,376 INFO c.s.A.c.UserController {updateUserPartial} [http-nio-8082-exec-7] Partially updating user with ID: 1
+2025-09-08 22:39:12,077 INFO c.s.A.c.UserController {deleteUser} [http-nio-8082-exec-9] Deleting user with ID: 257
+2025-09-08 22:41:48,531 INFO c.s.A.c.UserController {getAllUsers} [http-nio-8082-exec-3] Fetching all users
+2025-09-08 22:48:11,464 INFO c.s.A.c.UserController {getAllUsers} [http-nio-8082-exec-6] Fetching all users
+2025-09-08 22:51:05,937 INFO c.s.A.c.AuthorController {addAuthor} [http-nio-8082-exec-10] BEGIN addAuthor - Adding new author: Tatiana
+2025-09-08 22:51:05,952 INFO c.s.A.c.AuthorController {addAuthor} [http-nio-8082-exec-10] END addAuthor - Author added with ID: 193
+2025-09-08 22:52:23,261 INFO c.s.A.c.AuthorController {getAllAuthors} [http-nio-8082-exec-1] BEGIN getAllAuthors
+2025-09-08 22:52:23,283 INFO c.s.A.c.AuthorController {getAllAuthors} [http-nio-8082-exec-1] END getAllAuthors - Total authors fetched: 6
+2025-09-08 23:00:43,660 INFO c.s.A.c.AuthorController {getAuthorByName} [http-nio-8082-exec-4] Searching author by name: Isaac
+2025-09-08 23:01:18,807 INFO c.s.A.c.AuthorController {getAuthorByName} [http-nio-8082-exec-6] Searching author by name: Federico
+2025-09-08 23:01:30,818 INFO c.s.A.c.AuthorController {getAuthorByName} [http-nio-8082-exec-7] Searching author by name: Santiago
+2025-09-08 23:10:47,767 INFO c.s.A.c.AuthorController {getAuthorBySurname} [http-nio-8082-exec-9] Searching author by surname: Garcia
+2025-09-08 23:10:57,576 INFO c.s.A.c.AuthorController {getAuthorBySurname} [http-nio-8082-exec-2] Searching author by surname: Garcia Lorca
+2025-09-08 23:11:53,460 INFO c.s.A.c.AuthorController {getAuthorByNationality} [http-nio-8082-exec-1] Searching author by nationality: Español
+2025-09-08 23:13:27,372 INFO c.s.A.c.AuthorController {getAuthorByBirthday} [http-nio-8082-exec-4] Searching author by birthday: 1616-04-21
+2025-09-08 23:13:40,454 INFO c.s.A.c.AuthorController {getAuthorByBirthday} [http-nio-8082-exec-6] Searching author by birthday: 1990-04-03
+2025-09-08 23:13:56,611 INFO c.s.A.c.AuthorController {getAuthorById} [http-nio-8082-exec-7] Searching author by ID: 1
+2025-09-08 23:16:46,172 INFO c.s.A.c.AuthorController {getAuthorById} [http-nio-8082-exec-9] Searching author by ID: 193
+2025-09-08 23:17:13,154 INFO c.s.A.c.AuthorController {updateAuthor} [http-nio-8082-exec-2] Updating author by ID: 1
+2025-09-08 23:22:03,714 INFO c.s.A.c.BookCategoryController {getAllBookCategories} [http-nio-8082-exec-5] Fetching all book categories
+2025-09-08 23:25:36,841 INFO c.s.A.c.BookCategoryController {addCategory} [http-nio-8082-exec-7] Adding new category: Poesía
+2025-09-08 23:32:12,453 WARN c.s.A.s.JwtAuthenticationFilter {doFilterInternal} [http-nio-8082-exec-10] Token inválido: JWT expired at 2025-06-24T15:53:08Z. Current time: 2025-09-08T21:32:12Z, a difference of 6586744451 milliseconds.  Allowed clock skew: 0 milliseconds.
+2025-09-08 23:32:25,233 INFO c.s.A.c.BookCategoryController {getByActive} [http-nio-8082-exec-2] Searching categories by active: true
+2025-09-08 23:33:11,762 INFO c.s.A.c.BookCategoryController {updateCategory} [http-nio-8082-exec-1] Updating category ID: 33
+2025-09-08 23:33:47,955 INFO c.s.A.c.BookCategoryController {delete} [http-nio-8082-exec-3] Deleting category ID: 33
+2025-09-08 23:33:53,708 INFO c.s.A.c.BookCategoryController {getByActive} [http-nio-8082-exec-5] Searching categories by active: true
+2025-09-08 23:34:22,132 INFO c.s.A.c.BookController {getAllBooks} [http-nio-8082-exec-4] Fetching all books
+2025-09-08 23:36:05,587 WARN c.s.A.s.JwtAuthenticationFilter {doFilterInternal} [http-nio-8082-exec-8] Token inválido: JWT expired at 2025-08-18T14:19:19Z. Current time: 2025-09-08T21:36:05Z, a difference of 1840606587 milliseconds.  Allowed clock skew: 0 milliseconds.
+2025-09-08 23:36:19,665 INFO c.s.A.c.AuthorController {getAllAuthors} [http-nio-8082-exec-9] BEGIN getAllAuthors
+2025-09-08 23:36:19,668 INFO c.s.A.c.AuthorController {getAllAuthors} [http-nio-8082-exec-9] END getAllAuthors - Total authors fetched: 6
+2025-09-08 23:37:04,811 WARN c.s.A.s.JwtAuthenticationFilter {doFilterInternal} [http-nio-8082-exec-10] Token inválido: JWT expired at 2025-08-25T17:21:58Z. Current time: 2025-09-08T21:37:04Z, a difference of 1224906811 milliseconds.  Allowed clock skew: 0 milliseconds.
+2025-09-08 23:37:17,889 INFO c.s.A.c.BookController {addBook} [http-nio-8082-exec-2] Adding new book: La vida de Peter 
+2025-09-08 23:37:17,902 WARN o.h.e.j.s.SqlExceptionHelper {logExceptions} [http-nio-8082-exec-2] SQL Error: 23506, SQLState: 23506
+2025-09-08 23:37:17,903 ERROR o.h.e.j.s.SqlExceptionHelper {logExceptions} [http-nio-8082-exec-2] Violación de una restricción de Integridad Referencial: "FK1pmkh9kwdj39qau0b94mdea9h: PUBLIC.books FOREIGN KEY(category_id) REFERENCES PUBLIC.book_categories(id) (CAST(4 AS BIGINT))"
+Referential integrity constraint violation: "FK1pmkh9kwdj39qau0b94mdea9h: PUBLIC.books FOREIGN KEY(category_id) REFERENCES PUBLIC.book_categories(id) (CAST(4 AS BIGINT))"; SQL statement:
+insert into "books" ("author_id","available","category_id","genre","pages","price","title","id") values (?,?,?,?,?,?,?,default) [23506-232]
+2025-09-08 23:37:17,917 WARN c.s.A.e.GlobalExceptionHandler {handleDataIntegrityViolation} [http-nio-8082-exec-2] Error de integridad en BD: could not execute statement [Violación de una restricción de Integridad Referencial: "FK1pmkh9kwdj39qau0b94mdea9h: PUBLIC.books FOREIGN KEY(category_id) REFERENCES PUBLIC.book_categories(id) (CAST(4 AS BIGINT))"
+Referential integrity constraint violation: "FK1pmkh9kwdj39qau0b94mdea9h: PUBLIC.books FOREIGN KEY(category_id) REFERENCES PUBLIC.book_categories(id) (CAST(4 AS BIGINT))"; SQL statement:
+insert into "books" ("author_id","available","category_id","genre","pages","price","title","id") values (?,?,?,?,?,?,?,default) [23506-232]] [insert into "books" ("author_id","available","category_id","genre","pages","price","title","id") values (?,?,?,?,?,?,?,default)]; SQL [insert into "books" ("author_id","available","category_id","genre","pages","price","title","id") values (?,?,?,?,?,?,?,default)]; constraint [K1pmkh9kwdj39qau0b94mdea9h]
+2025-09-08 23:37:58,335 INFO c.s.A.c.BookController {addBook} [http-nio-8082-exec-1] Adding new book: La leyenda de Alcubilla 
+2025-09-08 23:37:58,337 WARN o.h.e.j.s.SqlExceptionHelper {logExceptions} [http-nio-8082-exec-1] SQL Error: 23506, SQLState: 23506
+2025-09-08 23:37:58,338 ERROR o.h.e.j.s.SqlExceptionHelper {logExceptions} [http-nio-8082-exec-1] Violación de una restricción de Integridad Referencial: "FK1pmkh9kwdj39qau0b94mdea9h: PUBLIC.books FOREIGN KEY(category_id) REFERENCES PUBLIC.book_categories(id) (CAST(4 AS BIGINT))"
+Referential integrity constraint violation: "FK1pmkh9kwdj39qau0b94mdea9h: PUBLIC.books FOREIGN KEY(category_id) REFERENCES PUBLIC.book_categories(id) (CAST(4 AS BIGINT))"; SQL statement:
+insert into "books" ("author_id","available","category_id","genre","pages","price","title","id") values (?,?,?,?,?,?,?,default) [23506-232]
+2025-09-08 23:37:58,340 WARN c.s.A.e.GlobalExceptionHandler {handleDataIntegrityViolation} [http-nio-8082-exec-1] Error de integridad en BD: could not execute statement [Violación de una restricción de Integridad Referencial: "FK1pmkh9kwdj39qau0b94mdea9h: PUBLIC.books FOREIGN KEY(category_id) REFERENCES PUBLIC.book_categories(id) (CAST(4 AS BIGINT))"
+Referential integrity constraint violation: "FK1pmkh9kwdj39qau0b94mdea9h: PUBLIC.books FOREIGN KEY(category_id) REFERENCES PUBLIC.book_categories(id) (CAST(4 AS BIGINT))"; SQL statement:
+insert into "books" ("author_id","available","category_id","genre","pages","price","title","id") values (?,?,?,?,?,?,?,default) [23506-232]] [insert into "books" ("author_id","available","category_id","genre","pages","price","title","id") values (?,?,?,?,?,?,?,default)]; SQL [insert into "books" ("author_id","available","category_id","genre","pages","price","title","id") values (?,?,?,?,?,?,?,default)]; constraint [K1pmkh9kwdj39qau0b94mdea9h]
+2025-09-08 23:39:32,253 INFO c.s.A.c.BookController {getAllBooks} [http-nio-8082-exec-5] Fetching all books
